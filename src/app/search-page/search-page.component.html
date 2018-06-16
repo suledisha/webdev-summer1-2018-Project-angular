@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+  <div class="container-fluid">
+
+    <div>
+      <input [(ngModel)]="title" class="form-control" placeholder="Title" >
+      <small class="form-text text-muted">Please enter atleast one word of the title of the book</small>
+    </div>
+
+    <div>
+      <input [(ngModel)]="author" class="form-control" placeholder="Author" >
+      <small class="form-text text-muted">Optional: Enter the author name to enhance search</small>
+    </div>
+
+    <button
+      class="btn btn-success btn-block"
+      (click)="findBook(title, author)">
+      Find Book!
+    </button>
+
+  </div>
+  <br/>
+  <br/>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let book of books">
+    <div>
+      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
+      <a routerLink="/book/{{book.id}}"> {{book.volumeInfo.title}}</a>
+    </div>
+  </li>
+
+</ul>
+</div>

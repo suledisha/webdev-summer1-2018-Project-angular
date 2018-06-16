@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <h2>Book Details</h2>
+  <h3>{{book.volumeInfo.title}}</h3>
+  <div *ngFor="let author of book.volumeInfo.authors"><h3>{{author}}</h3></div>
+  <div>  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>
+  <h4>Published Date: {{book.volumeInfo.publishedDate}}</h4>
+  <h4>Reader Rating: {{book.volumeInfo.averageRating}}</h4>
+  <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
+    <button class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
+  </div>
+  <div class="container-fluid">
+  <h4>Plot</h4>
+  <h4>{{book.volumeInfo.description}}</h4>
+  </div>
+</div>
