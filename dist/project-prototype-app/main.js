@@ -377,13 +377,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookServiceClient", function() { return BookServiceClient; });
 var BookServiceClient = /** @class */ (function () {
     function BookServiceClient() {
+        this.BOOKURL = 'http://localhost:4000/api/book';
+        this.BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
     }
     BookServiceClient.prototype.createBook = function (id, title) {
         var book = {
             id: id,
             title: title
         };
-        return fetch('http://localhost:4000/api/book', {
+        return fetch(this.BOOKURL_HEROKU, {
             body: JSON.stringify(book),
             credentials: 'include',
             method: 'post',
