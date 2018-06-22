@@ -1,10 +1,14 @@
 export class BookServiceClient {
+
+  BOOKURL = 'http://localhost:4000/api/book';
+  BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+
   createBook(id, title) {
     const book = {
       id: id,
       title: title
     };
-    return fetch('http://localhost:4000/api/book', {
+    return fetch(this.BOOKURL_HEROKU, {
       body: JSON.stringify(book),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
@@ -14,3 +18,4 @@ export class BookServiceClient {
     });
   }
 }
+
