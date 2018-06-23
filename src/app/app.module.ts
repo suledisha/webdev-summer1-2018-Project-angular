@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import {UserServiceClient} from './services/user.service.client';
 import {LikeServiceClient} from './services/like.service.client';
+import { AuthorPageComponent } from './author-page/author-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {LikeServiceClient} from './services/like.service.client';
     BookDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    AuthorPageComponent
   ],
   imports: [
     BrowserModule,

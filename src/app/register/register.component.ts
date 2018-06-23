@@ -15,8 +15,9 @@ export class RegisterComponent implements OnInit {
   username;
   password;
   password2;
+  role;
   user;
-  register(username, password, password2) {
+  register(username, password, password2, role) {
     if (password !== password2) {
       alert('Passwords do not match');
     } else {
@@ -24,9 +25,14 @@ export class RegisterComponent implements OnInit {
       this.service.findUserByUsername(username).then((user) => {
         if (user._id === -1) {
           this.service
-            .createUser(username, password)
-            .then(() =>
-              this.router.navigate(['profile']));
+            .createUser(username, password, role)
+            .then(() => {
+              if (role === 'author') {
+                this.router.navigate(['author-page']);
+              } else {
+          this.router.navigate(['profile']); }
+            });
+
         } else {
           alert('Username already present');
         }

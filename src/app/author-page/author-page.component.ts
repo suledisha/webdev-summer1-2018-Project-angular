@@ -1,31 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../models/user.model.client';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
-import {LikeServiceClient} from '../services/like.service.client';
-import {Book} from '../models/book.model.client';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-author-page',
+  templateUrl: './author-page.component.html',
+  styleUrls: ['./author-page.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class AuthorPageComponent implements OnInit {
 
   constructor(private service: UserServiceClient,
-              private likeService: LikeServiceClient,
               private router: Router) { }
 
-  user = {};
   _id;
   username;
   password;
   firstName;
   lastName;
   email;
-  likedBooks = [];
-
-
+  bio;
+  snippet;
+  authoredBooks = [];
 
   logout() {
     this.service
@@ -35,14 +30,12 @@ export class ProfileComponent implements OnInit {
 
   }
 
-
   update() {
     // console.log(user);
     this.service
-      .update(this._id, this.username, this.firstName, this.lastName, this.email, '', '');
+      .update(this._id, this.username, this.firstName, this.lastName, this.email, this.bio, this.snippet);
 
   }
-
   ngOnInit() {
     this.service
       .profile()
@@ -53,18 +46,14 @@ export class ProfileComponent implements OnInit {
           this.firstName = user.firstName;
           this.lastName = user.lastName;
           this.email = user.email;
+          this.bio = user.bio;
+          this.snippet = user.snippet;
           console.log(user._id);
         } else {
           this._id = -1;
         }
 
       });
-
-    if (this._id !== -1) {
-      this.likeService
-        .findLikedBooksForUser()
-        .then(likedBooks => this.likedBooks = likedBooks );
-    }
   }
 
 }

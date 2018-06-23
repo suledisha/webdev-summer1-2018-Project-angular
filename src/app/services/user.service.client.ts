@@ -50,10 +50,11 @@ export class UserServiceClient {
     });
   }
 
-  createUser(username, password) {
+  createUser(username, password, role) {
     const user = {
       username: username,
-      password: password
+      password: password,
+      role: role
     };
     return fetch(this.URL + '/api/user', {
       body: JSON.stringify(user),
@@ -64,9 +65,9 @@ export class UserServiceClient {
       }
     });
   }
-  update(_id, username, firstName, lastName, email) {
+  update(_id, username, firstName, lastName, email, bio, snippet) {
     const url = this.URL + '/api/profile';
-    const user = {_id, username, firstName, lastName, email};
+    const user = {_id, username, firstName, lastName, email, bio, snippet};
     return fetch(url, {
       method: 'put',
       body: JSON.stringify(user),

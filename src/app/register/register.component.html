@@ -13,7 +13,11 @@
          placeholder="verify password"
          class="form-control"/>
   <br>
-  <button (click)="register(username, password, password2)"
+  <input [(ngModel)]="role"
+         placeholder="role"
+         class="form-control"/>
+  <br>
+  <button (click)="register(username, password, password2, role)"
           class="btn btn-primary btn-block">
     Register
   </button>

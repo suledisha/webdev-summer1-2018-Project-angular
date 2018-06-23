@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
       .then((user) => {
         if (user._id === -1) {
           alert('Invalid');
+        } else if (user.role === 'author') {
+          this.router.navigate(['author-page']);
         } else {
           this.router.navigate(['profile']);
         }

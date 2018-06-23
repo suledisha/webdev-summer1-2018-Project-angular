@@ -106,12 +106,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
 /* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/user.service.client */ "./src/app/services/user.service.client.ts");
 /* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/like.service.client */ "./src/app/services/like.service.client.ts");
+/* harmony import */ var _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./author-page/author-page.component */ "./src/app/author-page/author-page.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -138,7 +140,8 @@ var AppModule = /** @class */ (function () {
                 _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_7__["BookDetailsComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
                 _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"],
-                _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"]
+                _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"],
+                _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_15__["AuthorPageComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -172,6 +175,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
 /* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./author-page/author-page.component */ "./src/app/author-page/author-page.component.ts");
+
 
 
 
@@ -184,10 +189,95 @@ var appRoutes = [
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"] },
     { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_3__["ProfileComponent"] },
+    { path: 'author-page', component: _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_6__["AuthorPageComponent"] },
     { path: 'book/:bookId', component: _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_2__["BookDetailsComponent"] },
     { path: '**', component: _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_1__["SearchPageComponent"] } // last
 ];
 var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
+
+
+/***/ }),
+
+/***/ "./src/app/author-page/author-page.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/author-page/author-page.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/author-page/author-page.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/author-page/author-page.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"bio\"\n         placeholder=\"Bio\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"snippet\"\n         placeholder=\"Featured Snippet\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/author-page/author-page.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/author-page/author-page.component.ts ***!
+  \******************************************************/
+/*! exports provided: AuthorPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthorPageComponent", function() { return AuthorPageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AuthorPageComponent = /** @class */ (function () {
+    function AuthorPageComponent(service, router) {
+        this.service = service;
+        this.router = router;
+        this.authoredBooks = [];
+    }
+    AuthorPageComponent.prototype.logout = function () {
+        var _this = this;
+        this.service
+            .logout()
+            .then(function () {
+            return _this.router.navigate(['login']);
+        });
+    };
+    AuthorPageComponent.prototype.update = function () {
+        // console.log(user);
+        this.service
+            .update(this._id, this.username, this.firstName, this.lastName, this.email, this.bio, this.snippet);
+    };
+    AuthorPageComponent.prototype.ngOnInit = function () {
+    };
+    AuthorPageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-author-page',
+            template: __webpack_require__(/*! ./author-page.component.html */ "./src/app/author-page/author-page.component.html"),
+            styles: [__webpack_require__(/*! ./author-page.component.css */ "./src/app/author-page/author-page.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AuthorPageComponent);
+    return AuthorPageComponent;
+}());
+
 
 
 /***/ }),
@@ -362,6 +452,9 @@ var LoginComponent = /** @class */ (function () {
             if (user._id === -1) {
                 alert('Invalid');
             }
+            else if (user.role === 'author') {
+                _this.router.navigate(['author-page']);
+            }
             else {
                 _this.router.navigate(['profile']);
             }
@@ -452,7 +545,7 @@ var ProfileComponent = /** @class */ (function () {
     ProfileComponent.prototype.update = function () {
         // console.log(user);
         this.service
-            .update(this._id, this.username, this.firstName, this.lastName, this.email);
+            .update(this._id, this.username, this.firstName, this.lastName, this.email, '', '');
     };
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -512,7 +605,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h1>Register</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password2\"\n         placeholder=\"verify password\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"register(username, password, password2)\"\n          class=\"btn btn-primary btn-block\">\n    Register\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/login\">Login</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n  <h1>Register</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password2\"\n         placeholder=\"verify password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"role\"\n         placeholder=\"role\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"register(username, password, password2, role)\"\n          class=\"btn btn-primary btn-block\">\n    Register\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/login\">Login</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -546,7 +639,7 @@ var RegisterComponent = /** @class */ (function () {
         this.router = router;
         this.service = service;
     }
-    RegisterComponent.prototype.register = function (username, password, password2) {
+    RegisterComponent.prototype.register = function (username, password, password2, role) {
         var _this = this;
         if (password !== password2) {
             alert('Passwords do not match');
@@ -555,9 +648,14 @@ var RegisterComponent = /** @class */ (function () {
             this.service.findUserByUsername(username).then(function (user) {
                 if (user._id === -1) {
                     _this.service
-                        .createUser(username, password)
+                        .createUser(username, password, role)
                         .then(function () {
-                        return _this.router.navigate(['profile']);
+                        if (role === 'author') {
+                            _this.router.navigate(['author-page']);
+                        }
+                        else {
+                            _this.router.navigate(['profile']);
+                        }
                     });
                 }
                 else {
@@ -844,10 +942,11 @@ var UserServiceClient = /** @class */ (function () {
             credentials: 'include',
         });
     };
-    UserServiceClient.prototype.createUser = function (username, password) {
+    UserServiceClient.prototype.createUser = function (username, password, role) {
         var user = {
             username: username,
-            password: password
+            password: password,
+            role: role
         };
         return fetch(this.URL + '/api/user', {
             body: JSON.stringify(user),
@@ -858,9 +957,9 @@ var UserServiceClient = /** @class */ (function () {
             }
         });
     };
-    UserServiceClient.prototype.update = function (_id, username, firstName, lastName, email) {
+    UserServiceClient.prototype.update = function (_id, username, firstName, lastName, email, bio, snippet) {
         var url = this.URL + '/api/profile';
-        var user = { _id: _id, username: username, firstName: firstName, lastName: lastName, email: email };
+        var user = { _id: _id, username: username, firstName: firstName, lastName: lastName, email: email, bio: bio, snippet: snippet };
         return fetch(url, {
             method: 'put',
             body: JSON.stringify(user),
