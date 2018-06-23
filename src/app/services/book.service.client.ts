@@ -8,14 +8,14 @@ export class BookServiceClient {
       id: id,
       title: title
     };
-    return fetch(this.BOOKURL_HEROKU, {
+    return fetch(this.BOOKURL, {
       body: JSON.stringify(book),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
       headers: {
         'content-type': 'application/json'
       }
-    });
+    }) .then(response => response.json());
   }
 }
 

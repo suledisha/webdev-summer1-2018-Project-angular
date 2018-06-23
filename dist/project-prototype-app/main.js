@@ -101,12 +101,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./book-details/book-details.component */ "./src/app/book-details/book-details.component.ts");
 /* harmony import */ var _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/book-details.service.client */ "./src/app/services/book-details.service.client.ts");
 /* harmony import */ var _services_book_service_client__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/book.service.client */ "./src/app/services/book.service.client.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/like.service.client */ "./src/app/services/like.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
 
 
 
@@ -125,14 +135,17 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
                 _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_3__["SearchPageComponent"],
-                _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_7__["BookDetailsComponent"]
+                _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_7__["BookDetailsComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
+                _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"],
+                _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
                 _app_routing__WEBPACK_IMPORTED_MODULE_6__["routing"]
             ],
-            providers: [_services_search_page_service_client__WEBPACK_IMPORTED_MODULE_4__["SearchPageServiceClient"], _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_8__["BookDetailsServiceClient"], _services_book_service_client__WEBPACK_IMPORTED_MODULE_9__["BookServiceClient"]],
+            providers: [_services_search_page_service_client__WEBPACK_IMPORTED_MODULE_4__["SearchPageServiceClient"], _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_8__["BookDetailsServiceClient"], _services_book_service_client__WEBPACK_IMPORTED_MODULE_9__["BookServiceClient"], _services_user_service_client__WEBPACK_IMPORTED_MODULE_13__["UserServiceClient"], _services_like_service_client__WEBPACK_IMPORTED_MODULE_14__["LikeServiceClient"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -156,12 +169,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search-page/search-page.component */ "./src/app/search-page/search-page.component.ts");
 /* harmony import */ var _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./book-details/book-details.component */ "./src/app/book-details/book-details.component.ts");
+/* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+
+
+
 
 
 
 var appRoutes = [
     { path: '', redirectTo: 'search', pathMatch: 'full' },
     { path: 'search', component: _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_1__["SearchPageComponent"] },
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
+    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"] },
+    { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_3__["ProfileComponent"] },
     { path: 'book/:bookId', component: _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_2__["BookDetailsComponent"] },
     { path: '**', component: _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_1__["SearchPageComponent"] } // last
 ];
@@ -206,6 +228,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/book-details.service.client */ "./src/app/services/book-details.service.client.ts");
 /* harmony import */ var _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/book.service.client */ "./src/app/services/book.service.client.ts");
+/* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/like.service.client */ "./src/app/services/like.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -219,12 +242,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var BookDetailsComponent = /** @class */ (function () {
-    function BookDetailsComponent(route, service, bookService) {
+    function BookDetailsComponent(route, router, service, bookService, likeService) {
         var _this = this;
         this.route = route;
+        this.router = router;
         this.service = service;
         this.bookService = bookService;
+        this.likeService = likeService;
         this.bookId = '';
         this.book = {
             id: '',
@@ -245,10 +271,15 @@ var BookDetailsComponent = /** @class */ (function () {
     BookDetailsComponent.prototype.ngOnInit = function () {
     };
     BookDetailsComponent.prototype.likeBook = function (id, title) {
-        this.bookService.createBook(id, title);
+        var _this = this;
+        this.bookService.createBook(id, title)
+            .then(function (book) {
+            _this.likeService.userLikesBook(book._id);
+        });
     };
     BookDetailsComponent.prototype.loadBook = function (bookId) {
         var _this = this;
+        this.bookId = bookId;
         this.service.findBookById(bookId)
             .then(function (book) { return _this.book = book; });
     };
@@ -258,9 +289,295 @@ var BookDetailsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./book-details.component.html */ "./src/app/book-details/book-details.component.html"),
             styles: [__webpack_require__(/*! ./book-details.component.css */ "./src/app/book-details/book-details.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__["BookDetailsServiceClient"], _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__["BookServiceClient"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__["BookDetailsServiceClient"],
+            _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__["BookServiceClient"],
+            _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__["LikeServiceClient"]])
     ], BookDetailsComponent);
     return BookDetailsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/login/login.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.html":
+/*!********************************************!*\
+  !*** ./src/app/login/login.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <h1>Login</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"login(username, password)\"\n          class=\"btn btn-primary btn-block\">\n    Login\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/register\">Register</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/login/login.component.ts ***!
+  \******************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(router, service) {
+        this.router = router;
+        this.service = service;
+    }
+    LoginComponent.prototype.login = function (username, password) {
+        var _this = this;
+        console.log([username, password]);
+        this.service.login(username, password)
+            .then(function (user) {
+            if (user._id === -1) {
+                alert('Invalid');
+            }
+            else {
+                _this.router.navigate(['profile']);
+            }
+        });
+    };
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/profile/profile.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.html":
+/*!************************************************!*\
+  !*** ./src/app/profile/profile.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    {{token.book.title}}\n    <button class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/admin\" *ngIf=\"username==='admin'\">Admin Page</a>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/profile/profile.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/profile/profile.component.ts ***!
+  \**********************************************/
+/*! exports provided: ProfileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/like.service.client */ "./src/app/services/like.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ProfileComponent = /** @class */ (function () {
+    function ProfileComponent(service, likeService, router) {
+        this.service = service;
+        this.likeService = likeService;
+        this.router = router;
+        this.user = {};
+        this.likedBooks = [];
+    }
+    ProfileComponent.prototype.logout = function () {
+        var _this = this;
+        this.service
+            .logout()
+            .then(function () {
+            return _this.router.navigate(['login']);
+        });
+    };
+    ProfileComponent.prototype.update = function () {
+        // console.log(user);
+        this.service
+            .update(this._id, this.username, this.firstName, this.lastName, this.email);
+    };
+    ProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.username = user.username;
+                _this.firstName = user.firstName;
+                _this.lastName = user.lastName;
+                _this.email = user.email;
+                console.log(user._id);
+            }
+            else {
+                _this._id = -1;
+            }
+        });
+        if (this._id !== -1) {
+            this.likeService
+                .findLikedBooksForUser()
+                .then(function (likedBooks) { return _this.likedBooks = likedBooks; });
+        }
+    };
+    ProfileComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-profile',
+            template: __webpack_require__(/*! ./profile.component.html */ "./src/app/profile/profile.component.html"),
+            styles: [__webpack_require__(/*! ./profile.component.css */ "./src/app/profile/profile.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"],
+            _services_like_service_client__WEBPACK_IMPORTED_MODULE_3__["LikeServiceClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], ProfileComponent);
+    return ProfileComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/register/register.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/register/register.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <h1>Register</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password2\"\n         placeholder=\"verify password\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"register(username, password, password2)\"\n          class=\"btn btn-primary btn-block\">\n    Register\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/login\">Login</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/register/register.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/register/register.component.ts ***!
+  \************************************************/
+/*! exports provided: RegisterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var RegisterComponent = /** @class */ (function () {
+    function RegisterComponent(router, service) {
+        this.router = router;
+        this.service = service;
+    }
+    RegisterComponent.prototype.register = function (username, password, password2) {
+        var _this = this;
+        if (password !== password2) {
+            alert('Passwords do not match');
+        }
+        else {
+            this.service.findUserByUsername(username).then(function (user) {
+                if (user._id === -1) {
+                    _this.service
+                        .createUser(username, password)
+                        .then(function () {
+                        return _this.router.navigate(['profile']);
+                    });
+                }
+                else {
+                    alert('Username already present');
+                }
+            });
+        }
+    };
+    RegisterComponent.prototype.ngOnInit = function () {
+    };
+    RegisterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-register',
+            template: __webpack_require__(/*! ./register.component.html */ "./src/app/register/register.component.html"),
+            styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/register/register.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"]])
+    ], RegisterComponent);
+    return RegisterComponent;
 }());
 
 
@@ -385,16 +702,60 @@ var BookServiceClient = /** @class */ (function () {
             id: id,
             title: title
         };
-        return fetch(this.BOOKURL_HEROKU, {
+        return fetch(this.BOOKURL, {
             body: JSON.stringify(book),
             credentials: 'include',
             method: 'post',
             headers: {
                 'content-type': 'application/json'
             }
-        });
+        }).then(function (response) { return response.json(); });
     };
     return BookServiceClient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/like.service.client.ts":
+/*!*************************************************!*\
+  !*** ./src/app/services/like.service.client.ts ***!
+  \*************************************************/
+/*! exports provided: LikeServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LikeServiceClient", function() { return LikeServiceClient; });
+var LikeServiceClient = /** @class */ (function () {
+    function LikeServiceClient() {
+        this.USER_URL = 'http://localhost:4000/api/book/likes';
+        this.BOOK_URL = 'http://localhost:4000/api/book';
+        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/likes';
+        this.BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+    }
+    LikeServiceClient.prototype.findLikedBooksForUser = function () {
+        return fetch(this.USER_URL, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    LikeServiceClient.prototype.userLikesBook = function (bookId) {
+        var url = this.BOOK_URL + '/' + bookId + '/likes';
+        return fetch(url, {
+            method: 'post',
+            credentials: 'include'
+        });
+    };
+    LikeServiceClient.prototype.userUnlikesBook = function (bookId) {
+        var url = this.BOOK_URL + '/' + bookId + '/unlikes';
+        return fetch(url, {
+            method: 'delete',
+            credentials: 'include'
+        });
+    };
+    return LikeServiceClient;
 }());
 
 
@@ -419,6 +780,97 @@ var SearchPageServiceClient = /** @class */ (function () {
             .then(function (response) { return response.json(); });
     };
     return SearchPageServiceClient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/user.service.client.ts":
+/*!*************************************************!*\
+  !*** ./src/app/services/user.service.client.ts ***!
+  \*************************************************/
+/*! exports provided: UserServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserServiceClient", function() { return UserServiceClient; });
+var UserServiceClient = /** @class */ (function () {
+    function UserServiceClient() {
+        this.URL = 'http://localhost:4000';
+        this.URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
+    }
+    UserServiceClient.prototype.findUserById = function (userId) {
+        return fetch(this.URL + '/api/user/' + userId)
+            .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.findUserByUsername = function (username) {
+        var credentials = {
+            username: username
+        };
+        return fetch(this.URL + '/api/register', {
+            method: 'post',
+            body: JSON.stringify(credentials),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.profile = function () {
+        return fetch(this.URL + '/api/profile', {
+            credentials: 'include',
+        })
+            .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.login = function (username, password) {
+        var credentials = {
+            username: username,
+            password: password
+        };
+        return fetch(this.URL + '/api/login', {
+            method: 'post',
+            body: JSON.stringify(credentials),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.logout = function () {
+        return fetch(this.URL + '/api/logout', {
+            method: 'post',
+            credentials: 'include',
+        });
+    };
+    UserServiceClient.prototype.createUser = function (username, password) {
+        var user = {
+            username: username,
+            password: password
+        };
+        return fetch(this.URL + '/api/user', {
+            body: JSON.stringify(user),
+            credentials: 'include',
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    UserServiceClient.prototype.update = function (_id, username, firstName, lastName, email) {
+        var url = this.URL + '/api/profile';
+        var user = { _id: _id, username: username, firstName: firstName, lastName: lastName, email: email };
+        return fetch(url, {
+            method: 'put',
+            body: JSON.stringify(user),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    return UserServiceClient;
 }());
 
 

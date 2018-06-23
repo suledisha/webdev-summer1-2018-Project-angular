@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <h1>Profile</h1>
+
+  <input [(ngModel)]="username"
+         placeholder="username"
+         class="form-control"/>
+  <br>
+  <input [(ngModel)]="firstName"
+         placeholder="first name"
+         class="form-control"/>
+  <br>
+  <input [(ngModel)]="lastName"
+         placeholder="lastName"
+         class="form-control"/>
+  <br>
+  <input [(ngModel)]="email"
+         placeholder="email"
+         class="form-control"/>
+  <br>
+  <button (click)="update()"
+          class="btn btn-primary btn-block">
+    Update
+  </button>
+
+  <h2>Liked Books :{{likedBooks.length}}</h2>
+  <div *ngFor="let token of likedBooks">
+    <ul class="list-group">
+  <li class="list-group-item">
+    {{token.book.title}}
+    <button class="float-right btn btn-danger">Unlike</button>
+  </li>
+    </ul>
+</div>
+
+  <br>
+  <button class="btn btn-success" (click)="logout()">Logout</button>
+  &nbsp; &nbsp;
+  <a routerLink="/home">Home</a>
+  &nbsp; &nbsp;
+  <a routerLink="/admin" *ngIf="username==='admin'">Admin Page</a>
+</div>
+
