@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <h2>User Profile</h2>
+  <h4>Username: {{user.username}}</h4>
+  <h4>First Name: {{user.firstName}}</h4>
+  <h4>Last Name: {{user.lastName}}</h4>
+  <h4>Email: {{user.email}}</h4>
+
+  <div *ngIf="user.role==='author'">
+  <h4>Bio: {{user.bio}}</h4>
+  <h4>Snippet: {{user.snippet}}</h4>
+    <h2>Authored Books :{{books.length}}</h2>
+    <div *ngFor="let token of books">
+      <ul class="list-group">
+        <li class="list-group-item">
+          {{token.book.title}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="user.role==='reader'">
+    <h2>Liked Books :{{books.length}}</h2>
+    <div *ngFor="let token of books">
+      <ul class="list-group">
+        <li class="list-group-item">
+          {{token.book.title}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

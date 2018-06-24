@@ -6,6 +6,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {AuthorPageComponent} from './author-page/author-page.component';
 import {AuthorBookListComponent} from './author-book-list/author-book-list.component';
+import {PublicProfileComponent} from './public-profile/public-profile.component';
 
 
 const appRoutes: Routes = [
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'author-page', component: AuthorPageComponent},
   { path: 'author-book-list', component: AuthorBookListComponent},
   { path: 'book/:bookId', component: BookDetailsComponent},
+  { path: 'user/:userId', component: PublicProfileComponent},
   { path: '**', component: SearchPageComponent} // last
 ];
 export const routing = RouterModule.forRoot(appRoutes);
