@@ -4,6 +4,7 @@ import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
 import {LikeServiceClient} from '../services/like.service.client';
 import {Book} from '../models/book.model.client';
+import {ReviewServiceClient} from '../services/review.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private service: UserServiceClient,
               private likeService: LikeServiceClient,
+              private reviewService: ReviewServiceClient,
               private router: Router) { }
 
   user = {};
@@ -24,6 +26,7 @@ export class ProfileComponent implements OnInit {
   lastName;
   email;
   likedBooks = [];
+  reviews = [];
 
 
 
@@ -53,6 +56,16 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  removeReview(bookId) {
+    this.reviewService.userRemovesReview(bookId)
+      .then((likes) => {
+        this.reviewService
+          .findReviewsForUser()
+          .then(reviews => this.reviews = reviews );
+      });
+
+  }
+
   ngOnInit() {
     this.service
       .profile()
@@ -73,7 +86,9 @@ export class ProfileComponent implements OnInit {
     if (this._id !== -1) {
       this.likeService
         .findLikedBooksForUser()
-        .then(likedBooks => this.likedBooks = likedBooks );
+        .then(likedBooks => this.likedBooks = likedBooks)
+      this.reviewService.findReviewsForUser()
+        .then(reviews => this.reviews = reviews);
     }
   }
 

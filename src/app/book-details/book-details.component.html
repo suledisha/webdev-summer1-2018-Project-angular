@@ -12,4 +12,20 @@
   <h4>Plot</h4>
   <h4>{{book.volumeInfo.description}}</h4>
   </div>
+  <div class="container-fluid">
+    <br>
+    <h4>Write a Review</h4>
+    <br>
+    <input [(ngModel)]="reviewTitle"
+           placeholder="Summary"
+           class="form-control"/>
+    <br>
+    <input [(ngModel)]="reviewText"
+           placeholder="Details"
+           class="form-control"/>
+    <br>
+    <button (click)="this.submitReview(book.id,book.volumeInfo.title)"
+      class="btn btn-success">Submit Review!</button>
+
+  </div>
 </div>

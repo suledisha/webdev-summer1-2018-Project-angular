@@ -444,7 +444,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h2>Book Details</h2>\n  <h3>{{book.volumeInfo.title}}</h3>\n  <div *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div>  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4>Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4>Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n  </div>\n  <div class=\"container-fluid\">\n  <h4>Plot</h4>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n  <h2>Book Details</h2>\n  <h3>{{book.volumeInfo.title}}</h3>\n  <div *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div>  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4>Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4>Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n  </div>\n  <div class=\"container-fluid\">\n  <h4>Plot</h4>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <h4>Write a Review</h4>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"VolumeId\"\n           class=\"form-control\"/>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"VolumeId\"\n           class=\"form-control\"/>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -486,6 +486,8 @@ var BookDetailsComponent = /** @class */ (function () {
         this.bookService = bookService;
         this.likeService = likeService;
         this.bookId = '';
+        this.reviewText = '';
+        this.reviewTitle = '';
         this.book = {
             id: '',
             volumeInfo: {
@@ -758,7 +760,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1167,11 +1169,11 @@ var PublicProfileServiceClient = /** @class */ (function () {
         this.URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
     }
     PublicProfileServiceClient.prototype.findLikedBooksUserById = function (userId) {
-        return fetch(this.URL + '/api/user/' + userId + 'liked')
+        return fetch(this.URL + '/api/user/' + userId + '/liked')
             .then(function (response) { return response.json(); });
     };
     PublicProfileServiceClient.prototype.findAuthoredBooksUserById = function (userId) {
-        return fetch(this.URL + '/api/user/' + userId + 'authored')
+        return fetch(this.URL + '/api/user/' + userId + '/authored')
             .then(function (response) { return response.json(); });
     };
     return PublicProfileServiceClient;

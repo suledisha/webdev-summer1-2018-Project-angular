@@ -34,6 +34,24 @@
 </div>
 
   <br>
+  <br>
+
+  <h2>Reviews :{{reviews.length}}</h2>
+  <div *ngFor="let token of reviews">
+    <ul class="list-group">
+      <li class="list-group-item">
+        Book Title: {{token.book.title}}
+        <br>
+        {{token.title}}
+        <br>
+        {{token.text}}
+        <button (click)="removeReview(token.book._id)"
+          class="float-right btn btn-danger">remove</button>
+      </li>
+    </ul>
+  </div>
+
+  <br>
   <button class="btn btn-success" (click)="logout()">Logout</button>
   &nbsp; &nbsp;
   <a routerLink="/home">Home</a>

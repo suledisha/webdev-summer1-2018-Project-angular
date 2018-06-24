@@ -27,6 +27,19 @@
         </li>
       </ul>
     </div>
+
+    <h2>Reviews :{{reviews.length}}</h2>
+    <div *ngFor="let token of reviews">
+      <ul class="list-group">
+        <li class="list-group-item">
+          Book Title: {{token.book.title}}
+          <br>
+          {{token.title}}
+          <br>
+          {{token.text}}
+        </li>
+      </ul>
+    </div>
   </div>
 
 </div>
