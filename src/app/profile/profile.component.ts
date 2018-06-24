@@ -43,6 +43,16 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  unlike(bookId) {
+    this.likeService.userUnlikesBook(bookId)
+      .then((likes) => {
+        this.likeService
+          .findLikedBooksForUser()
+          .then(likedBooks => this.likedBooks = likedBooks );
+      });
+
+  }
+
   ngOnInit() {
     this.service
       .profile()

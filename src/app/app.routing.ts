@@ -5,6 +5,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {AuthorPageComponent} from './author-page/author-page.component';
+import {AuthorBookListComponent} from './author-book-list/author-book-list.component';
 
 
 const appRoutes: Routes = [
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'author-page', component: AuthorPageComponent},
+  { path: 'author-book-list', component: AuthorBookListComponent},
   { path: 'book/:bookId', component: BookDetailsComponent},
   { path: '**', component: SearchPageComponent} // last
 ];

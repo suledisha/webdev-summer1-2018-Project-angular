@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h1>Authored Books</h1>
+
+  <input [(ngModel)]="volumeId"
+         placeholder="VolumeId"
+         class="form-control"/>
+  <br>
+  <button (click)="addToAuthoredBooks()"
+    class="btn btn-primary btn-block">
+    Add
+  </button>
+
+  <h2>Authored Books :{{authoredBooks.length}}</h2>
+  <div *ngFor="let token of authoredBooks">
+    <ul class="list-group">
+      <li class="list-group-item">
+        {{token.book.title}}
+        <button (click)="removeFromAuthoredBooks(token.book._id)"
+          class="float-right btn btn-danger">UnAuthor</button>
+      </li>
+    </ul>
+  </div>
+</div>

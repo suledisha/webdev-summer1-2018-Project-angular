@@ -107,12 +107,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/user.service.client */ "./src/app/services/user.service.client.ts");
 /* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/like.service.client */ "./src/app/services/like.service.client.ts");
 /* harmony import */ var _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./author-page/author-page.component */ "./src/app/author-page/author-page.component.ts");
+/* harmony import */ var _author_book_list_author_book_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./author-book-list/author-book-list.component */ "./src/app/author-book-list/author-book-list.component.ts");
+/* harmony import */ var _services_authored_booklist_service_client__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/authored-booklist.service.client */ "./src/app/services/authored-booklist.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -141,14 +145,20 @@ var AppModule = /** @class */ (function () {
                 _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
                 _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"],
                 _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"],
-                _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_15__["AuthorPageComponent"]
+                _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_15__["AuthorPageComponent"],
+                _author_book_list_author_book_list_component__WEBPACK_IMPORTED_MODULE_16__["AuthorBookListComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
                 _app_routing__WEBPACK_IMPORTED_MODULE_6__["routing"]
             ],
-            providers: [_services_search_page_service_client__WEBPACK_IMPORTED_MODULE_4__["SearchPageServiceClient"], _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_8__["BookDetailsServiceClient"], _services_book_service_client__WEBPACK_IMPORTED_MODULE_9__["BookServiceClient"], _services_user_service_client__WEBPACK_IMPORTED_MODULE_13__["UserServiceClient"], _services_like_service_client__WEBPACK_IMPORTED_MODULE_14__["LikeServiceClient"]],
+            providers: [_services_search_page_service_client__WEBPACK_IMPORTED_MODULE_4__["SearchPageServiceClient"],
+                _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_8__["BookDetailsServiceClient"],
+                _services_book_service_client__WEBPACK_IMPORTED_MODULE_9__["BookServiceClient"],
+                _services_user_service_client__WEBPACK_IMPORTED_MODULE_13__["UserServiceClient"],
+                _services_like_service_client__WEBPACK_IMPORTED_MODULE_14__["LikeServiceClient"],
+                _services_authored_booklist_service_client__WEBPACK_IMPORTED_MODULE_17__["AuthoredBookListServiceClient"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -176,6 +186,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./author-page/author-page.component */ "./src/app/author-page/author-page.component.ts");
+/* harmony import */ var _author_book_list_author_book_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./author-book-list/author-book-list.component */ "./src/app/author-book-list/author-book-list.component.ts");
+
 
 
 
@@ -190,10 +202,101 @@ var appRoutes = [
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"] },
     { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_3__["ProfileComponent"] },
     { path: 'author-page', component: _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_6__["AuthorPageComponent"] },
+    { path: 'author-book-list', component: _author_book_list_author_book_list_component__WEBPACK_IMPORTED_MODULE_7__["AuthorBookListComponent"] },
     { path: 'book/:bookId', component: _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_2__["BookDetailsComponent"] },
     { path: '**', component: _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_1__["SearchPageComponent"] } // last
 ];
 var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
+
+
+/***/ }),
+
+/***/ "./src/app/author-book-list/author-book-list.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/author-book-list/author-book-list.component.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/author-book-list/author-book-list.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/author-book-list/author-book-list.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <h1>Authored Books</h1>\n\n  <input [(ngModel)]=\"volumeId\"\n         placeholder=\"VolumeId\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"addToAuthoredBooks()\"\n    class=\"btn btn-primary btn-block\">\n    Add\n  </button>\n\n  <h2>Authored Books :{{authoredBooks.length}}</h2>\n  <div *ngFor=\"let token of authoredBooks\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        {{token.book.title}}\n        <button class=\"float-right btn btn-danger\">UnAuthor</button>\n      </li>\n    </ul>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/author-book-list/author-book-list.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/author-book-list/author-book-list.component.ts ***!
+  \****************************************************************/
+/*! exports provided: AuthorBookListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthorBookListComponent", function() { return AuthorBookListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_authored_booklist_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/authored-booklist.service.client */ "./src/app/services/authored-booklist.service.client.ts");
+/* harmony import */ var _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/book-details.service.client */ "./src/app/services/book-details.service.client.ts");
+/* harmony import */ var _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/book.service.client */ "./src/app/services/book.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AuthorBookListComponent = /** @class */ (function () {
+    function AuthorBookListComponent(service, bookDetailService, bookService) {
+        this.service = service;
+        this.bookDetailService = bookDetailService;
+        this.bookService = bookService;
+        this.volumeId = '';
+        this.authoredBooks = [];
+    }
+    AuthorBookListComponent.prototype.addToAuthoredBooks = function () {
+        var _this = this;
+        this.bookDetailService.findBookById(this.volumeId)
+            .then(function (book) {
+            _this.bookService.createBook(book.id, book.title)
+                .then(function (newbook) {
+                _this.service.addToAuthoredBooks(book._id);
+            });
+        });
+    };
+    AuthorBookListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service
+            .findAuthoredBooksForUser()
+            .then(function (authoredBooks) { return _this.authoredBooks = authoredBooks; });
+    };
+    AuthorBookListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-author-book-list',
+            template: __webpack_require__(/*! ./author-book-list.component.html */ "./src/app/author-book-list/author-book-list.component.html"),
+            styles: [__webpack_require__(/*! ./author-book-list.component.css */ "./src/app/author-book-list/author-book-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_authored_booklist_service_client__WEBPACK_IMPORTED_MODULE_1__["AuthoredBookListServiceClient"],
+            _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__["BookDetailsServiceClient"],
+            _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__["BookServiceClient"]])
+    ], AuthorBookListComponent);
+    return AuthorBookListComponent;
+}());
+
 
 
 /***/ }),
@@ -265,6 +368,24 @@ var AuthorPageComponent = /** @class */ (function () {
             .update(this._id, this.username, this.firstName, this.lastName, this.email, this.bio, this.snippet);
     };
     AuthorPageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.username = user.username;
+                _this.firstName = user.firstName;
+                _this.lastName = user.lastName;
+                _this.email = user.email;
+                _this.bio = user.bio;
+                _this.snippet = user.snippet;
+                console.log(user._id);
+            }
+            else {
+                _this._id = -1;
+            }
+        });
     };
     AuthorPageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -750,6 +871,43 @@ var SearchPageComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_search_page_service_client__WEBPACK_IMPORTED_MODULE_1__["SearchPageServiceClient"]])
     ], SearchPageComponent);
     return SearchPageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/authored-booklist.service.client.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/services/authored-booklist.service.client.ts ***!
+  \**************************************************************/
+/*! exports provided: AuthoredBookListServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthoredBookListServiceClient", function() { return AuthoredBookListServiceClient; });
+var AuthoredBookListServiceClient = /** @class */ (function () {
+    function AuthoredBookListServiceClient() {
+        this.BOOKURL = 'http://localhost:4000/api/authoredbook';
+        this.BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/authoredbook';
+        this.USER_URL = 'http://localhost:4000/api/book/authors';
+        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/book/authors';
+    }
+    AuthoredBookListServiceClient.prototype.addToAuthoredBooks = function (volumeId) {
+        var url = this.BOOKURL + '/' + volumeId;
+        return fetch(url, {
+            method: 'post',
+            credentials: 'include'
+        });
+    };
+    AuthoredBookListServiceClient.prototype.findAuthoredBooksForUser = function () {
+        return fetch(this.USER_URL, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    return AuthoredBookListServiceClient;
 }());
 
 

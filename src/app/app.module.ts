@@ -15,6 +15,8 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserServiceClient} from './services/user.service.client';
 import {LikeServiceClient} from './services/like.service.client';
 import { AuthorPageComponent } from './author-page/author-page.component';
+import { AuthorBookListComponent } from './author-book-list/author-book-list.component';
+import {AuthoredBookListServiceClient} from './services/authored-booklist.service.client';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AuthorPageComponent } from './author-page/author-page.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    AuthorPageComponent
+    AuthorPageComponent,
+    AuthorBookListComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,12 @@ import { AuthorPageComponent } from './author-page/author-page.component';
     routing
 
   ],
-  providers: [SearchPageServiceClient, BookDetailsServiceClient, BookServiceClient, UserServiceClient, LikeServiceClient],
+  providers: [SearchPageServiceClient,
+    BookDetailsServiceClient,
+    BookServiceClient,
+    UserServiceClient,
+    LikeServiceClient,
+    AuthoredBookListServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
