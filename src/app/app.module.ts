@@ -21,6 +21,10 @@ import { PublicProfileComponent } from './public-profile/public-profile.componen
 import {PublicProfileServiceClient} from './services/public-profile.service.client';
 import {ReviewServiceClient} from './services/review.service.client';
 import {FollowServiceClient} from './services/follow.service.client';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminBookListComponent } from './admin-book-list/admin-book-list.component';
+import { AdminReviewlistComponent } from './admin-reviewlist/admin-reviewlist.component';
+import { AdminUserlistComponent } from './admin-userlist/admin-userlist.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import {FollowServiceClient} from './services/follow.service.client';
     ProfileComponent,
     AuthorPageComponent,
     AuthorBookListComponent,
-    PublicProfileComponent
+    PublicProfileComponent,
+    AdminPageComponent,
+    AdminBookListComponent,
+    AdminReviewlistComponent,
+    AdminUserlistComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+<div *ngFor="let user of users">
+  <ul class="list-group">
+    <li class="list-group-item">
+      {{user.firstName}}  {{user.lastName}}
+      <button (click)="remove(user._id)"
+              class="float-right btn btn-danger">Remove</button>
+    </li>
+  </ul>
+</div>

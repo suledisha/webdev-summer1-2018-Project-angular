@@ -8,6 +8,17 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
+  findAllUsers() {
+    return fetch(this.URL + '/api/user')
+      .then(response => response.json());
+  }
+
+  deleteUserById(userId){
+    return fetch(this.URL + '/api/user/' + userId, {
+      method: 'delete'
+    }).then(response => response.json());
+  }
+
   findUserByUsername(username) {
     const credentials = {
       username: username

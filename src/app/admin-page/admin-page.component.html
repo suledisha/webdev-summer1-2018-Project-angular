@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <h1>Admin Page</h1>
+
+  <input [(ngModel)]="username"
+         placeholder="username"
+         class="form-control"/>
+  <br>
+  <input [(ngModel)]="firstName"
+         placeholder="first name"
+         class="form-control"/>
+  <br>
+  <input [(ngModel)]="lastName"
+         placeholder="lastName"
+         class="form-control"/>
+  <br>
+  <input [(ngModel)]="email"
+         placeholder="email"
+         class="form-control"/>
+  <br>
+  <button (click)="update()"
+          class="btn btn-primary btn-block">
+    Update
+  </button>
+  <br>
+  <button class="btn btn-success" (click)="logout()">Logout</button>
+  &nbsp; &nbsp;
+  <a routerLink="/home">Home</a>
+  &nbsp; &nbsp;
+  <a routerLink="/bookList">Book List</a>
+  &nbsp; &nbsp;
+  <a routerLink="/reviewList">Review List</a>
+  &nbsp; &nbsp;
+  <a routerLink="/userList">User List</a>
+
+</div>
+

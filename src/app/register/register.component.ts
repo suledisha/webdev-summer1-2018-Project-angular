@@ -29,8 +29,10 @@ export class RegisterComponent implements OnInit {
             .then(() => {
               if (role === 'author') {
                 this.router.navigate(['author-page']);
-              } else {
-          this.router.navigate(['profile']); }
+              } else if (role === 'admin') {
+          this.router.navigate(['admin-page']); } else {
+                this.router.navigate(['profile']);
+              }
             });
 
         } else {

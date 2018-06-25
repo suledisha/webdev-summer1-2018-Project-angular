@@ -1,0 +1,11 @@
+<div *ngFor="let review of reviews">
+  <ul class="list-group">
+    <li class="list-group-item">
+      {{review.title}}
+      <br>
+      {{review.text}}
+      <button (click)="remove(review._id)"
+        class="float-right btn btn-danger">Remove</button>
+    </li>
+  </ul>
+</div>

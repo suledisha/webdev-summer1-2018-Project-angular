@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
           alert('Invalid');
         } else if (user.role === 'author') {
           this.router.navigate(['author-page']);
+        } else if (user.role === 'admin') {
+          this.router.navigate(['admin-page']);
         } else {
           this.router.navigate(['profile']);
         }
