@@ -5,13 +5,51 @@
     <a routerLink="/admin-page">Admin page</a>
     <br>
     <br>
-<div *ngFor="let user of users">
-  <ul class="list-group">
-    <li class="list-group-item">
-      {{user.firstName}}  {{user.lastName}}
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role</th>
+        <th>&nbsp;</th>
+      </tr>
+      <tr>
+        <td><input [(ngModel)]="username"
+                         placeholder="username"
+                         class="form-control"/></td>
+        <td><input [(ngModel)]="password"
+                         placeholder="password"
+                         class="form-control"/></td>
+        <td><input [(ngModel)]="firstName"
+                         placeholder="First Name"
+                         class="form-control"/></td>
+        <td><input [(ngModel)]="lastName"
+                         placeholder="Last Name"
+                         class="form-control"/></td>
+        <td><select  [(ngModel)]="role" class="form-control">
+          <option value="reader" selected>reader</option>
+          <option value="author">author</option>
+        </select></td>
+        <td><button (click)="add()" class="btn btn-success">Add</button> &nbsp;  &nbsp;
+          <button (click)="update()" class="btn btn-success">Update</button></td>
+      </tr>
+
+      </thead>
+      <tbody>
+    <tr *ngFor="let user of users">
+      <td *ngIf="user.username!=='admin'">{{user.username}}</td>
+      <td *ngIf="user.username!=='admin'">{{"**********"}}</td>
+      <td *ngIf="user.username!=='admin'">{{user.firstName}}</td>
+      <td *ngIf="user.username!=='admin'">{{user.lastName}}</td>
+      <td *ngIf="user.username!=='admin'">{{user.role}}</td>
+      <td *ngIf="user.username!=='admin'"><button (click)="setuser(user)" class="btn btn-primary">Edit</button>
+        &nbsp;  &nbsp;
       <button (click)="remove(user._id)"
-              class="float-right btn btn-danger">Remove</button>
-    </li>
-  </ul>
+                   class="btn btn-danger">Remove</button></td>
+    </tr>
+    </tbody>
+</table>
 </div>
   </div>

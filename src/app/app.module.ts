@@ -27,6 +27,7 @@ import { AdminReviewlistComponent } from './admin-reviewlist/admin-reviewlist.co
 import { AdminUserlistComponent } from './admin-userlist/admin-userlist.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import {AdminUserListServiceClient} from './services/admin-userlist.service.client';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     AuthoredBookListServiceClient,
     PublicProfileServiceClient,
     ReviewServiceClient,
-    FollowServiceClient],
+    FollowServiceClient,
+    AdminUserListServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

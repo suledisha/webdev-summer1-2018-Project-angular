@@ -14,9 +14,10 @@
          placeholder="verify password"
          class="form-control"/>
   <br>
-  <input [(ngModel)]="role"
-         placeholder="role"
-         class="form-control"/>
+    <select  [(ngModel)]="role" class="form-control">
+      <option value="reader" selected>reader</option>
+      <option value="author">author</option>
+    </select>
   <br>
   <button (click)="register(username, password, password2, role)"
           class="btn btn-primary btn-block">
