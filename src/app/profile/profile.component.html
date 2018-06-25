@@ -21,7 +21,7 @@
           class="btn btn-primary btn-block">
     Update
   </button>
-
+  <br>
   <h2>Liked Books :{{likedBooks.length}}</h2>
   <div *ngFor="let token of likedBooks">
     <ul class="list-group">
@@ -32,10 +32,7 @@
   </li>
     </ul>
 </div>
-
   <br>
-  <br>
-
   <h2>Reviews :{{reviews.length}}</h2>
   <div *ngFor="let token of reviews">
     <ul class="list-group">
@@ -47,6 +44,17 @@
         {{token.text}}
         <button (click)="removeReview(token.book._id)"
           class="float-right btn btn-danger">remove</button>
+      </li>
+    </ul>
+  </div>
+<br>
+  <h2>Following :{{following.length}}</h2>
+  <div *ngFor="let token of following">
+    <ul class="list-group">
+      <li class="list-group-item">
+       {{token.following.firstName}}  {{token.following.lastName}}
+        <button (click)="unfollow(token.following._id)"
+          class="float-right btn btn-danger">unfollow</button>
       </li>
     </ul>
   </div>

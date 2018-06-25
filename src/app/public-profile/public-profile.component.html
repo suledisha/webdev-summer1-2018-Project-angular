@@ -42,4 +42,16 @@
     </div>
   </div>
 
+  <h2>Following :{{following.length}}</h2>
+  <div *ngFor="let token of following">
+    <ul class="list-group">
+      <li class="list-group-item">
+        {{token.following.firstName}}  {{token.following.lastName}}
+      </li>
+    </ul>
+  </div>
+
+  <button (click)="followUser()"
+    class="btn btn-primary">Follow</button>
+
 </div>

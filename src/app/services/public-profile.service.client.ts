@@ -16,4 +16,9 @@ export class PublicProfileServiceClient {
     return fetch(this.URL + '/api/user/' + userId + '/reviewed')
       .then(response => response.json());
   }
+
+  findFollowingUserById(userId) {
+    return fetch(this.URL + '/api/user/' + userId + '/userfollows')
+      .then(response => response.json());
+  }
 }

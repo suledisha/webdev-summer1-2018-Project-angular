@@ -111,12 +111,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_authored_booklist_service_client__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/authored-booklist.service.client */ "./src/app/services/authored-booklist.service.client.ts");
 /* harmony import */ var _public_profile_public_profile_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./public-profile/public-profile.component */ "./src/app/public-profile/public-profile.component.ts");
 /* harmony import */ var _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/public-profile.service.client */ "./src/app/services/public-profile.service.client.ts");
+/* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./services/review.service.client */ "./src/app/services/review.service.client.ts");
+/* harmony import */ var _services_follow_service_client__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/follow.service.client */ "./src/app/services/follow.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -164,7 +168,9 @@ var AppModule = /** @class */ (function () {
                 _services_user_service_client__WEBPACK_IMPORTED_MODULE_13__["UserServiceClient"],
                 _services_like_service_client__WEBPACK_IMPORTED_MODULE_14__["LikeServiceClient"],
                 _services_authored_booklist_service_client__WEBPACK_IMPORTED_MODULE_17__["AuthoredBookListServiceClient"],
-                _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_19__["PublicProfileServiceClient"]],
+                _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_19__["PublicProfileServiceClient"],
+                _services_review_service_client__WEBPACK_IMPORTED_MODULE_20__["ReviewServiceClient"],
+                _services_follow_service_client__WEBPACK_IMPORTED_MODULE_21__["FollowServiceClient"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -444,7 +450,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h2>Book Details</h2>\n  <h3>{{book.volumeInfo.title}}</h3>\n  <div *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div>  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4>Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4>Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n  </div>\n  <div class=\"container-fluid\">\n  <h4>Plot</h4>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <h4>Write a Review</h4>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"VolumeId\"\n           class=\"form-control\"/>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"VolumeId\"\n           class=\"form-control\"/>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n  <h2>Book Details</h2>\n  <h3>{{book.volumeInfo.title}}</h3>\n  <div *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div>  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4>Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4>Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n  </div>\n  <div class=\"container-fluid\">\n  <h4>Plot</h4>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -463,6 +469,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/book-details.service.client */ "./src/app/services/book-details.service.client.ts");
 /* harmony import */ var _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/book.service.client */ "./src/app/services/book.service.client.ts");
 /* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/like.service.client */ "./src/app/services/like.service.client.ts");
+/* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/review.service.client */ "./src/app/services/review.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -477,14 +484,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var BookDetailsComponent = /** @class */ (function () {
-    function BookDetailsComponent(route, router, service, bookService, likeService) {
+    function BookDetailsComponent(route, router, service, bookService, likeService, reviewService) {
         var _this = this;
         this.route = route;
         this.router = router;
         this.service = service;
         this.bookService = bookService;
         this.likeService = likeService;
+        this.reviewService = reviewService;
         this.bookId = '';
         this.reviewText = '';
         this.reviewTitle = '';
@@ -513,6 +522,13 @@ var BookDetailsComponent = /** @class */ (function () {
             _this.likeService.userLikesBook(book._id);
         });
     };
+    BookDetailsComponent.prototype.submitReview = function (id, title) {
+        var _this = this;
+        this.bookService.createBook(id, title)
+            .then(function (book) {
+            _this.reviewService.userReviewsBook(book._id, _this.reviewTitle, _this.reviewText);
+        });
+    };
     BookDetailsComponent.prototype.loadBook = function (bookId) {
         var _this = this;
         this.bookId = bookId;
@@ -529,7 +545,8 @@ var BookDetailsComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__["BookDetailsServiceClient"],
             _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__["BookServiceClient"],
-            _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__["LikeServiceClient"]])
+            _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__["LikeServiceClient"],
+            _services_review_service_client__WEBPACK_IMPORTED_MODULE_5__["ReviewServiceClient"]])
     ], BookDetailsComponent);
     return BookDetailsComponent;
 }());
@@ -641,7 +658,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    {{token.book.title}}\n    <button (click)=\"unlike(token.book._id)\"\n      class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/admin\" *ngIf=\"username==='admin'\">Admin Page</a>\n</div>\n\n"
+module.exports = "<div class=\"container-fluid\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    {{token.book.title}}\n    <button (click)=\"unlike(token.book._id)\"\n      class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n\n  <br>\n  <br>\n\n  <h2>Reviews :{{reviews.length}}</h2>\n  <div *ngFor=\"let token of reviews\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        Book Title: {{token.book.title}}\n        <br>\n        {{token.title}}\n        <br>\n        {{token.text}}\n        <button (click)=\"removeReview(token.book._id)\"\n          class=\"float-right btn btn-danger\">remove</button>\n      </li>\n    </ul>\n  </div>\n\n\n  <h2>Following :{{following.length}}</h2>\n  <div *ngFor=\"let token of following\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n       {{token.following.firstName}}  {{token.following.LastName}}\n        <button\n          class=\"float-right btn btn-danger\">unfollow</button>\n      </li>\n    </ul>\n  </div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/admin\" *ngIf=\"username==='admin'\">Admin Page</a>\n</div>\n\n"
 
 /***/ }),
 
@@ -659,6 +676,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/like.service.client */ "./src/app/services/like.service.client.ts");
+/* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/review.service.client */ "./src/app/services/review.service.client.ts");
+/* harmony import */ var _services_follow_service_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/follow.service.client */ "./src/app/services/follow.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -672,13 +691,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(service, likeService, router) {
+    function ProfileComponent(service, likeService, reviewService, followService, router) {
         this.service = service;
         this.likeService = likeService;
+        this.reviewService = reviewService;
+        this.followService = followService;
         this.router = router;
         this.user = {};
         this.likedBooks = [];
+        this.reviews = [];
+        this.following = [];
     }
     ProfileComponent.prototype.logout = function () {
         var _this = this;
@@ -702,6 +727,15 @@ var ProfileComponent = /** @class */ (function () {
                 .then(function (likedBooks) { return _this.likedBooks = likedBooks; });
         });
     };
+    ProfileComponent.prototype.removeReview = function (bookId) {
+        var _this = this;
+        this.reviewService.userRemovesReview(bookId)
+            .then(function (likes) {
+            _this.reviewService
+                .findReviewsForUser()
+                .then(function (reviews) { return _this.reviews = reviews; });
+        });
+    };
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.service
@@ -723,6 +757,10 @@ var ProfileComponent = /** @class */ (function () {
             this.likeService
                 .findLikedBooksForUser()
                 .then(function (likedBooks) { return _this.likedBooks = likedBooks; });
+            this.reviewService.findReviewsForUser()
+                .then(function (reviews) { return _this.reviews = reviews; });
+            this.followService.findAllFollowing()
+                .then(function (following) { return _this.following = following; });
         }
     };
     ProfileComponent = __decorate([
@@ -733,6 +771,8 @@ var ProfileComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"],
             _services_like_service_client__WEBPACK_IMPORTED_MODULE_3__["LikeServiceClient"],
+            _services_review_service_client__WEBPACK_IMPORTED_MODULE_4__["ReviewServiceClient"],
+            _services_follow_service_client__WEBPACK_IMPORTED_MODULE_5__["FollowServiceClient"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ProfileComponent);
     return ProfileComponent;
@@ -760,7 +800,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\">\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <h2>Reviews :{{reviews.length}}</h2>\r\n    <div *ngFor=\"let token of reviews\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          Book Title: {{token.book.title}}\r\n          <br>\r\n          {{token.title}}\r\n          <br>\r\n          {{token.text}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <button (click)=\"followUser()\"\r\n    class=\"btn btn-primary\">Follow</button>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -778,6 +818,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
 /* harmony import */ var _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/public-profile.service.client */ "./src/app/services/public-profile.service.client.ts");
+/* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/review.service.client */ "./src/app/services/review.service.client.ts");
+/* harmony import */ var _services_follow_service_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/follow.service.client */ "./src/app/services/follow.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -791,13 +833,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var PublicProfileComponent = /** @class */ (function () {
-    function PublicProfileComponent(route, service, publicProfileService) {
+    function PublicProfileComponent(route, service, publicProfileService, reviewService, followService) {
         var _this = this;
         this.route = route;
         this.service = service;
         this.publicProfileService = publicProfileService;
+        this.reviewService = reviewService;
+        this.followService = followService;
         this.books = [];
+        this.reviews = [];
         this.route.params.subscribe(function (params) { return _this.loadUser(params['userId']); });
     }
     PublicProfileComponent.prototype.loadUser = function (userId) {
@@ -814,8 +861,13 @@ var PublicProfileComponent = /** @class */ (function () {
             else {
                 _this.publicProfileService.findLikedBooksUserById(user._id)
                     .then(function (likedBooks) { return _this.books = likedBooks; });
+                _this.publicProfileService.findReviewsUserById(user._id)
+                    .then(function (reviews) { return _this.reviews = reviews; });
             }
         });
+    };
+    PublicProfileComponent.prototype.followUser = function () {
+        this.followService.userfollowsUser(this.userId);
     };
     PublicProfileComponent.prototype.ngOnInit = function () {
     };
@@ -827,7 +879,9 @@ var PublicProfileComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"],
-            _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_3__["PublicProfileServiceClient"]])
+            _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_3__["PublicProfileServiceClient"],
+            _services_review_service_client__WEBPACK_IMPORTED_MODULE_4__["ReviewServiceClient"],
+            _services_follow_service_client__WEBPACK_IMPORTED_MODULE_5__["FollowServiceClient"]])
     ], PublicProfileComponent);
     return PublicProfileComponent;
 }());
@@ -1109,6 +1163,48 @@ var BookServiceClient = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/follow.service.client.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/follow.service.client.ts ***!
+  \***************************************************/
+/*! exports provided: FollowServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FollowServiceClient", function() { return FollowServiceClient; });
+var FollowServiceClient = /** @class */ (function () {
+    function FollowServiceClient() {
+        this.USER_URL = 'http://localhost:4000/api/userfollows';
+        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/userfollows';
+    }
+    FollowServiceClient.prototype.findAllFollowing = function () {
+        return fetch(this.USER_URL, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    FollowServiceClient.prototype.userfollowsUser = function (userId) {
+        var url = this.USER_URL + '/' + userId + '/follows';
+        return fetch(url, {
+            method: 'post',
+            credentials: 'include'
+        });
+    };
+    FollowServiceClient.prototype.userUnfollowsUser = function (userId) {
+        var url = this.USER_URL + '/' + userId + '/unfollows';
+        return fetch(url, {
+            method: 'delete',
+            credentials: 'include'
+        });
+    };
+    return FollowServiceClient;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/like.service.client.ts":
 /*!*************************************************!*\
   !*** ./src/app/services/like.service.client.ts ***!
@@ -1176,7 +1272,63 @@ var PublicProfileServiceClient = /** @class */ (function () {
         return fetch(this.URL + '/api/user/' + userId + '/authored')
             .then(function (response) { return response.json(); });
     };
+    PublicProfileServiceClient.prototype.findReviewsUserById = function (userId) {
+        return fetch(this.URL + '/api/user/' + userId + '/reviewed')
+            .then(function (response) { return response.json(); });
+    };
     return PublicProfileServiceClient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/review.service.client.ts":
+/*!***************************************************!*\
+  !*** ./src/app/services/review.service.client.ts ***!
+  \***************************************************/
+/*! exports provided: ReviewServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReviewServiceClient", function() { return ReviewServiceClient; });
+var ReviewServiceClient = /** @class */ (function () {
+    function ReviewServiceClient() {
+        this.USER_URL = 'http://localhost:4000/api/book/reviews';
+        this.BOOK_URL = 'http://localhost:4000/api/book';
+        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/reviews';
+        this.BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+    }
+    ReviewServiceClient.prototype.findReviewsForUser = function () {
+        return fetch(this.USER_URL, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    ReviewServiceClient.prototype.userReviewsBook = function (bookId, reviewTitle, reviewText) {
+        var url = this.BOOK_URL + '/' + bookId + '/reviews';
+        var review = {
+            title: reviewTitle,
+            text: reviewText
+        };
+        return fetch(url, {
+            method: 'post',
+            body: JSON.stringify(review),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    ReviewServiceClient.prototype.userRemovesReview = function (bookId) {
+        var url = this.BOOK_URL + '/' + bookId + '/unreviews';
+        return fetch(url, {
+            method: 'delete',
+            credentials: 'include'
+        });
+    };
+    return ReviewServiceClient;
 }());
 
 

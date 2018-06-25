@@ -6,6 +6,7 @@ import {AuthoredBookListServiceClient} from '../services/authored-booklist.servi
 import {LikeServiceClient} from '../services/like.service.client';
 import {PublicProfileServiceClient} from '../services/public-profile.service.client';
 import {ReviewServiceClient} from '../services/review.service.client';
+import {FollowServiceClient} from '../services/follow.service.client';
 
 @Component({
   selector: 'app-public-profile',
@@ -18,11 +19,13 @@ export class PublicProfileComponent implements OnInit {
   user: User;
   books = [];
   reviews = [];
+  following =[];
 
   constructor( private route: ActivatedRoute,
                private service: UserServiceClient,
                private publicProfileService: PublicProfileServiceClient,
-               private reviewService: ReviewServiceClient) {
+               private reviewService: ReviewServiceClient,
+               private followService: FollowServiceClient) {
     this.route.params.subscribe(params => this.loadUser(params['userId']));
   }
 
@@ -40,10 +43,14 @@ export class PublicProfileComponent implements OnInit {
             .then(likedBooks => this.books = likedBooks );
           this.publicProfileService.findReviewsUserById(user._id)
             .then(reviews => this.reviews = reviews );
-
+          this.publicProfileService.findFollowingUserById(user._id)
+            .then(following => this.following = following );
         }
       });
 
+  }
+  followUser(){
+    this.followService.userfollowsUser(this.userId);
   }
   ngOnInit() {
   }

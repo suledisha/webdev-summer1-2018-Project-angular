@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {LikeServiceClient} from '../services/like.service.client';
 import {Book} from '../models/book.model.client';
 import {ReviewServiceClient} from '../services/review.service.client';
+import {FollowServiceClient} from '../services/follow.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
   constructor(private service: UserServiceClient,
               private likeService: LikeServiceClient,
               private reviewService: ReviewServiceClient,
+              private followService: FollowServiceClient,
               private router: Router) { }
 
   user = {};
@@ -27,7 +29,7 @@ export class ProfileComponent implements OnInit {
   email;
   likedBooks = [];
   reviews = [];
-
+  following = [];
 
 
   logout() {
@@ -58,10 +60,19 @@ export class ProfileComponent implements OnInit {
 
   removeReview(bookId) {
     this.reviewService.userRemovesReview(bookId)
-      .then((likes) => {
+      .then((review) => {
         this.reviewService
           .findReviewsForUser()
           .then(reviews => this.reviews = reviews );
+      });
+
+  }
+
+  unfollow(userId) {
+    this.followService.userUnfollowsUser(userId)
+      .then((follow) => {
+        this.followService.findAllFollowing()
+          .then(following => this.following = following);
       });
 
   }
@@ -86,9 +97,11 @@ export class ProfileComponent implements OnInit {
     if (this._id !== -1) {
       this.likeService
         .findLikedBooksForUser()
-        .then(likedBooks => this.likedBooks = likedBooks)
+        .then(likedBooks => this.likedBooks = likedBooks);
       this.reviewService.findReviewsForUser()
         .then(reviews => this.reviews = reviews);
+      this.followService.findAllFollowing()
+        .then(following => this.following = following);
     }
   }
 
