@@ -14,7 +14,7 @@
   <div *ngFor="let token of authoredBooks">
     <ul class="list-group">
       <li class="list-group-item">
-        {{token.book.title}}
+        <a routerLink="/book/{{token.book.id}}">  {{token.book.title}}</a>
         <button (click)="removeFromAuthoredBooks(token.book._id)"
           class="float-right btn btn-danger">UnAuthor</button>
       </li>

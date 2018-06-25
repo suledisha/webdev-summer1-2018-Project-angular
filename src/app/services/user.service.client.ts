@@ -13,6 +13,18 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
+
+  findAllReaders() {
+    return fetch(this.URL + '/api/readers')
+      .then(response => response.json());
+  }
+
+
+  findAllAuthors() {
+    return fetch(this.URL + '/api/authors')
+      .then(response => response.json());
+  }
+
   deleteUserById(userId){
     return fetch(this.URL + '/api/user/' + userId, {
       method: 'delete'

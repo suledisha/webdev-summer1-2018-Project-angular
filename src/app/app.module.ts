@@ -25,6 +25,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminBookListComponent } from './admin-book-list/admin-book-list.component';
 import { AdminReviewlistComponent } from './admin-reviewlist/admin-reviewlist.component';
 import { AdminUserlistComponent } from './admin-userlist/admin-userlist.component';
+import { CommunityPageComponent } from './community-page/community-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AdminUserlistComponent } from './admin-userlist/admin-userlist.componen
     AdminPageComponent,
     AdminBookListComponent,
     AdminReviewlistComponent,
-    AdminUserlistComponent
+    AdminUserlistComponent,
+    CommunityPageComponent
   ],
   imports: [
     BrowserModule,

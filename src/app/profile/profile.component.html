@@ -26,7 +26,7 @@
   <div *ngFor="let token of likedBooks">
     <ul class="list-group">
   <li class="list-group-item">
-    {{token.book.title}}
+    <a routerLink="/book/{{token.book.id}}">  {{token.book.title}}</a>
     <button (click)="unlike(token.book._id)"
       class="float-right btn btn-danger">Unlike</button>
   </li>
@@ -37,7 +37,7 @@
   <div *ngFor="let token of reviews">
     <ul class="list-group">
       <li class="list-group-item">
-        Book Title: {{token.book.title}}
+        Book Title:  <a routerLink="/book/{{token.book.id}}">  {{token.book.title}}</a>
         <br>
         {{token.title}}
         <br>
@@ -52,7 +52,7 @@
   <div *ngFor="let token of following">
     <ul class="list-group">
       <li class="list-group-item">
-       {{token.following.firstName}}  {{token.following.lastName}}
+        <a routerLink="/user/{{token.following._id}}">   {{token.following.firstName}}  {{token.following.lastName}}</a>
         <button (click)="unfollow(token.following._id)"
           class="float-right btn btn-danger">unfollow</button>
       </li>
@@ -64,6 +64,6 @@
   &nbsp; &nbsp;
   <a routerLink="/home">Home</a>
   &nbsp; &nbsp;
-  <a routerLink="/admin" *ngIf="username==='admin'">Admin Page</a>
+  <a routerLink="/community">Bookmarked Community</a>
 </div>
 
