@@ -1,5 +1,12 @@
 <div class="bg">
   <div class="jumbotron">
+    <a routerLink="/community">Bookmarked Community</a>
+    &nbsp; &nbsp;
+    <a routerLink="/home">Home</a>
+    &nbsp; &nbsp;
+    <a routerLink="/search">Search</a>
+    <br>
+    <br>
   <h2 align="center">Book Details</h2>
   <h3  align="center">{{book.volumeInfo.title}}</h3>
   <div  align="center" *ngFor="let author of book.volumeInfo.authors"><h3>{{author}}</h3></div>
