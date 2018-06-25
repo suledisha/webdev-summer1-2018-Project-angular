@@ -23,6 +23,375 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/admin-book-list/admin-book-list.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/admin-book-list/admin-book-list.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-book-list/admin-book-list.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/admin-book-list/admin-book-list.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/admin-page\">Admin page</a>\r\n    <br>\r\n    <br>\r\n<div *ngFor=\"let book of books\">\r\n  <ul class=\"list-group\">\r\n    <li class=\"list-group-item\">\r\n      {{book.title}}\r\n      <button (click)=\"remove(book._id)\"\r\n        class=\"float-right btn btn-danger\">remove</button>\r\n    </li>\r\n  </ul>\r\n</div>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-book-list/admin-book-list.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/admin-book-list/admin-book-list.component.ts ***!
+  \**************************************************************/
+/*! exports provided: AdminBookListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminBookListComponent", function() { return AdminBookListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_book_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/book.service.client */ "./src/app/services/book.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AdminBookListComponent = /** @class */ (function () {
+    function AdminBookListComponent(service) {
+        this.service = service;
+    }
+    AdminBookListComponent.prototype.remove = function (bookId) {
+        var _this = this;
+        this.service.deleteBookById(bookId)
+            .then(function (book) {
+            _this.service.findAllBooks()
+                .then(function (books) { return _this.books = books; });
+        });
+    };
+    AdminBookListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.findAllBooks()
+            .then(function (books) { return _this.books = books; });
+    };
+    AdminBookListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-admin-book-list',
+            template: __webpack_require__(/*! ./admin-book-list.component.html */ "./src/app/admin-book-list/admin-book-list.component.html"),
+            styles: [__webpack_require__(/*! ./admin-book-list.component.css */ "./src/app/admin-book-list/admin-book-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_book_service_client__WEBPACK_IMPORTED_MODULE_1__["BookServiceClient"]])
+    ], AdminBookListComponent);
+    return AdminBookListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin-page/admin-page.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/admin-page/admin-page.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-page/admin-page.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/admin-page/admin-page.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Admin Page</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/bookList\">Book List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/reviewList\">Review List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/userList\">User List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  </div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-page/admin-page.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/admin-page/admin-page.component.ts ***!
+  \****************************************************/
+/*! exports provided: AdminPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminPageComponent", function() { return AdminPageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminPageComponent = /** @class */ (function () {
+    function AdminPageComponent(service, router) {
+        this.service = service;
+        this.router = router;
+        this.user = {};
+    }
+    AdminPageComponent.prototype.logout = function () {
+        var _this = this;
+        this.service
+            .logout()
+            .then(function () {
+            return _this.router.navigate(['login']);
+        });
+    };
+    AdminPageComponent.prototype.update = function () {
+        // console.log(user);
+        this.service
+            .update(this._id, this.username, this.firstName, this.lastName, this.email, '', '');
+    };
+    AdminPageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.username = user.username;
+                _this.firstName = user.firstName;
+                _this.lastName = user.lastName;
+                _this.email = user.email;
+                console.log(user._id);
+            }
+            else {
+                _this._id = -1;
+            }
+        });
+    };
+    AdminPageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-admin-page',
+            template: __webpack_require__(/*! ./admin-page.component.html */ "./src/app/admin-page/admin-page.component.html"),
+            styles: [__webpack_require__(/*! ./admin-page.component.css */ "./src/app/admin-page/admin-page.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], AdminPageComponent);
+    return AdminPageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin-reviewlist/admin-reviewlist.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/admin-reviewlist/admin-reviewlist.component.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-reviewlist/admin-reviewlist.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/admin-reviewlist/admin-reviewlist.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/admin-page\">Admin page</a>\n    <br>\n    <br>\n<div *ngFor=\"let review of reviews\">\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">\n      {{review.title}}\n      <br>\n      {{review.text}}\n      <button (click)=\"remove(review._id)\"\n        class=\"float-right btn btn-danger\">Remove</button>\n    </li>\n  </ul>\n</div>\n  </div>\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-reviewlist/admin-reviewlist.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/admin-reviewlist/admin-reviewlist.component.ts ***!
+  \****************************************************************/
+/*! exports provided: AdminReviewlistComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminReviewlistComponent", function() { return AdminReviewlistComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/review.service.client */ "./src/app/services/review.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AdminReviewlistComponent = /** @class */ (function () {
+    function AdminReviewlistComponent(service) {
+        this.service = service;
+    }
+    AdminReviewlistComponent.prototype.remove = function (reviewId) {
+        var _this = this;
+        this.service.deleteReviewById(reviewId)
+            .then(function (rev) {
+            _this.service.findAllReviews()
+                .then(function (reviews) { return _this.reviews = reviews; });
+        });
+    };
+    AdminReviewlistComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.findAllReviews()
+            .then(function (reviews) { return _this.reviews = reviews; });
+    };
+    AdminReviewlistComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-admin-reviewlist',
+            template: __webpack_require__(/*! ./admin-reviewlist.component.html */ "./src/app/admin-reviewlist/admin-reviewlist.component.html"),
+            styles: [__webpack_require__(/*! ./admin-reviewlist.component.css */ "./src/app/admin-reviewlist/admin-reviewlist.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_review_service_client__WEBPACK_IMPORTED_MODULE_1__["ReviewServiceClient"]])
+    ], AdminReviewlistComponent);
+    return AdminReviewlistComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/admin-userlist/admin-userlist.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/admin-userlist/admin-userlist.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n.table{\r\n  width: 100%;\r\n}\r\nth, td {\r\n  padding: 15px;\r\n  text-align: left;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-userlist/admin-userlist.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/admin-userlist/admin-userlist.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/admin-page\">Admin page</a>\n    <br>\n    <br>\n    <table class=\"table\">\n      <thead>\n      <tr>\n        <th>Username</th>\n        <th>Password</th>\n        <th>First Name</th>\n        <th>Last Name</th>\n        <th>Role</th>\n        <th>&nbsp;</th>\n      </tr>\n      <tr>\n        <td><input [(ngModel)]=\"username\"\n                         placeholder=\"username\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"password\"\n                         placeholder=\"password\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"firstName\"\n                         placeholder=\"First Name\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"lastName\"\n                         placeholder=\"Last Name\"\n                         class=\"form-control\"/></td>\n        <td><select  [(ngModel)]=\"role\" class=\"form-control\">\n          <option value=\"reader\" selected>reader</option>\n          <option value=\"author\">author</option>\n        </select></td>\n        <td><button (click)=\"add()\" class=\"btn btn-success\">Add</button> &nbsp;  &nbsp;\n          <button (click)=\"update()\" class=\"btn btn-success\">Update</button></td>\n      </tr>\n\n      </thead>\n      <tbody>\n    <tr *ngFor=\"let user of users\">\n      <td *ngIf=\"user.username!=='admin'\">{{user.username}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{\"**********\"}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.firstName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.lastName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.role}}</td>\n      <td *ngIf=\"user.username!=='admin'\"><button (click)=\"setuser(user)\" class=\"btn btn-primary\">Edit</button>\n        &nbsp;  &nbsp;\n      <button (click)=\"remove(user._id)\"\n                   class=\"btn btn-danger\">Remove</button></td>\n    </tr>\n    </tbody>\n</table>\n</div>\n  </div>\n"
+
+/***/ }),
+
+/***/ "./src/app/admin-userlist/admin-userlist.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/admin-userlist/admin-userlist.component.ts ***!
+  \************************************************************/
+/*! exports provided: AdminUserlistComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminUserlistComponent", function() { return AdminUserlistComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _services_admin_userlist_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/admin-userlist.service.client */ "./src/app/services/admin-userlist.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminUserlistComponent = /** @class */ (function () {
+    function AdminUserlistComponent(service, adminService) {
+        this.service = service;
+        this.adminService = adminService;
+    }
+    AdminUserlistComponent.prototype.add = function () {
+        var _this = this;
+        this.service.findUserByUsername(this.username).then(function (user) {
+            if (user._id === -1) {
+                _this.adminService
+                    .addUser(_this.username, _this.password, _this.firstName, _this.lastName, _this.role)
+                    .then(function (newuser) {
+                    _this.service.findAllUsers()
+                        .then(function (users) { return _this.users = users; });
+                });
+            }
+            else {
+                alert('Username already present');
+            }
+        });
+    };
+    AdminUserlistComponent.prototype.update = function () {
+        // console.log(user);
+        var _this = this;
+        this.adminService
+            .updateUser(this._id, this.username, this.password, this.firstName, this.lastName, this.role)
+            .then(function (user) {
+            _this.service.findAllUsers()
+                .then(function (users) { return _this.users = users; });
+        });
+    };
+    AdminUserlistComponent.prototype.setuser = function (user) {
+        this._id = user._id;
+        this.username = user.username;
+        this.password = user.password;
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.role = user.role;
+    };
+    AdminUserlistComponent.prototype.remove = function (userId) {
+        var _this = this;
+        this.service.deleteUserById(userId)
+            .then(function (user) {
+            _this.service.findAllUsers()
+                .then(function (users) { return _this.users = users; });
+        });
+    };
+    AdminUserlistComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.findAllUsers()
+            .then(function (users) { return _this.users = users; });
+    };
+    AdminUserlistComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-admin-userlist',
+            template: __webpack_require__(/*! ./admin-userlist.component.html */ "./src/app/admin-userlist/admin-userlist.component.html"),
+            styles: [__webpack_require__(/*! ./admin-userlist.component.css */ "./src/app/admin-userlist/admin-userlist.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"],
+            _services_admin_userlist_service_client__WEBPACK_IMPORTED_MODULE_2__["AdminUserListServiceClient"]])
+    ], AdminUserlistComponent);
+    return AdminUserlistComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.css":
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
@@ -113,12 +482,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/public-profile.service.client */ "./src/app/services/public-profile.service.client.ts");
 /* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./services/review.service.client */ "./src/app/services/review.service.client.ts");
 /* harmony import */ var _services_follow_service_client__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/follow.service.client */ "./src/app/services/follow.service.client.ts");
+/* harmony import */ var _admin_page_admin_page_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./admin-page/admin-page.component */ "./src/app/admin-page/admin-page.component.ts");
+/* harmony import */ var _admin_book_list_admin_book_list_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./admin-book-list/admin-book-list.component */ "./src/app/admin-book-list/admin-book-list.component.ts");
+/* harmony import */ var _admin_reviewlist_admin_reviewlist_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./admin-reviewlist/admin-reviewlist.component */ "./src/app/admin-reviewlist/admin-reviewlist.component.ts");
+/* harmony import */ var _admin_userlist_admin_userlist_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./admin-userlist/admin-userlist.component */ "./src/app/admin-userlist/admin-userlist.component.ts");
+/* harmony import */ var _community_page_community_page_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./community-page/community-page.component */ "./src/app/community-page/community-page.component.ts");
+/* harmony import */ var _landing_page_landing_page_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./landing-page/landing-page.component */ "./src/app/landing-page/landing-page.component.ts");
+/* harmony import */ var _services_admin_userlist_service_client__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./services/admin-userlist.service.client */ "./src/app/services/admin-userlist.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
+
 
 
 
@@ -155,7 +538,13 @@ var AppModule = /** @class */ (function () {
                 _profile_profile_component__WEBPACK_IMPORTED_MODULE_12__["ProfileComponent"],
                 _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_15__["AuthorPageComponent"],
                 _author_book_list_author_book_list_component__WEBPACK_IMPORTED_MODULE_16__["AuthorBookListComponent"],
-                _public_profile_public_profile_component__WEBPACK_IMPORTED_MODULE_18__["PublicProfileComponent"]
+                _public_profile_public_profile_component__WEBPACK_IMPORTED_MODULE_18__["PublicProfileComponent"],
+                _admin_page_admin_page_component__WEBPACK_IMPORTED_MODULE_22__["AdminPageComponent"],
+                _admin_book_list_admin_book_list_component__WEBPACK_IMPORTED_MODULE_23__["AdminBookListComponent"],
+                _admin_reviewlist_admin_reviewlist_component__WEBPACK_IMPORTED_MODULE_24__["AdminReviewlistComponent"],
+                _admin_userlist_admin_userlist_component__WEBPACK_IMPORTED_MODULE_25__["AdminUserlistComponent"],
+                _community_page_community_page_component__WEBPACK_IMPORTED_MODULE_26__["CommunityPageComponent"],
+                _landing_page_landing_page_component__WEBPACK_IMPORTED_MODULE_27__["LandingPageComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -170,7 +559,8 @@ var AppModule = /** @class */ (function () {
                 _services_authored_booklist_service_client__WEBPACK_IMPORTED_MODULE_17__["AuthoredBookListServiceClient"],
                 _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_19__["PublicProfileServiceClient"],
                 _services_review_service_client__WEBPACK_IMPORTED_MODULE_20__["ReviewServiceClient"],
-                _services_follow_service_client__WEBPACK_IMPORTED_MODULE_21__["FollowServiceClient"]],
+                _services_follow_service_client__WEBPACK_IMPORTED_MODULE_21__["FollowServiceClient"],
+                _services_admin_userlist_service_client__WEBPACK_IMPORTED_MODULE_28__["AdminUserListServiceClient"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -200,6 +590,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./author-page/author-page.component */ "./src/app/author-page/author-page.component.ts");
 /* harmony import */ var _author_book_list_author_book_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./author-book-list/author-book-list.component */ "./src/app/author-book-list/author-book-list.component.ts");
 /* harmony import */ var _public_profile_public_profile_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./public-profile/public-profile.component */ "./src/app/public-profile/public-profile.component.ts");
+/* harmony import */ var _admin_page_admin_page_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./admin-page/admin-page.component */ "./src/app/admin-page/admin-page.component.ts");
+/* harmony import */ var _admin_book_list_admin_book_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./admin-book-list/admin-book-list.component */ "./src/app/admin-book-list/admin-book-list.component.ts");
+/* harmony import */ var _admin_reviewlist_admin_reviewlist_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./admin-reviewlist/admin-reviewlist.component */ "./src/app/admin-reviewlist/admin-reviewlist.component.ts");
+/* harmony import */ var _admin_userlist_admin_userlist_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./admin-userlist/admin-userlist.component */ "./src/app/admin-userlist/admin-userlist.component.ts");
+/* harmony import */ var _community_page_community_page_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./community-page/community-page.component */ "./src/app/community-page/community-page.component.ts");
+/* harmony import */ var _landing_page_landing_page_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./landing-page/landing-page.component */ "./src/app/landing-page/landing-page.component.ts");
+
+
+
+
+
+
 
 
 
@@ -210,16 +612,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var appRoutes = [
-    { path: '', redirectTo: 'search', pathMatch: 'full' },
+    { path: '', redirectTo: 'landing', pathMatch: 'full' },
     { path: 'search', component: _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_1__["SearchPageComponent"] },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"] },
     { path: 'profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_3__["ProfileComponent"] },
+    { path: 'community', component: _community_page_community_page_component__WEBPACK_IMPORTED_MODULE_13__["CommunityPageComponent"] },
+    { path: 'admin-page', component: _admin_page_admin_page_component__WEBPACK_IMPORTED_MODULE_9__["AdminPageComponent"] },
+    { path: 'bookList', component: _admin_book_list_admin_book_list_component__WEBPACK_IMPORTED_MODULE_10__["AdminBookListComponent"] },
+    { path: 'reviewList', component: _admin_reviewlist_admin_reviewlist_component__WEBPACK_IMPORTED_MODULE_11__["AdminReviewlistComponent"] },
+    { path: 'userList', component: _admin_userlist_admin_userlist_component__WEBPACK_IMPORTED_MODULE_12__["AdminUserlistComponent"] },
     { path: 'author-page', component: _author_page_author_page_component__WEBPACK_IMPORTED_MODULE_6__["AuthorPageComponent"] },
     { path: 'author-book-list', component: _author_book_list_author_book_list_component__WEBPACK_IMPORTED_MODULE_7__["AuthorBookListComponent"] },
     { path: 'book/:bookId', component: _book_details_book_details_component__WEBPACK_IMPORTED_MODULE_2__["BookDetailsComponent"] },
     { path: 'user/:userId', component: _public_profile_public_profile_component__WEBPACK_IMPORTED_MODULE_8__["PublicProfileComponent"] },
-    { path: '**', component: _search_page_search_page_component__WEBPACK_IMPORTED_MODULE_1__["SearchPageComponent"] } // last
+    { path: 'landing', component: _landing_page_landing_page_component__WEBPACK_IMPORTED_MODULE_14__["LandingPageComponent"] },
+    { path: '**', component: _landing_page_landing_page_component__WEBPACK_IMPORTED_MODULE_14__["LandingPageComponent"] } // last
 ];
 var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
 
@@ -233,7 +641,7 @@ var routing = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -244,7 +652,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h1>Authored Books</h1>\n\n  <input [(ngModel)]=\"volumeId\"\n         placeholder=\"VolumeId\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"addToAuthoredBooks()\"\n    class=\"btn btn-primary btn-block\">\n    Add\n  </button>\n\n  <h2>Authored Books :{{authoredBooks.length}}</h2>\n  <div *ngFor=\"let token of authoredBooks\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        {{token.book.title}}\n        <button (click)=\"removeFromAuthoredBooks(token.book._id)\"\n          class=\"float-right btn btn-danger\">UnAuthor</button>\n      </li>\n    </ul>\n  </div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/author-page\">My Page</a>\n    <br>\n    <br>\n  <h1>Authored Books</h1>\n\n  <input [(ngModel)]=\"volumeId\"\n         placeholder=\"VolumeId\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"addToAuthoredBooks()\"\n    class=\"btn btn-primary btn-block\">\n    Add\n  </button>\n\n  <h2>Authored Books :{{authoredBooks.length}}</h2>\n  <div *ngFor=\"let token of authoredBooks\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n        <button (click)=\"removeFromAuthoredBooks(token.book._id)\"\n          class=\"float-right btn btn-danger\">UnAuthor</button>\n      </li>\n    </ul>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -337,7 +745,7 @@ var AuthorBookListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -348,7 +756,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"bio\"\n         placeholder=\"Bio\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"snippet\"\n         placeholder=\"Featured Snippet\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"bio\"\n         placeholder=\"Bio\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"snippet\"\n         placeholder=\"Featured Snippet\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/author-book-list\">My Books</a>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -439,7 +847,7 @@ var AuthorPageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/256477/pexels-photo-256477.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.9;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -450,7 +858,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h2>Book Details</h2>\n  <h3>{{book.volumeInfo.title}}</h3>\n  <div *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div>  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4>Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4>Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n  </div>\n  <div class=\"container-fluid\">\n  <h4>Plot</h4>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    <br>\n    <br>\n  <h2 align=\"center\">Book Details</h2>\n  <h3  align=\"center\">{{book.volumeInfo.title}}</h3>\n  <div  align=\"center\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div  align=\"center\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4  align=\"center\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4  align=\"center\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img  align=\"center\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <br>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n  </div>\n  <div class=\"container-fluid\">\n  <h3>Plot</h3>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -520,13 +928,18 @@ var BookDetailsComponent = /** @class */ (function () {
         this.bookService.createBook(id, title)
             .then(function (book) {
             _this.likeService.userLikesBook(book._id);
+        }).then(function (like) {
+            _this.router.navigate(['profile']);
         });
     };
     BookDetailsComponent.prototype.submitReview = function (id, title) {
         var _this = this;
         this.bookService.createBook(id, title)
             .then(function (book) {
-            _this.reviewService.userReviewsBook(book._id, _this.reviewTitle, _this.reviewText);
+            _this.reviewService.userReviewsBook(book._id, _this.reviewTitle, _this.reviewText)
+                .then(function (review) {
+                _this.router.navigate(['profile']);
+            });
         });
     };
     BookDetailsComponent.prototype.loadBook = function (bookId) {
@@ -555,6 +968,146 @@ var BookDetailsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/community-page/community-page.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/community-page/community-page.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n.bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background: url('https://images.pexels.com/photos/48020/books-education-school-literature-48020.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.8;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/community-page/community-page.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/community-page/community-page.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg\">\r\n<div class=\"jumbotron\">\r\n  <a routerLink=\"/profile\">Profile</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/search\">Search</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/login\">Login</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/register\">Register</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/home\">Home</a>\r\n  <br>\r\n  <br>\r\n<h1> Welcome to the Bookmarked community!!</h1>\r\n<div class=\"row\">\r\n  <div class=\"col-sm-4\">\r\n    <h3>Featured Books</h3>\r\n    <div *ngFor=\"let book of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{book.id}}\"> {{book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-4\">\r\n    <h3>Avid Readers</h3>\r\n    <div *ngFor=\"let user of readers\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{user._id}}\"> {{user.firstName}}  {{user.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-4\">\r\n    <h3>Favorite Authors</h3>\r\n    <div *ngFor=\"let user of authors\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{user._id}}\"> {{user.firstName}}  {{user.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/community-page/community-page.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/community-page/community-page.component.ts ***!
+  \************************************************************/
+/*! exports provided: CommunityPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CommunityPageComponent", function() { return CommunityPageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_book_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/book.service.client */ "./src/app/services/book.service.client.ts");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CommunityPageComponent = /** @class */ (function () {
+    function CommunityPageComponent(bookservice, userservice) {
+        this.bookservice = bookservice;
+        this.userservice = userservice;
+    }
+    CommunityPageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.bookservice.findAllBooks()
+            .then(function (books) { return _this.books = books; });
+        this.userservice.findAllAuthors()
+            .then(function (authors) { return _this.authors = authors; });
+        this.userservice.findAllReaders()
+            .then(function (readers) { return _this.readers = readers; });
+    };
+    CommunityPageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-community-page',
+            template: __webpack_require__(/*! ./community-page.component.html */ "./src/app/community-page/community-page.component.html"),
+            styles: [__webpack_require__(/*! ./community-page.component.css */ "./src/app/community-page/community-page.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_book_service_client__WEBPACK_IMPORTED_MODULE_1__["BookServiceClient"],
+            _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"]])
+    ], CommunityPageComponent);
+    return CommunityPageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/landing-page/landing-page.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/landing-page/landing-page.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n.bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background: url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: x-large;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./src/app/landing-page/landing-page.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/landing-page/landing-page.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg\">\r\n\r\n<div class=\"jumbotron\" align=\"center\">\r\n  <a routerLink=\"/profile\">Profile</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/search\">Search</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/community\">Bookmarked Community</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/login\">Login</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/register\">Register</a>\r\n  <br>\r\n  <br>\r\n  <h1>Welcome to Bookmarked</h1>\r\n  <br>\r\n  <h2>Portal for Avid Readers and Budding Authors!</h2>\r\n  <br>\r\n  <br>\r\n  <br>\r\n  <h3 align=\"center\">\r\n    \"Books are a uniquely portable magic!\" -  Stephen King\r\n  </h3>\r\n  </div>\r\n\r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./src/app/landing-page/landing-page.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/landing-page/landing-page.component.ts ***!
+  \********************************************************/
+/*! exports provided: LandingPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingPageComponent", function() { return LandingPageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LandingPageComponent = /** @class */ (function () {
+    function LandingPageComponent() {
+    }
+    LandingPageComponent.prototype.ngOnInit = function () {
+    };
+    LandingPageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-landing-page',
+            template: __webpack_require__(/*! ./landing-page.component.html */ "./src/app/landing-page/landing-page.component.html"),
+            styles: [__webpack_require__(/*! ./landing-page.component.css */ "./src/app/landing-page/landing-page.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], LandingPageComponent);
+    return LandingPageComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/login/login.component.css":
 /*!*******************************************!*\
   !*** ./src/app/login/login.component.css ***!
@@ -562,7 +1115,7 @@ var BookDetailsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background: url('https://images.pexels.com/photos/1098601/pexels-photo-1098601.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.9;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -573,7 +1126,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h1>Login</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"login(username, password)\"\n          class=\"btn btn-primary btn-block\">\n    Login\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/register\">Register</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n<div class=\"jumbotron\" align=\"center\">\n  <h1>Login</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"login(username, password)\"\n          class=\"btn btn-primary btn-block\">\n    Login\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/register\">Register</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -618,6 +1171,9 @@ var LoginComponent = /** @class */ (function () {
             else if (user.role === 'author') {
                 _this.router.navigate(['author-page']);
             }
+            else if (user.role === 'admin') {
+                _this.router.navigate(['admin-page']);
+            }
             else {
                 _this.router.navigate(['profile']);
             }
@@ -647,7 +1203,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -658,7 +1214,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    {{token.book.title}}\n    <button (click)=\"unlike(token.book._id)\"\n      class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n\n  <br>\n  <br>\n\n  <h2>Reviews :{{reviews.length}}</h2>\n  <div *ngFor=\"let token of reviews\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        Book Title: {{token.book.title}}\n        <br>\n        {{token.title}}\n        <br>\n        {{token.text}}\n        <button (click)=\"removeReview(token.book._id)\"\n          class=\"float-right btn btn-danger\">remove</button>\n      </li>\n    </ul>\n  </div>\n\n\n  <h2>Following :{{following.length}}</h2>\n  <div *ngFor=\"let token of following\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n       {{token.following.firstName}}  {{token.following.LastName}}\n        <button\n          class=\"float-right btn btn-danger\">unfollow</button>\n      </li>\n    </ul>\n  </div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/admin\" *ngIf=\"username==='admin'\">Admin Page</a>\n</div>\n\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n    <button (click)=\"unlike(token.book._id)\"\n      class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n  <br>\n  <h2>Reviews :{{reviews.length}}</h2>\n  <div *ngFor=\"let token of reviews\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n        <br>\n        {{token.title}}\n        <br>\n        {{token.text}}\n        <button (click)=\"removeReview(token.book._id)\"\n          class=\"float-right btn btn-danger\">remove</button>\n      </li>\n    </ul>\n  </div>\n<br>\n  <h2>Following :{{following.length}}</h2>\n  <div *ngFor=\"let token of following\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\n        <button (click)=\"unfollow(token.following._id)\"\n          class=\"float-right btn btn-danger\">unfollow</button>\n      </li>\n    </ul>\n  </div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/search\">Search</a>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -730,10 +1286,18 @@ var ProfileComponent = /** @class */ (function () {
     ProfileComponent.prototype.removeReview = function (bookId) {
         var _this = this;
         this.reviewService.userRemovesReview(bookId)
-            .then(function (likes) {
+            .then(function (review) {
             _this.reviewService
                 .findReviewsForUser()
                 .then(function (reviews) { return _this.reviews = reviews; });
+        });
+    };
+    ProfileComponent.prototype.unfollow = function (userId) {
+        var _this = this;
+        this.followService.userUnfollowsUser(userId)
+            .then(function (follow) {
+            _this.followService.findAllFollowing()
+                .then(function (following) { return _this.following = following; });
         });
     };
     ProfileComponent.prototype.ngOnInit = function () {
@@ -789,7 +1353,7 @@ var ProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -800,7 +1364,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          {{token.book.title}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <h2>Reviews :{{reviews.length}}</h2>\r\n    <div *ngFor=\"let token of reviews\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          Book Title: {{token.book.title}}\r\n          <br>\r\n          {{token.title}}\r\n          <br>\r\n          {{token.text}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <button (click)=\"followUser()\"\r\n    class=\"btn btn-primary\">Follow</button>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/search\">Search</a>\r\n    <br>\r\n    <br>\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <h2>Reviews :{{reviews.length}}</h2>\r\n    <div *ngFor=\"let token of reviews\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n          <br>\r\n          {{token.title}}\r\n          <br>\r\n          {{token.text}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <h2>Following :{{following.length}}</h2>\r\n  <div *ngFor=\"let token of following\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <br>\r\n  <button (click)=\"followUser()\"\r\n    class=\"btn btn-primary\">Follow</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -836,15 +1400,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var PublicProfileComponent = /** @class */ (function () {
-    function PublicProfileComponent(route, service, publicProfileService, reviewService, followService) {
+    function PublicProfileComponent(route, router, service, publicProfileService, reviewService, followService) {
         var _this = this;
         this.route = route;
+        this.router = router;
         this.service = service;
         this.publicProfileService = publicProfileService;
         this.reviewService = reviewService;
         this.followService = followService;
         this.books = [];
         this.reviews = [];
+        this.following = [];
         this.route.params.subscribe(function (params) { return _this.loadUser(params['userId']); });
     }
     PublicProfileComponent.prototype.loadUser = function (userId) {
@@ -863,11 +1429,17 @@ var PublicProfileComponent = /** @class */ (function () {
                     .then(function (likedBooks) { return _this.books = likedBooks; });
                 _this.publicProfileService.findReviewsUserById(user._id)
                     .then(function (reviews) { return _this.reviews = reviews; });
+                _this.publicProfileService.findFollowingUserById(user._id)
+                    .then(function (following) { return _this.following = following; });
             }
         });
     };
     PublicProfileComponent.prototype.followUser = function () {
-        this.followService.userfollowsUser(this.userId);
+        var _this = this;
+        this.followService.userfollowsUser(this.userId)
+            .then(function (follows) {
+            _this.router.navigate(['profile']);
+        });
     };
     PublicProfileComponent.prototype.ngOnInit = function () {
     };
@@ -878,6 +1450,7 @@ var PublicProfileComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./public-profile.component.css */ "./src/app/public-profile/public-profile.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
             _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"],
             _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_3__["PublicProfileServiceClient"],
             _services_review_service_client__WEBPACK_IMPORTED_MODULE_4__["ReviewServiceClient"],
@@ -897,7 +1470,7 @@ var PublicProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background: url('https://images.pexels.com/photos/1098601/pexels-photo-1098601.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.9;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -908,7 +1481,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n  <h1>Register</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password2\"\n         placeholder=\"verify password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"role\"\n         placeholder=\"role\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"register(username, password, password2, role)\"\n          class=\"btn btn-primary btn-block\">\n    Register\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/login\">Login</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\" align=\"center\">\n  <h1>Register</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password2\"\n         placeholder=\"verify password\"\n         class=\"form-control\"/>\n  <br>\n    <select  [(ngModel)]=\"role\" class=\"form-control\">\n      <option value=\"reader\" selected>reader</option>\n      <option value=\"author\">author</option>\n    </select>\n  <br>\n  <button (click)=\"register(username, password, password2, role)\"\n          class=\"btn btn-primary btn-block\">\n    Register\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/login\">Login</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -955,6 +1528,9 @@ var RegisterComponent = /** @class */ (function () {
                         .then(function () {
                         if (role === 'author') {
                             _this.router.navigate(['author-page']);
+                        }
+                        else if (role === 'admin') {
+                            _this.router.navigate(['admin-page']);
                         }
                         else {
                             _this.router.navigate(['profile']);
@@ -1003,7 +1579,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n\n  <div class=\"container-fluid\">\n\n    <div>\n      <input [(ngModel)]=\"title\" class=\"form-control\" placeholder=\"Title\" >\n      <small class=\"form-text text-muted\">Please enter atleast one word of the title of the book</small>\n    </div>\n\n    <div>\n      <input [(ngModel)]=\"author\" class=\"form-control\" placeholder=\"Author\" >\n      <small class=\"form-text text-muted\">Optional: Enter the author name to enhance search</small>\n    </div>\n\n    <button\n      class=\"btn btn-success btn-block\"\n      (click)=\"findBook(title, author)\">\n      Find Book!\n    </button>\n\n  </div>\n  <br/>\n  <br/>\n<ul class=\"list-group\">\n  <li class=\"list-group-item\" *ngFor=\"let book of books\">\n    <div>\n      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n      <a routerLink=\"/book/{{book.id}}\"> {{book.volumeInfo.title}}</a>\n    </div>\n  </li>\n\n</ul>\n</div>\n"
+module.exports = "<div class=\"jumbotron\">\n  <a routerLink=\"/profile\">Profile</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/login\">Login</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/register\">Register</a>\n  <br>\n  <br>\n  <div class=\"container-fluid\">\n\n    <div>\n      <input [(ngModel)]=\"title\" class=\"form-control\" placeholder=\"Title\" >\n      <small class=\"form-text text-muted\">Please enter atleast one word of the title of the book</small>\n    </div>\n\n    <div>\n      <input [(ngModel)]=\"author\" class=\"form-control\" placeholder=\"Author\" >\n      <small class=\"form-text text-muted\">Optional: Enter the author name to enhance search</small>\n    </div>\n\n    <button\n      class=\"btn btn-success btn-block\"\n      (click)=\"findBook(title, author)\">\n      Find Book!\n    </button>\n\n  </div>\n  <br/>\n  <br/>\n<ul class=\"list-group\">\n  <li class=\"list-group-item\" *ngFor=\"let book of books\">\n    <div>\n      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/> &nbsp; &nbsp;\n      <a routerLink=\"/book/{{book.id}}\"> {{book.volumeInfo.title}}</a>\n    </div>\n  </li>\n\n</ul>\n</div>\n"
 
 /***/ }),
 
@@ -1059,6 +1635,66 @@ var SearchPageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/admin-userlist.service.client.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/services/admin-userlist.service.client.ts ***!
+  \***********************************************************/
+/*! exports provided: AdminUserListServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminUserListServiceClient", function() { return AdminUserListServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
+var AdminUserListServiceClient = /** @class */ (function () {
+    function AdminUserListServiceClient() {
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+    }
+    // URL = 'http://localhost:4000';
+    // URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
+    AdminUserListServiceClient.prototype.addUser = function (username, password, firstName, lastName, role) {
+        var user = {
+            username: username,
+            password: password,
+            role: role,
+            firstName: firstName,
+            lastName: lastName
+        };
+        return fetch(this.URL + '/api/admin/adduser', {
+            body: JSON.stringify(user),
+            credentials: 'include',
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    AdminUserListServiceClient.prototype.updateUser = function (_id, username, password, firstName, lastName, role) {
+        var user = {
+            _id: _id,
+            username: username,
+            password: password,
+            role: role,
+            firstName: firstName,
+            lastName: lastName
+        };
+        return fetch(this.URL + '/api/admin/updateuser', {
+            body: JSON.stringify(user),
+            credentials: 'include',
+            method: 'put',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    return AdminUserListServiceClient;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/authored-booklist.service.client.ts":
 /*!**************************************************************!*\
   !*** ./src/app/services/authored-booklist.service.client.ts ***!
@@ -1069,13 +1705,16 @@ var SearchPageComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthoredBookListServiceClient", function() { return AuthoredBookListServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var AuthoredBookListServiceClient = /** @class */ (function () {
     function AuthoredBookListServiceClient() {
-        this.BOOKURL = 'http://localhost:4000/api/authoredbook';
-        this.BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/authoredbook';
-        this.USER_URL = 'http://localhost:4000/api/book/authors';
-        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/book/authors';
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+        this.BOOKURL = this.URL + '/api/authoredbook';
+        // BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/authoredbook';
+        this.USER_URL = this.URL + '/api/book/authors';
     }
+    // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/book/authors';
     AuthoredBookListServiceClient.prototype.addToAuthoredBooks = function (bookId) {
         var url = this.BOOKURL + '/' + bookId;
         return fetch(url, {
@@ -1137,11 +1776,16 @@ var BookDetailsServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookServiceClient", function() { return BookServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var BookServiceClient = /** @class */ (function () {
     function BookServiceClient() {
-        this.BOOKURL = 'http://localhost:4000/api/book';
-        this.BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+        this.BOOKURL = this.URL + '/api/book';
     }
+    // BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+    // ALLBOOKURL = 'http://localhost:4000/api/allbooks';
+    // ALLBOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/allbooks';
     BookServiceClient.prototype.createBook = function (id, title) {
         var book = {
             id: id,
@@ -1154,6 +1798,18 @@ var BookServiceClient = /** @class */ (function () {
             headers: {
                 'content-type': 'application/json'
             }
+        }).then(function (response) { return response.json(); });
+    };
+    BookServiceClient.prototype.findAllBooks = function () {
+        return fetch(this.BOOKURL, {
+            credentials: 'include',
+            method: 'get'
+        }).then(function (response) { return response.json(); });
+    };
+    BookServiceClient.prototype.deleteBookById = function (bookId) {
+        return fetch(this.BOOKURL + '/' + bookId + '/delete', {
+            credentials: 'include',
+            method: 'delete',
         }).then(function (response) { return response.json(); });
     };
     return BookServiceClient;
@@ -1173,11 +1829,14 @@ var BookServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FollowServiceClient", function() { return FollowServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var FollowServiceClient = /** @class */ (function () {
     function FollowServiceClient() {
-        this.USER_URL = 'http://localhost:4000/api/userfollows';
-        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/userfollows';
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+        this.USER_URL = this.URL + '/api/userfollows';
     }
+    // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/userfollows';
     FollowServiceClient.prototype.findAllFollowing = function () {
         return fetch(this.USER_URL, {
             credentials: 'include'
@@ -1215,13 +1874,16 @@ var FollowServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LikeServiceClient", function() { return LikeServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var LikeServiceClient = /** @class */ (function () {
     function LikeServiceClient() {
-        this.USER_URL = 'http://localhost:4000/api/book/likes';
-        this.BOOK_URL = 'http://localhost:4000/api/book';
-        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/likes';
-        this.BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+        this.USER_URL = this.URL + '/api/book/likes';
+        this.BOOK_URL = this.URL + '/api/book';
     }
+    // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/likes';
+    //  BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
     LikeServiceClient.prototype.findLikedBooksForUser = function () {
         return fetch(this.USER_URL, {
             credentials: 'include'
@@ -1259,11 +1921,14 @@ var LikeServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PublicProfileServiceClient", function() { return PublicProfileServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var PublicProfileServiceClient = /** @class */ (function () {
     function PublicProfileServiceClient() {
-        this.URL = 'http://localhost:4000';
-        this.URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
     }
+    // URL = 'http://localhost:4000';
+    // URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
     PublicProfileServiceClient.prototype.findLikedBooksUserById = function (userId) {
         return fetch(this.URL + '/api/user/' + userId + '/liked')
             .then(function (response) { return response.json(); });
@@ -1274,6 +1939,10 @@ var PublicProfileServiceClient = /** @class */ (function () {
     };
     PublicProfileServiceClient.prototype.findReviewsUserById = function (userId) {
         return fetch(this.URL + '/api/user/' + userId + '/reviewed')
+            .then(function (response) { return response.json(); });
+    };
+    PublicProfileServiceClient.prototype.findFollowingUserById = function (userId) {
+        return fetch(this.URL + '/api/user/' + userId + '/userfollows')
             .then(function (response) { return response.json(); });
     };
     return PublicProfileServiceClient;
@@ -1293,13 +1962,32 @@ var PublicProfileServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReviewServiceClient", function() { return ReviewServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var ReviewServiceClient = /** @class */ (function () {
     function ReviewServiceClient() {
-        this.USER_URL = 'http://localhost:4000/api/book/reviews';
-        this.BOOK_URL = 'http://localhost:4000/api/book';
-        this.USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/reviews';
-        this.BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+        this.USER_URL = this.URL + '/api/book/reviews';
+        this.BOOK_URL = this.URL + '/api/book';
+        this.ALLREVIEW = this.URL + '/api/allreviews';
+        this.REVIEW_URL = this.URL + '/api/review';
     }
+    // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/reviews';
+    // BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+    // ALLREVIEW_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/allreviews';
+    // REVIEW_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/review';
+    ReviewServiceClient.prototype.findAllReviews = function () {
+        return fetch(this.ALLREVIEW, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    ReviewServiceClient.prototype.deleteReviewById = function (reviewId) {
+        return fetch(this.REVIEW_URL + '/' + reviewId + '/delete', {
+            credentials: 'include',
+            method: 'delete',
+        }).then(function (response) { return response.json(); });
+    };
     ReviewServiceClient.prototype.findReviewsForUser = function () {
         return fetch(this.USER_URL, {
             credentials: 'include'
@@ -1369,14 +2057,34 @@ var SearchPageServiceClient = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserServiceClient", function() { return UserServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 var UserServiceClient = /** @class */ (function () {
     function UserServiceClient() {
-        this.URL = 'http://localhost:4000';
-        this.URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
     }
+    // URL = 'http://localhost:4000';
+    // URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
     UserServiceClient.prototype.findUserById = function (userId) {
         return fetch(this.URL + '/api/user/' + userId)
             .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.findAllUsers = function () {
+        return fetch(this.URL + '/api/user')
+            .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.findAllReaders = function () {
+        return fetch(this.URL + '/api/readers')
+            .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.findAllAuthors = function () {
+        return fetch(this.URL + '/api/authors')
+            .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.deleteUserById = function (userId) {
+        return fetch(this.URL + '/api/user/' + userId, {
+            method: 'delete'
+        }).then(function (response) { return response.json(); });
     };
     UserServiceClient.prototype.findUserByUsername = function (username) {
         var credentials = {
@@ -1465,7 +2173,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    apiUrl: 'http://localhost:4000'
 };
 /*
  * In development mode, to ignore zone related error stack frames such as

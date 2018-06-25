@@ -1,10 +1,12 @@
+import { environment } from '../../environments/environment';
 export class AuthoredBookListServiceClient {
+  URL = environment.apiUrl;
 
-  BOOKURL = 'http://localhost:4000/api/authoredbook';
-  BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/authoredbook';
+  BOOKURL = this.URL + '/api/authoredbook';
+  // BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/authoredbook';
 
-  USER_URL = 'http://localhost:4000/api/book/authors';
-  USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/book/authors';
+  USER_URL = this.URL + '/api/book/authors';
+  // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/book/authors';
 
   addToAuthoredBooks(bookId) {
     const url = this.BOOKURL + '/' + bookId;

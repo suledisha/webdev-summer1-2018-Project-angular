@@ -1,14 +1,18 @@
+import { environment } from '../../environments/environment';
+
 export class ReviewServiceClient {
 
-  USER_URL = 'http://localhost:4000/api/book/reviews';
-  BOOK_URL = 'http://localhost:4000/api/book';
-  ALLREVIEW = 'http://localhost:4000/api/allreviews';
-  REVIEW_URL= 'http://localhost:4000/api/review';
+  URL = environment.apiUrl;
 
-  USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/reviews';
-  BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
-  ALLREVIEW_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/allreviews';
-  REVIEW_URL_HEROKU= 'https://suledisha-project-nodejs.herokuapp.com/api/review';
+  USER_URL = this.URL + '/api/book/reviews';
+  BOOK_URL = this.URL + '/api/book';
+  ALLREVIEW = this.URL + '/api/allreviews';
+  REVIEW_URL = this.URL + '/api/review';
+
+  // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/reviews';
+  // BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+  // ALLREVIEW_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/allreviews';
+  // REVIEW_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/review';
 
   findAllReviews() {
     return fetch(this.ALLREVIEW, {

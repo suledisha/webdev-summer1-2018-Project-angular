@@ -1,10 +1,13 @@
+import { environment } from '../../environments/environment';
 export class LikeServiceClient {
 
-  USER_URL = 'http://localhost:4000/api/book/likes';
-  BOOK_URL = 'http://localhost:4000/api/book';
+  URL = environment.apiUrl;
 
-  USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/likes';
-  BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+  USER_URL = this.URL + '/api/book/likes';
+  BOOK_URL = this.URL + '/api/book';
+
+  // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/likes';
+ //  BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
 
 
   findLikedBooksForUser() {

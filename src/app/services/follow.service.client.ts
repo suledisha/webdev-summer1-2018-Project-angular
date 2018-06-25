@@ -1,7 +1,10 @@
+import { environment } from '../../environments/environment';
 export class FollowServiceClient {
 
-  USER_URL = 'http://localhost:4000/api/userfollows';
-  USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/userfollows';
+  URL = environment.apiUrl;
+
+  USER_URL = this.URL + '/api/userfollows';
+ // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/userfollows';
 
 
 

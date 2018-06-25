@@ -1,10 +1,13 @@
+import { environment } from '../../environments/environment';
 export class BookServiceClient {
+  URL = environment.apiUrl;
 
-  BOOKURL = 'http://localhost:4000/api/book';
-  BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+  BOOKURL = this.URL + '/api/book';
 
-  ALLBOOKURL = 'http://localhost:4000/api/allbooks';
-  ALLBOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/allbooks';
+  // BOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+
+  // ALLBOOKURL = 'http://localhost:4000/api/allbooks';
+  // ALLBOOKURL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/allbooks';
 
   createBook(id, title) {
     const book = {

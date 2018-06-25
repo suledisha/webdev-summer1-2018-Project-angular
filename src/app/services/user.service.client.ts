@@ -1,7 +1,10 @@
+import { environment } from '../../environments/environment';
 export class UserServiceClient {
 
-  URL = 'http://localhost:4000';
-  URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
+  URL = environment.apiUrl;
+
+  // URL = 'http://localhost:4000';
+  // URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
 
   findUserById(userId) {
     return fetch(this.URL + '/api/user/' + userId)

@@ -1,7 +1,9 @@
+import { environment } from '../../environments/environment';
 export class AdminUserListServiceClient {
 
-  URL = 'http://localhost:4000';
-  URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
+  URL = environment.apiUrl;
+  // URL = 'http://localhost:4000';
+  // URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
 
   addUser(username, password, firstName, lastName, role) {
     const user = {

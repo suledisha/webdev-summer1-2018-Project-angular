@@ -1,6 +1,9 @@
+import { environment } from '../../environments/environment';
 export class PublicProfileServiceClient {
-  URL = 'http://localhost:4000';
-  URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
+
+  URL = environment.apiUrl;
+  // URL = 'http://localhost:4000';
+  // URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com';
 
   findLikedBooksUserById(userId) {
     return fetch(this.URL + '/api/user/' + userId + '/liked')
