@@ -12,10 +12,11 @@ import {AdminBookListComponent} from './admin-book-list/admin-book-list.componen
 import {AdminReviewlistComponent} from './admin-reviewlist/admin-reviewlist.component';
 import {AdminUserlistComponent} from './admin-userlist/admin-userlist.component';
 import {CommunityPageComponent} from './community-page/community-page.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'search', pathMatch: 'full'},
+  { path: '', redirectTo: 'landing', pathMatch: 'full'},
   { path: 'search', component: SearchPageComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   { path: 'author-book-list', component: AuthorBookListComponent},
   { path: 'book/:bookId', component: BookDetailsComponent},
   { path: 'user/:userId', component: PublicProfileComponent},
-  { path: '**', component: SearchPageComponent} // last
+  { path: 'landing', component: LandingPageComponent},
+  { path: '**', component: LandingPageComponent} // last
 ];
 export const routing = RouterModule.forRoot(appRoutes);

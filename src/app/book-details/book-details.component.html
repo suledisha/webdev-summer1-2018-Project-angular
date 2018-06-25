@@ -1,20 +1,24 @@
-<div class="container-fluid">
-  <h2>Book Details</h2>
-  <h3>{{book.volumeInfo.title}}</h3>
-  <div *ngFor="let author of book.volumeInfo.authors"><h3>{{author}}</h3></div>
-  <div>  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>
-  <h4>Published Date: {{book.volumeInfo.publishedDate}}</h4>
-  <h4>Reader Rating: {{book.volumeInfo.averageRating}}</h4>
-  <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
+<div class="bg">
+  <div class="jumbotron">
+  <h2 align="center">Book Details</h2>
+  <h3  align="center">{{book.volumeInfo.title}}</h3>
+  <div  align="center" *ngFor="let author of book.volumeInfo.authors"><h3>{{author}}</h3></div>
+  <div  align="center">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>
+  <h4  align="center">Published Date: {{book.volumeInfo.publishedDate}}</h4>
+  <h4  align="center">Reader Rating: {{book.volumeInfo.averageRating}}</h4>
+  <img  align="center" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
+    <br>
     <button class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
+    <small class="form-text text-muted">Login/Register to like</small>
   </div>
   <div class="container-fluid">
-  <h4>Plot</h4>
+  <h3>Plot</h3>
   <h4>{{book.volumeInfo.description}}</h4>
   </div>
   <div class="container-fluid">
     <br>
     <h4>Write a Review</h4>
+    <small class="form-text text-muted">Login/Register to review</small>
     <br>
     <input [(ngModel)]="reviewTitle"
            placeholder="Summary"
@@ -26,6 +30,6 @@
     <br>
     <button (click)="this.submitReview(book.id,book.volumeInfo.title)"
       class="btn btn-success">Submit Review!</button>
-
+  </div>
   </div>
 </div>

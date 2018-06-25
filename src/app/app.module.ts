@@ -26,6 +26,7 @@ import { AdminBookListComponent } from './admin-book-list/admin-book-list.compon
 import { AdminReviewlistComponent } from './admin-reviewlist/admin-reviewlist.component';
 import { AdminUserlistComponent } from './admin-userlist/admin-userlist.component';
 import { CommunityPageComponent } from './community-page/community-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CommunityPageComponent } from './community-page/community-page.componen
     AdminBookListComponent,
     AdminReviewlistComponent,
     AdminUserlistComponent,
-    CommunityPageComponent
+    CommunityPageComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,13 @@
-<div class="container-fluid">
-
+<div class="jumbotron">
+  <a routerLink="/profile">Profile</a>
+  &nbsp; &nbsp;
+  <a routerLink="/community">Bookmarked Community</a>
+  &nbsp; &nbsp;
+  <a routerLink="/login">Login</a>
+  &nbsp; &nbsp;
+  <a routerLink="/register">Register</a>
+  <br>
+  <br>
   <div class="container-fluid">
 
     <div>
@@ -24,7 +32,7 @@
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let book of books">
     <div>
-      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
+      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/> &nbsp; &nbsp;
       <a routerLink="/book/{{book.id}}"> {{book.volumeInfo.title}}</a>
     </div>
   </li>
