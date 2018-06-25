@@ -19,9 +19,10 @@ export class PublicProfileComponent implements OnInit {
   user: User;
   books = [];
   reviews = [];
-  following =[];
+  following = [];
 
   constructor( private route: ActivatedRoute,
+               private router: Router,
                private service: UserServiceClient,
                private publicProfileService: PublicProfileServiceClient,
                private reviewService: ReviewServiceClient,
@@ -33,7 +34,7 @@ export class PublicProfileComponent implements OnInit {
     this.userId = userId;
     this.service.findUserById(userId)
       .then(user => {
-        this.user = user
+        this.user = user;
         if (user.role === 'author') {
           this.publicProfileService
             .findAuthoredBooksUserById(user._id)
@@ -49,8 +50,11 @@ export class PublicProfileComponent implements OnInit {
       });
 
   }
-  followUser(){
-    this.followService.userfollowsUser(this.userId);
+  followUser() {
+    this.followService.userfollowsUser(this.userId)
+      .then((follows) => {
+        this.router.navigate(['profile']);
+      });
   }
   ngOnInit() {
   }

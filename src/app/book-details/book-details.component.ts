@@ -34,7 +34,7 @@ export class BookDetailsComponent implements OnInit {
               private service: BookDetailsServiceClient,
               private bookService: BookServiceClient,
               private likeService: LikeServiceClient,
-              private reviewService : ReviewServiceClient) {
+              private reviewService: ReviewServiceClient) {
     this.route.params.subscribe(params => this.loadBook(params['bookId']));
   }
 
@@ -45,14 +45,19 @@ export class BookDetailsComponent implements OnInit {
     this.bookService.createBook(id, title)
       .then(book => {
         this.likeService.userLikesBook(book._id);
-      });
+      }).then((like) => {
+      this.router.navigate(['profile']);
+    });
   }
 
   submitReview(id, title) {
 
     this.bookService.createBook(id, title)
       .then(book => {
-        this.reviewService.userReviewsBook(book._id, this.reviewTitle, this.reviewText);
+        this.reviewService.userReviewsBook(book._id, this.reviewTitle, this.reviewText)
+          .then((review) => {
+            this.router.navigate(['profile']);
+          });
       });
   }
 
