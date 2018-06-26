@@ -35,6 +35,14 @@ export class ReviewServiceClient {
       .then(response => response.json());
   }
 
+  findReviewsForBook(bookId) {
+    const url = this.BOOK_URL + '/' + bookId + '/reviews';
+    return fetch(url, {
+      credentials: 'include'
+    })
+      .then(response => response.json());
+  }
+
   userReviewsBook(bookId, reviewTitle, reviewText) {
     const url = this.BOOK_URL + '/' + bookId + '/reviews';
     const review = {

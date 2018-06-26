@@ -14,23 +14,38 @@
 
     <br>
     <br>
-  <h2 align="center">Book Details</h2>
-  <h3  align="center">{{book.volumeInfo.title}}</h3>
-  <div  align="center" *ngFor="let author of book.volumeInfo.authors"><h3>{{author}}</h3></div>
-  <div  align="center">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>
-  <h4  align="center">Published Date: {{book.volumeInfo.publishedDate}}</h4>
-  <h4  align="center">Reader Rating: {{book.volumeInfo.averageRating}}</h4>
-  <img  align="center" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <img  height="250px" width="250px" align="left" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
+      </div>
+
+      <div class="col-sm-9">
+      <h3  align="left">{{book.volumeInfo.title}}</h3>
+      <div  align="left" *ngFor="let author of book.volumeInfo.authors"><h3>{{author}}</h3></div>
+      <div  align="left">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>
+      <h4  align="left">Published Date: {{book.volumeInfo.publishedDate}}</h4>
+      <h4  align="left">Reader Rating: {{book.volumeInfo.averageRating}}</h4>
+      <h4  align="left">Likes by BookMarkers: {{likes}}</h4>
+      </div>
+      </div>
+    </div>
+
+
+  <div class="container-fluid">
+  <br><br>
+  <h3>Summary</h3>
+  <br>
+    <p [innerHTML]="book.volumeInfo.description"></p>
     <br>
     <button class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
     <small class="form-text text-muted">Login/Register to like</small>
-  </div>
-  <div class="container-fluid">
-  <h3>Plot</h3>
-  <h4>{{book.volumeInfo.description}}</h4>
-  </div>
-  <div class="container-fluid">
     <br>
+  </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
     <h4>Write a Review</h4>
     <small class="form-text text-muted">Login/Register to review</small>
     <br>
@@ -38,13 +53,26 @@
            placeholder="Summary"
            class="form-control"/>
     <br>
-    <input [(ngModel)]="reviewText"
+    <textarea [(ngModel)]="reviewText"
            placeholder="Details"
-           class="form-control"/>
+              class="form-control"></textarea>
     <br>
     <button
       (click)="this.submitReview(book.id,book.volumeInfo.title)"
       class="btn btn-success">Submit Review!</button>
   </div>
-  </div>
+    <div class="col-sm-6">
+      <h4>Reviews by Bookmarkers</h4>
+      <div *ngFor="let token of reviews">
+        <ul class="list-group">
+          <li class="list-group-item">
+            {{token.title}} - <a routerLink="/user/{{token.user._id}}">{{token.user.firstName}} {{token.user.lastName}}</a>
+            <br>
+            {{token.text}}
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+</div>
 </div>

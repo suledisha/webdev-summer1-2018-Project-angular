@@ -16,13 +16,15 @@ export class BookDetailsComponent implements OnInit {
 
   _id = '-1';
   role = ' ';
+  reviews;
+  likes;
   bookId = '';
   reviewText = '';
   reviewTitle = '';
   book = {
     id: '',
-    volumeInfo : {
-      title : '',
+    volumeInfo: {
+      title: '',
       averageRating: '',
       description: '',
       publisher: '',
@@ -33,6 +35,7 @@ export class BookDetailsComponent implements OnInit {
       authors: []
     }
   };
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private userService: UserServiceClient,
@@ -60,25 +63,26 @@ export class BookDetailsComponent implements OnInit {
   likeBook(id, title) {
     if (this._id === '-1') {
       alert('Please Login/Register up to like');
-        this.router.navigate(['login']);
+      this.router.navigate(['login']);
     } else {
-    this.bookService.findBookByCredential(id)
-      .then(book => {
-        if (book._id === '-1') {
-          this.bookService.createBook(id, title)
-            .then(newbook => {
-              this.likeService.userLikesBook(newbook._id);
-            }).then((like) => {
-            this.router.navigate(['profile']);
-          });
-        } else {
-          this.likeService.userLikesBook(book._id)
-            .then((like) => {
-      this.router.navigate(['profile']);
-    });
-        }
-      });
-  }}
+      this.bookService.findBookByCredential(id)
+        .then(book => {
+          if (book._id === '-1') {
+            this.bookService.createBook(id, title)
+              .then(newbook => {
+                this.likeService.userLikesBook(newbook._id);
+              }).then((like) => {
+              this.router.navigate(['profile']);
+            });
+          } else {
+            this.likeService.userLikesBook(book._id)
+              .then((like) => {
+                this.router.navigate(['profile']);
+              });
+          }
+        });
+    }
+  }
 
   submitReview(id, title) {
     if (this._id === '-1') {
@@ -86,28 +90,38 @@ export class BookDetailsComponent implements OnInit {
       this.router.navigate(['login']);
     } else {
       this.bookService.findBookByCredential(id)
-      .then(book => {
-        if (book._id === '-1') {
-          this.bookService.createBook(id, title)
-            .then(newbook => {
-              this.reviewService.userReviewsBook(newbook._id, this.reviewTitle, this.reviewText)
-                .then((review) => {
-                  this.router.navigate(['profile']);
-                });
-            });
-        } else {
-          this.reviewService.userReviewsBook(book._id, this.reviewTitle, this.reviewText)
-            .then((review) => {
-              this.router.navigate(['profile']);
-            });
-        }
-      });
-  }}
+        .then(book => {
+          if (book._id === '-1') {
+            this.bookService.createBook(id, title)
+              .then(newbook => {
+                this.reviewService.userReviewsBook(newbook._id, this.reviewTitle, this.reviewText)
+                  .then((review) => {
+                    this.router.navigate(['profile']);
+                  });
+              });
+          } else {
+            this.reviewService.userReviewsBook(book._id, this.reviewTitle, this.reviewText)
+              .then((review) => {
+                this.router.navigate(['profile']);
+              });
+          }
+        });
+    }
+  }
 
 
   loadBook(bookId) {
     this.bookId = bookId;
     this.service.findBookById(bookId)
       .then(book => this.book = book);
+    this.bookService.findBookByCredential(this.bookId)
+      .then(book => {
+        if (book._id !== '-1') {
+          this.reviewService.findReviewsForBook(book._id)
+            .then(reviews => this.reviews = reviews);
+          this.likeService.findLikesForBooks(book._id)
+            .then(likes => this.likes = likes.count);
+        }
+      });
   }
 }

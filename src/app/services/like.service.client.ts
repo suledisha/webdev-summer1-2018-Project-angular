@@ -32,4 +32,11 @@ export class LikeServiceClient {
       credentials: 'include'
     });
   }
+
+  findLikesForBooks(bookId) {
+    const url = this.BOOK_URL + '/' + bookId + '/likes';
+    return fetch(url, {
+      credentials: 'include'
+    }).then(response => response.json());
+  }
 }
