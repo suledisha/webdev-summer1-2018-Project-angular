@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
   likedBooks = [];
   reviews = [];
   following = [];
+  followedby = [];
 
 
   logout() {
@@ -102,6 +103,10 @@ export class ProfileComponent implements OnInit {
         .then(reviews => this.reviews = reviews);
       this.followService.findAllFollowing()
         .then(following => this.following = following);
+      this.followService.findAllFollowedBy()
+        .then(followedby => this.followedby = followedby);
+
+      console.log(this.followedby);
     }
   }
 

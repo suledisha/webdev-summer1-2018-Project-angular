@@ -22,6 +22,7 @@ export class PublicProfileComponent implements OnInit {
   books = [];
   reviews = [];
   following = [];
+  followedby = [];
 
   constructor( private route: ActivatedRoute,
                private router: Router,
@@ -48,6 +49,8 @@ export class PublicProfileComponent implements OnInit {
             .then(reviews => this.reviews = reviews );
           this.publicProfileService.findFollowingUserById(user._id)
             .then(following => this.following = following );
+          this.publicProfileService.findFollowedByUserById(user._id)
+            .then(followedby => this.followedby = followedby );
         }
       });
 

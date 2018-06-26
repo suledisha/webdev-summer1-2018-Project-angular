@@ -858,7 +858,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n\n\n    <br>\n    <br>\n  <h2 align=\"center\">Book Details</h2>\n  <h3  align=\"center\">{{book.volumeInfo.title}}</h3>\n  <div  align=\"center\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div  align=\"center\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4  align=\"center\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4  align=\"center\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img  align=\"center\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <br>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n  </div>\n  <div class=\"container-fluid\">\n  <h3>Plot</h3>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button\n      (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n\n\n    <br>\n    <br>\n\n    <div class=\"row\">\n      <div class=\"col-sm-3\">\n        <img  height=\"250px\" width=\"250px\" align=\"left\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n      </div>\n\n      <div class=\"col-sm-9\">\n      <h3  align=\"left\">{{book.volumeInfo.title}}</h3>\n      <div  align=\"left\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n      <div  align=\"left\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n      <h4  align=\"left\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n      <h4  align=\"left\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n      <h4  align=\"left\">Likes by BookMarkers: {{likes}}</h4>\n      </div>\n      </div>\n    </div>\n\n\n  <div class=\"container-fluid\">\n  <br><br>\n  <h3>Summary</h3>\n  <br>\n    <p [innerHTML]=\"book.volumeInfo.description\"></p>\n    <br>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n    <br>\n  </div>\n\n\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <textarea [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n              class=\"form-control\"></textarea>\n    <br>\n    <button\n      (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n    <div class=\"col-sm-6\">\n      <h4>Reviews by Bookmarkers</h4>\n      <div *ngFor=\"let token of reviews\">\n        <ul class=\"list-group\">\n          <li class=\"list-group-item\">\n            {{token.title}} - <a routerLink=\"/user/{{token.user._id}}\">{{token.user.firstName}} {{token.user.lastName}}</a>\n            <br>\n            {{token.text}}\n          </li>\n        </ul>\n      </div>\n    </div>\n</div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -905,6 +905,8 @@ var BookDetailsComponent = /** @class */ (function () {
         this.bookService = bookService;
         this.likeService = likeService;
         this.reviewService = reviewService;
+        this._id = '-1';
+        this.role = ' ';
         this.bookId = '';
         this.reviewText = '';
         this.reviewTitle = '';
@@ -934,11 +936,8 @@ var BookDetailsComponent = /** @class */ (function () {
                 _this.role = user.role;
                 console.log(user._id);
             }
-            else {
-                _this._id = '-1';
-                _this.role = '';
-            }
         });
+        console.log(this._id, this.role);
     };
     BookDetailsComponent.prototype.likeBook = function (id, title) {
         var _this = this;
@@ -998,6 +997,15 @@ var BookDetailsComponent = /** @class */ (function () {
         this.bookId = bookId;
         this.service.findBookById(bookId)
             .then(function (book) { return _this.book = book; });
+        this.bookService.findBookByCredential(this.bookId)
+            .then(function (book) {
+            if (book._id !== '-1') {
+                _this.reviewService.findReviewsForBook(book._id)
+                    .then(function (reviews) { return _this.reviews = reviews; });
+                _this.likeService.findLikesForBooks(book._id)
+                    .then(function (likes) { return _this.likes = likes.count; });
+            }
+        });
     };
     BookDetailsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1490,6 +1498,8 @@ var PublicProfileComponent = /** @class */ (function () {
         this.publicProfileService = publicProfileService;
         this.reviewService = reviewService;
         this.followService = followService;
+        this._id = '-1';
+        this.role = '';
         this.books = [];
         this.reviews = [];
         this.following = [];
@@ -1518,10 +1528,16 @@ var PublicProfileComponent = /** @class */ (function () {
     };
     PublicProfileComponent.prototype.followUser = function () {
         var _this = this;
-        this.followService.userfollowsUser(this.userId)
-            .then(function (follows) {
-            _this.router.navigate(['profile']);
-        });
+        if (this._id === '-1') {
+            alert('Please Login/Register up to follow');
+            this.router.navigate(['login']);
+        }
+        else {
+            this.followService.userfollowsUser(this.userId)
+                .then(function (follows) {
+                _this.router.navigate(['profile']);
+            });
+        }
     };
     PublicProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1532,10 +1548,6 @@ var PublicProfileComponent = /** @class */ (function () {
                 _this._id = user._id;
                 _this.role = user.role;
                 console.log(user._id);
-            }
-            else {
-                _this._id = -1;
-                _this.role = '';
             }
         });
     };
@@ -1930,7 +1942,7 @@ var BookServiceClient = /** @class */ (function () {
         var credentials = {
             id: id
         };
-        return fetch(this.URL + '/id', {
+        return fetch(this.BOOKURL + '/id', {
             method: 'post',
             body: JSON.stringify(credentials),
             credentials: 'include',
@@ -2031,6 +2043,12 @@ var LikeServiceClient = /** @class */ (function () {
             credentials: 'include'
         });
     };
+    LikeServiceClient.prototype.findLikesForBooks = function (bookId) {
+        var url = this.BOOK_URL + '/' + bookId + '/likes';
+        return fetch(url, {
+            credentials: 'include'
+        }).then(function (response) { return response.json(); });
+    };
     return LikeServiceClient;
 }());
 
@@ -2117,6 +2135,13 @@ var ReviewServiceClient = /** @class */ (function () {
     };
     ReviewServiceClient.prototype.findReviewsForUser = function () {
         return fetch(this.USER_URL, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    ReviewServiceClient.prototype.findReviewsForBook = function (bookId) {
+        var url = this.BOOK_URL + '/' + bookId + '/reviews';
+        return fetch(url, {
             credentials: 'include'
         })
             .then(function (response) { return response.json(); });

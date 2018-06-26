@@ -61,6 +61,15 @@
     </ul>
   </div>
 
+    <h2>Followed By :{{followedby.length}}</h2>
+    <div *ngFor="let token of followedby">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a routerLink="/user/{{token.follower._id}}">   {{token.follower.firstName}}  {{token.follower.lastName}}</a>
+        </li>
+      </ul>
+    </div>
+
   <br>
   <button class="btn btn-success" (click)="logout()">Logout</button>
   &nbsp; &nbsp;
