@@ -32,10 +32,24 @@ export class BookServiceClient {
   }
 
   deleteBookById(bookId) {
-    return fetch(this.BOOKURL + '/' + bookId + '/delete',{
+    return fetch(this.BOOKURL + '/' + bookId + '/delete', {
       credentials: 'include', // include, same-origin, *omit
       method: 'delete',
     }).then(response => response.json());
+  }
+
+  findBookByCredential(id) {
+    const credentials = {
+      id: id
+    };
+    return fetch(this.BOOKURL + '/id', {
+      method: 'post',
+      body: JSON.stringify(credentials),
+      credentials: 'include', // include, same-origin, *omit
+      headers: {
+        'content-type': 'application/json'
+      }
+    }) .then(response => response.json());
   }
 }
 

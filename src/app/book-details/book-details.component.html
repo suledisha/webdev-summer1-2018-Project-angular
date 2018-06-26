@@ -22,7 +22,7 @@
   <h4  align="center">Reader Rating: {{book.volumeInfo.averageRating}}</h4>
   <img  align="center" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
     <br>
-    <button *ngIf="role === ''"class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
+    <button class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
     <small class="form-text text-muted">Login/Register to like</small>
   </div>
   <div class="container-fluid">
@@ -42,7 +42,7 @@
            placeholder="Details"
            class="form-control"/>
     <br>
-    <button *ngIf="role === ''"
+    <button
       (click)="this.submitReview(book.id,book.volumeInfo.title)"
       class="btn btn-success">Submit Review!</button>
   </div>

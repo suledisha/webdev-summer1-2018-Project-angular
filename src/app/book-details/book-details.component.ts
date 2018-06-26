@@ -14,8 +14,8 @@ import {User} from '../models/user.model.client';
 })
 export class BookDetailsComponent implements OnInit {
 
-  _id;
-  role;
+  _id = '-1';
+  role = ' ';
   bookId = '';
   reviewText = '';
   reviewTitle = '';
@@ -51,34 +51,58 @@ export class BookDetailsComponent implements OnInit {
           this._id = user._id;
           this.role = user.role;
           console.log(user._id);
-        } else {
-          this._id = '-1';
-          this.role = '';
         }
 
       });
-
+    console.log(this._id, this.role);
   }
 
   likeBook(id, title) {
-    this.bookService.createBook(id, title)
+    if (this._id === '-1') {
+      alert('Please Login/Register up to like');
+        this.router.navigate(['login']);
+    } else {
+    this.bookService.findBookByCredential(id)
       .then(book => {
-        this.likeService.userLikesBook(book._id);
-      }).then((like) => {
-      this.router.navigate(['profile']);
-    });
-  }
-
-  submitReview(id, title) {
-
-    this.bookService.createBook(id, title)
-      .then(book => {
-        this.reviewService.userReviewsBook(book._id, this.reviewTitle, this.reviewText)
-          .then((review) => {
+        if (book._id === '-1') {
+          this.bookService.createBook(id, title)
+            .then(newbook => {
+              this.likeService.userLikesBook(newbook._id);
+            }).then((like) => {
             this.router.navigate(['profile']);
           });
+        } else {
+          this.likeService.userLikesBook(book._id)
+            .then((like) => {
+      this.router.navigate(['profile']);
+    });
+        }
       });
-  }
+  }}
+
+  submitReview(id, title) {
+    if (this._id === '-1') {
+      alert('Please Login/Register up to review');
+      this.router.navigate(['login']);
+    } else {
+      this.bookService.findBookByCredential(id)
+      .then(book => {
+        if (book._id === '-1') {
+          this.bookService.createBook(id, title)
+            .then(newbook => {
+              this.reviewService.userReviewsBook(newbook._id, this.reviewTitle, this.reviewText)
+                .then((review) => {
+                  this.router.navigate(['profile']);
+                });
+            });
+        } else {
+          this.reviewService.userReviewsBook(book._id, this.reviewTitle, this.reviewText)
+            .then((review) => {
+              this.router.navigate(['profile']);
+            });
+        }
+      });
+  }}
 
 
   loadBook(bookId) {

@@ -15,8 +15,8 @@ import {FollowServiceClient} from '../services/follow.service.client';
 })
 export class PublicProfileComponent implements OnInit {
 
-  _id;
-  role;
+  _id = '-1';
+  role = '';
   userId: '';
   user: User;
   books = [];
@@ -53,10 +53,15 @@ export class PublicProfileComponent implements OnInit {
 
   }
   followUser() {
-    this.followService.userfollowsUser(this.userId)
-      .then((follows) => {
-        this.router.navigate(['profile']);
-      });
+    if (this._id === '-1') {
+      alert('Please Login/Register up to follow');
+      this.router.navigate(['login']);
+    } else {
+      this.followService.userfollowsUser(this.userId)
+        .then((follows) => {
+          this.router.navigate(['profile']);
+        });
+    }
   }
   ngOnInit() {
     this.service
@@ -66,11 +71,7 @@ export class PublicProfileComponent implements OnInit {
           this._id = user._id;
           this.role = user.role;
           console.log(user._id);
-        } else {
-          this._id = -1;
-          this.role = '';
         }
-
       });
   }
 

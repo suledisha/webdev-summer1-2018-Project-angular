@@ -107,7 +107,7 @@ var AdminBookListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.8;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -118,7 +118,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Admin Page</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/bookList\">Book List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/reviewList\">Review List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/userList\">User List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Admin Page</h1>\n\n  <input [(ngModel)]=\"username\"\n         readonly\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/bookList\">Book List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/reviewList\">Review List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/userList\">User List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -295,7 +295,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/admin-page\">Admin page</a>\n    <br>\n    <br>\n    <table class=\"table\">\n      <thead>\n      <tr>\n        <th>Username</th>\n        <th>Password</th>\n        <th>First Name</th>\n        <th>Last Name</th>\n        <th>Role</th>\n        <th>&nbsp;</th>\n      </tr>\n      <tr>\n        <td><input [(ngModel)]=\"username\"\n                         placeholder=\"username\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"password\"\n                         placeholder=\"password\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"firstName\"\n                         placeholder=\"First Name\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"lastName\"\n                         placeholder=\"Last Name\"\n                         class=\"form-control\"/></td>\n        <td><select  [(ngModel)]=\"role\" class=\"form-control\">\n          <option value=\"reader\" selected>reader</option>\n          <option value=\"author\">author</option>\n        </select></td>\n        <td><button (click)=\"add()\" class=\"btn btn-success\">Add</button> &nbsp;  &nbsp;\n          <button (click)=\"update()\" class=\"btn btn-success\">Update</button></td>\n      </tr>\n\n      </thead>\n      <tbody>\n    <tr *ngFor=\"let user of users\">\n      <td *ngIf=\"user.username!=='admin'\">{{user.username}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{\"**********\"}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.firstName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.lastName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.role}}</td>\n      <td *ngIf=\"user.username!=='admin'\"><button (click)=\"setuser(user)\" class=\"btn btn-primary\">Edit</button>\n        &nbsp;  &nbsp;\n      <button (click)=\"remove(user._id)\"\n                   class=\"btn btn-danger\">Remove</button></td>\n    </tr>\n    </tbody>\n</table>\n</div>\n  </div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/admin-page\">Admin page</a>\n    <br>\n    <br>\n    <table class=\"table\">\n      <thead>\n      <tr>\n        <th>Username</th>\n        <th>Password</th>\n        <th>First Name</th>\n        <th>Last Name</th>\n        <th>Role</th>\n        <th>&nbsp;</th>\n      </tr>\n      <tr>\n        <td><input [(ngModel)]=\"username\"\n                         placeholder=\"username\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"password\"\n                          type=\"password\"\n                         placeholder=\"password\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"firstName\"\n                         placeholder=\"First Name\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"lastName\"\n                         placeholder=\"Last Name\"\n                         class=\"form-control\"/></td>\n        <td><select  [(ngModel)]=\"role\" class=\"form-control\">\n          <option value=\"reader\" selected>reader</option>\n          <option value=\"author\">author</option>\n        </select></td>\n        <td><button (click)=\"add()\" class=\"btn btn-success\">Add</button> &nbsp;  &nbsp;\n          <button (click)=\"update()\" class=\"btn btn-success\">Update</button></td>\n      </tr>\n\n      </thead>\n      <tbody>\n    <tr *ngFor=\"let user of users\">\n      <td *ngIf=\"user.username!=='admin'\">{{user.username}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{\"**********\"}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.firstName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.lastName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.role}}</td>\n      <td *ngIf=\"user.username!=='admin'\"><button (click)=\"setuser(user)\" class=\"btn btn-primary\">Edit</button>\n        &nbsp;  &nbsp;\n      <button (click)=\"remove(user._id)\"\n                   class=\"btn btn-danger\">Remove</button></td>\n    </tr>\n    </tbody>\n</table>\n</div>\n  </div>\n"
 
 /***/ }),
 
@@ -745,7 +745,7 @@ var AuthorBookListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.8;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -756,7 +756,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"bio\"\n         placeholder=\"Bio\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"snippet\"\n         placeholder=\"Featured Snippet\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/author-book-list\">My Books</a>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         readonly\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"bio\"\n         placeholder=\"Bio\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"snippet\"\n         placeholder=\"Featured Snippet\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/author-book-list\">My Books</a>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -858,7 +858,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n\n\n    <br>\n    <br>\n  <h2 align=\"center\">Book Details</h2>\n  <h3  align=\"center\">{{book.volumeInfo.title}}</h3>\n  <div  align=\"center\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div  align=\"center\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4  align=\"center\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4  align=\"center\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img  align=\"center\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <br>\n    <button *ngIf=\"role === ''\"class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n  </div>\n  <div class=\"container-fluid\">\n  <h3>Plot</h3>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button *ngIf=\"role === ''\"\n      (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n\n\n    <br>\n    <br>\n  <h2 align=\"center\">Book Details</h2>\n  <h3  align=\"center\">{{book.volumeInfo.title}}</h3>\n  <div  align=\"center\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div  align=\"center\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4  align=\"center\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4  align=\"center\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img  align=\"center\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <br>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n  </div>\n  <div class=\"container-fluid\">\n  <h3>Plot</h3>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button\n      (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -942,22 +942,56 @@ var BookDetailsComponent = /** @class */ (function () {
     };
     BookDetailsComponent.prototype.likeBook = function (id, title) {
         var _this = this;
-        this.bookService.createBook(id, title)
-            .then(function (book) {
-            _this.likeService.userLikesBook(book._id);
-        }).then(function (like) {
-            _this.router.navigate(['profile']);
-        });
+        if (this._id === '-1') {
+            alert('Please Login/Register up to like');
+            this.router.navigate(['login']);
+        }
+        else {
+            this.bookService.findBookByCredential(id)
+                .then(function (book) {
+                if (book._id === '-1') {
+                    _this.bookService.createBook(id, title)
+                        .then(function (newbook) {
+                        _this.likeService.userLikesBook(newbook._id);
+                    }).then(function (like) {
+                        _this.router.navigate(['profile']);
+                    });
+                }
+                else {
+                    _this.likeService.userLikesBook(book._id)
+                        .then(function (like) {
+                        _this.router.navigate(['profile']);
+                    });
+                }
+            });
+        }
     };
     BookDetailsComponent.prototype.submitReview = function (id, title) {
         var _this = this;
-        this.bookService.createBook(id, title)
-            .then(function (book) {
-            _this.reviewService.userReviewsBook(book._id, _this.reviewTitle, _this.reviewText)
-                .then(function (review) {
-                _this.router.navigate(['profile']);
+        if (this._id === '-1') {
+            alert('Please Login/Register up to review');
+            this.router.navigate(['login']);
+        }
+        else {
+            this.bookService.findBookByCredential(id)
+                .then(function (book) {
+                if (book._id === '-1') {
+                    _this.bookService.createBook(id, title)
+                        .then(function (newbook) {
+                        _this.reviewService.userReviewsBook(newbook._id, _this.reviewTitle, _this.reviewText)
+                            .then(function (review) {
+                            _this.router.navigate(['profile']);
+                        });
+                    });
+                }
+                else {
+                    _this.reviewService.userReviewsBook(book._id, _this.reviewTitle, _this.reviewText)
+                        .then(function (review) {
+                        _this.router.navigate(['profile']);
+                    });
+                }
             });
-        });
+        }
     };
     BookDetailsComponent.prototype.loadBook = function (bookId) {
         var _this = this;
@@ -1174,7 +1208,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background: url
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n<div class=\"jumbotron\" align=\"center\">\n  <h1>Login</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"login(username, password)\"\n          class=\"btn btn-primary btn-block\">\n    Login\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/register\">Register</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n<div class=\"jumbotron\" align=\"center\">\n  <h1>Login</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         type=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"login(username, password)\"\n          class=\"btn btn-primary btn-block\">\n    Login\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/register\">Register</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -1251,7 +1285,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.7;\r\n  font-size: medium;\r\n}\r\n"
+module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pexels.com/photos/1112048/pexels-photo-1112048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')\r\n  repeat center;\r\n  background-size: 100% 100%;\r\n  background-position: center;\r\n  position: absolute;top:0; left:0\r\n}\r\n.jumbotron{\r\n  opacity: 0.8;\r\n  font-size: medium;\r\n}\r\n"
 
 /***/ }),
 
@@ -1262,7 +1296,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n    <button (click)=\"unlike(token.book._id)\"\n      class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n  <br>\n  <h2>Reviews :{{reviews.length}}</h2>\n  <div *ngFor=\"let token of reviews\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n        <br>\n        {{token.title}}\n        <br>\n        {{token.text}}\n        <button (click)=\"removeReview(token.book._id)\"\n          class=\"float-right btn btn-danger\">remove</button>\n      </li>\n    </ul>\n  </div>\n<br>\n  <h2>Following :{{following.length}}</h2>\n  <div *ngFor=\"let token of following\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\n        <button (click)=\"unfollow(token.following._id)\"\n          class=\"float-right btn btn-danger\">unfollow</button>\n      </li>\n    </ul>\n  </div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/search\">Search</a>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         readonly\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n    <button (click)=\"unlike(token.book._id)\"\n      class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n  <br>\n  <h2>Reviews :{{reviews.length}}</h2>\n  <div *ngFor=\"let token of reviews\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n        <br>\n        {{token.title}}\n        <br>\n        {{token.text}}\n        <button (click)=\"removeReview(token.book._id)\"\n          class=\"float-right btn btn-danger\">remove</button>\n      </li>\n    </ul>\n  </div>\n<br>\n  <h2>Following :{{following.length}}</h2>\n  <div *ngFor=\"let token of following\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\n        <button (click)=\"unfollow(token.following._id)\"\n          class=\"float-right btn btn-danger\">unfollow</button>\n      </li>\n    </ul>\n  </div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/search\">Search</a>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -1543,7 +1577,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background: url
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\" align=\"center\">\n  <h1>Register</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password2\"\n         placeholder=\"verify password\"\n         class=\"form-control\"/>\n  <br>\n    <select  [(ngModel)]=\"role\" class=\"form-control\">\n      <option value=\"reader\" selected>reader</option>\n      <option value=\"author\">author</option>\n    </select>\n  <br>\n  <button (click)=\"register(username, password, password2, role)\"\n          class=\"btn btn-primary btn-block\">\n    Register\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/login\">Login</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\" align=\"center\">\n  <h1>Register</h1>\n  <br>\n  <input [(ngModel)]=\"username\"\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password\"\n         type=\"password\"\n         placeholder=\"password\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"password2\"\n         type=\"password\"\n         placeholder=\"verify password\"\n         class=\"form-control\"/>\n  <br>\n    <select  [(ngModel)]=\"role\" class=\"form-control\">\n      <option value=\"reader\" selected>reader</option>\n      <option value=\"author\">author</option>\n    </select>\n  <br>\n  <button (click)=\"register(username, password, password2, role)\"\n          class=\"btn btn-primary btn-block\">\n    Register\n  </button>\n  <div class=\"float-left\">\n    <a routerLink=\"/login\">Login</a>\n  </div>\n  <div class=\"float-right\">\n    <a routerLink=\"/home\">Home</a>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -1890,6 +1924,19 @@ var BookServiceClient = /** @class */ (function () {
         return fetch(this.BOOKURL + '/' + bookId + '/delete', {
             credentials: 'include',
             method: 'delete',
+        }).then(function (response) { return response.json(); });
+    };
+    BookServiceClient.prototype.findBookByCredential = function (id) {
+        var credentials = {
+            id: id
+        };
+        return fetch(this.URL + '/id', {
+            method: 'post',
+            body: JSON.stringify(credentials),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
         }).then(function (response) { return response.json(); });
     };
     return BookServiceClient;
