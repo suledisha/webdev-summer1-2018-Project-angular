@@ -4,6 +4,8 @@ import {BookDetailsServiceClient} from '../services/book-details.service.client'
 import {BookServiceClient} from '../services/book.service.client';
 import {LikeServiceClient} from '../services/like.service.client';
 import {ReviewServiceClient} from '../services/review.service.client';
+import {UserServiceClient} from '../services/user.service.client';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-book-details',
@@ -12,9 +14,11 @@ import {ReviewServiceClient} from '../services/review.service.client';
 })
 export class BookDetailsComponent implements OnInit {
 
+  _id;
+  role;
   bookId = '';
   reviewText = '';
-  reviewTitle ='';
+  reviewTitle = '';
   book = {
     id: '',
     volumeInfo : {
@@ -31,6 +35,7 @@ export class BookDetailsComponent implements OnInit {
   };
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private userService: UserServiceClient,
               private service: BookDetailsServiceClient,
               private bookService: BookServiceClient,
               private likeService: LikeServiceClient,
@@ -39,6 +44,20 @@ export class BookDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService
+      .profile()
+      .then(user => {
+        if (user !== null) {
+          this._id = user._id;
+          this.role = user.role;
+          console.log(user._id);
+        } else {
+          this._id = '-1';
+          this.role = '';
+        }
+
+      });
+
   }
 
   likeBook(id, title) {

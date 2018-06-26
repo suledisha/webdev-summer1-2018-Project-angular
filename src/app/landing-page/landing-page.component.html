@@ -1,7 +1,9 @@
 <div class="bg">
 
 <div class="jumbotron" align="center">
-  <a routerLink="/profile">Profile</a>
+  <a routerLink="/profile" *ngIf="role==='reader'" >Profile</a>
+  <a routerLink="/author-page" *ngIf="role==='author'">My Page</a>
+  <a routerLink="/admin-page" *ngIf="role==='admin'" >Admin-Page</a>
   &nbsp; &nbsp;
   <a routerLink="/search">Search</a>
   &nbsp; &nbsp;

@@ -858,7 +858,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    <br>\n    <br>\n  <h2 align=\"center\">Book Details</h2>\n  <h3  align=\"center\">{{book.volumeInfo.title}}</h3>\n  <div  align=\"center\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div  align=\"center\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4  align=\"center\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4  align=\"center\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img  align=\"center\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <br>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n  </div>\n  <div class=\"container-fluid\">\n  <h3>Plot</h3>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n\n\n    <br>\n    <br>\n  <h2 align=\"center\">Book Details</h2>\n  <h3  align=\"center\">{{book.volumeInfo.title}}</h3>\n  <div  align=\"center\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n  <div  align=\"center\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n  <h4  align=\"center\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n  <h4  align=\"center\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n  <img  align=\"center\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n    <br>\n    <button *ngIf=\"role === ''\"class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n  </div>\n  <div class=\"container-fluid\">\n  <h3>Plot</h3>\n  <h4>{{book.volumeInfo.description}}</h4>\n  </div>\n  <div class=\"container-fluid\">\n    <br>\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <input [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n           class=\"form-control\"/>\n    <br>\n    <button *ngIf=\"role === ''\"\n      (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -878,6 +878,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/book.service.client */ "./src/app/services/book.service.client.ts");
 /* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/like.service.client */ "./src/app/services/like.service.client.ts");
 /* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/review.service.client */ "./src/app/services/review.service.client.ts");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -893,11 +894,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var BookDetailsComponent = /** @class */ (function () {
-    function BookDetailsComponent(route, router, service, bookService, likeService, reviewService) {
+    function BookDetailsComponent(route, router, userService, service, bookService, likeService, reviewService) {
         var _this = this;
         this.route = route;
         this.router = router;
+        this.userService = userService;
         this.service = service;
         this.bookService = bookService;
         this.likeService = likeService;
@@ -922,6 +925,20 @@ var BookDetailsComponent = /** @class */ (function () {
         this.route.params.subscribe(function (params) { return _this.loadBook(params['bookId']); });
     }
     BookDetailsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.role = user.role;
+                console.log(user._id);
+            }
+            else {
+                _this._id = '-1';
+                _this.role = '';
+            }
+        });
     };
     BookDetailsComponent.prototype.likeBook = function (id, title) {
         var _this = this;
@@ -956,6 +973,7 @@ var BookDetailsComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _services_user_service_client__WEBPACK_IMPORTED_MODULE_6__["UserServiceClient"],
             _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__["BookDetailsServiceClient"],
             _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__["BookServiceClient"],
             _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__["LikeServiceClient"],
@@ -986,7 +1004,7 @@ module.exports = "\r\n.bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\r\n<div class=\"jumbotron\">\r\n  <a routerLink=\"/profile\">Profile</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/search\">Search</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/login\">Login</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/register\">Register</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/home\">Home</a>\r\n  <br>\r\n  <br>\r\n<h1> Welcome to the Bookmarked community!!</h1>\r\n<div class=\"row\">\r\n  <div class=\"col-sm-4\">\r\n    <h3>Featured Books</h3>\r\n    <div *ngFor=\"let book of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{book.id}}\"> {{book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-4\">\r\n    <h3>Avid Readers</h3>\r\n    <div *ngFor=\"let user of readers\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{user._id}}\"> {{user.firstName}}  {{user.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-4\">\r\n    <h3>Favorite Authors</h3>\r\n    <div *ngFor=\"let user of authors\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{user._id}}\"> {{user.firstName}}  {{user.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+module.exports = "<div class=\"bg\">\r\n<div class=\"jumbotron\">\r\n  <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\r\n  <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\r\n  <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/search\">Search</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/login\">Login</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/register\">Register</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/home\">Home</a>\r\n  <br>\r\n  <br>\r\n<h1> Welcome to the Bookmarked community!!</h1>\r\n<div class=\"row\">\r\n  <div class=\"col-sm-4\">\r\n    <h3>Featured Books</h3>\r\n    <div *ngFor=\"let book of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{book.id}}\"> {{book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-4\">\r\n    <h3>Avid Readers</h3>\r\n    <div *ngFor=\"let user of readers\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{user._id}}\"> {{user.firstName}}  {{user.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-sm-4\">\r\n    <h3>Favorite Authors</h3>\r\n    <div *ngFor=\"let user of authors\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{user._id}}\"> {{user.firstName}}  {{user.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1022,6 +1040,19 @@ var CommunityPageComponent = /** @class */ (function () {
     }
     CommunityPageComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.userservice
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.role = user.role;
+                console.log(user._id);
+            }
+            else {
+                _this._id = -1;
+                _this.role = '';
+            }
+        });
         this.bookservice.findAllBooks()
             .then(function (books) { return _this.books = books; });
         this.userservice.findAllAuthors()
@@ -1063,7 +1094,7 @@ module.exports = "\r\n.bg{\r\n  width: 100%;\r\n  height: 100%;\r\n  background:
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\r\n\r\n<div class=\"jumbotron\" align=\"center\">\r\n  <a routerLink=\"/profile\">Profile</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/search\">Search</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/community\">Bookmarked Community</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/login\">Login</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/register\">Register</a>\r\n  <br>\r\n  <br>\r\n  <h1>Welcome to Bookmarked</h1>\r\n  <br>\r\n  <h2>Portal for Avid Readers and Budding Authors!</h2>\r\n  <br>\r\n  <br>\r\n  <br>\r\n  <h3 align=\"center\">\r\n    \"Books are a uniquely portable magic!\" -  Stephen King\r\n  </h3>\r\n  </div>\r\n\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"bg\">\r\n\r\n<div class=\"jumbotron\" align=\"center\">\r\n  <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\r\n  <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\r\n  <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/search\">Search</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/community\">Bookmarked Community</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/login\">Login</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/register\">Register</a>\r\n  <br>\r\n  <br>\r\n  <h1>Welcome to Bookmarked</h1>\r\n  <br>\r\n  <h2>Portal for Avid Readers and Budding Authors!</h2>\r\n  <br>\r\n  <br>\r\n  <br>\r\n  <h3 align=\"center\">\r\n    \"Books are a uniquely portable magic!\" -  Stephen King\r\n  </h3>\r\n  </div>\r\n\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -1078,6 +1109,7 @@ module.exports = "<div class=\"bg\">\r\n\r\n<div class=\"jumbotron\" align=\"cen
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingPageComponent", function() { return LandingPageComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1088,10 +1120,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var LandingPageComponent = /** @class */ (function () {
-    function LandingPageComponent() {
+    function LandingPageComponent(userService) {
+        this.userService = userService;
     }
     LandingPageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.role = user.role;
+                console.log(user._id);
+            }
+            else {
+                _this._id = -1;
+                _this.role = '';
+            }
+        });
     };
     LandingPageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1099,7 +1147,7 @@ var LandingPageComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./landing-page.component.html */ "./src/app/landing-page/landing-page.component.html"),
             styles: [__webpack_require__(/*! ./landing-page.component.css */ "./src/app/landing-page/landing-page.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"]])
     ], LandingPageComponent);
     return LandingPageComponent;
 }());
@@ -1364,7 +1412,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/search\">Search</a>\r\n    <br>\r\n    <br>\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <h2>Reviews :{{reviews.length}}</h2>\r\n    <div *ngFor=\"let token of reviews\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n          <br>\r\n          {{token.title}}\r\n          <br>\r\n          {{token.text}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <h2>Following :{{following.length}}</h2>\r\n  <div *ngFor=\"let token of following\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <br>\r\n  <button (click)=\"followUser()\"\r\n    class=\"btn btn-primary\">Follow</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\r\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\r\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/search\">Search</a>\r\n    &nbsp; &nbsp;\r\n\r\n\r\n    <br>\r\n    <br>\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <h2>Reviews :{{reviews.length}}</h2>\r\n    <div *ngFor=\"let token of reviews\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n          <br>\r\n          {{token.title}}\r\n          <br>\r\n          {{token.text}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <h2>Following :{{following.length}}</h2>\r\n  <div *ngFor=\"let token of following\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <br>\r\n  <button *ngIf=\"role === ''\"\r\n    (click)=\"followUser()\"\r\n    class=\"btn btn-primary\">Follow</button>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1442,6 +1490,20 @@ var PublicProfileComponent = /** @class */ (function () {
         });
     };
     PublicProfileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.role = user.role;
+                console.log(user._id);
+            }
+            else {
+                _this._id = -1;
+                _this.role = '';
+            }
+        });
     };
     PublicProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1579,7 +1641,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron\">\n  <a routerLink=\"/profile\">Profile</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/login\">Login</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/register\">Register</a>\n  <br>\n  <br>\n  <div class=\"container-fluid\">\n\n    <div>\n      <input [(ngModel)]=\"title\" class=\"form-control\" placeholder=\"Title\" >\n      <small class=\"form-text text-muted\">Please enter atleast one word of the title of the book</small>\n    </div>\n\n    <div>\n      <input [(ngModel)]=\"author\" class=\"form-control\" placeholder=\"Author\" >\n      <small class=\"form-text text-muted\">Optional: Enter the author name to enhance search</small>\n    </div>\n\n    <button\n      class=\"btn btn-success btn-block\"\n      (click)=\"findBook(title, author)\">\n      Find Book!\n    </button>\n\n  </div>\n  <br/>\n  <br/>\n<ul class=\"list-group\">\n  <li class=\"list-group-item\" *ngFor=\"let book of books\">\n    <div>\n      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/> &nbsp; &nbsp;\n      <a routerLink=\"/book/{{book.id}}\"> {{book.volumeInfo.title}}</a>\n    </div>\n  </li>\n\n</ul>\n</div>\n"
+module.exports = "<div class=\"jumbotron\">\n  <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n  <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n  <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/login\">Login</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/register\">Register</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  <br>\n  <br>\n  <div class=\"container-fluid\">\n\n    <div>\n      <input [(ngModel)]=\"title\" class=\"form-control\" placeholder=\"Title\" >\n      <small class=\"form-text text-muted\">Please enter atleast one word of the title of the book</small>\n    </div>\n\n    <div>\n      <input [(ngModel)]=\"author\" class=\"form-control\" placeholder=\"Author\" >\n      <small class=\"form-text text-muted\">Optional: Enter the author name to enhance search</small>\n    </div>\n\n    <button\n      class=\"btn btn-success btn-block\"\n      (click)=\"findBook(title, author)\">\n      Find Book!\n    </button>\n\n  </div>\n  <br/>\n  <br/>\n<ul class=\"list-group\">\n  <li class=\"list-group-item\" *ngFor=\"let book of books\">\n    <div>\n      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/> &nbsp; &nbsp;\n      <a routerLink=\"/book/{{book.id}}\"> {{book.volumeInfo.title}}</a>\n    </div>\n  </li>\n\n</ul>\n</div>\n"
 
 /***/ }),
 
@@ -1595,6 +1657,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchPageComponent", function() { return SearchPageComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_search_page_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/search-page.service.client */ "./src/app/services/search-page.service.client.ts");
+/* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1606,12 +1669,28 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var SearchPageComponent = /** @class */ (function () {
-    function SearchPageComponent(service) {
+    function SearchPageComponent(service, userService) {
         this.service = service;
+        this.userService = userService;
         this.books = [];
     }
     SearchPageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService
+            .profile()
+            .then(function (user) {
+            if (user !== null) {
+                _this._id = user._id;
+                _this.role = user.role;
+                console.log(user._id);
+            }
+            else {
+                _this._id = -1;
+                _this.role = '';
+            }
+        });
     };
     SearchPageComponent.prototype.findBook = function (title, author) {
         var _this = this;
@@ -1626,7 +1705,8 @@ var SearchPageComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search-page.component.html */ "./src/app/search-page/search-page.component.html"),
             styles: [__webpack_require__(/*! ./search-page.component.css */ "./src/app/search-page/search-page.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_search_page_service_client__WEBPACK_IMPORTED_MODULE_1__["SearchPageServiceClient"]])
+        __metadata("design:paramtypes", [_services_search_page_service_client__WEBPACK_IMPORTED_MODULE_1__["SearchPageServiceClient"],
+            _services_user_service_client__WEBPACK_IMPORTED_MODULE_2__["UserServiceClient"]])
     ], SearchPageComponent);
     return SearchPageComponent;
 }());
@@ -2104,6 +2184,22 @@ var UserServiceClient = /** @class */ (function () {
             credentials: 'include',
         })
             .then(function (response) { return response.json(); });
+    };
+    UserServiceClient.prototype.loggedIn = function () {
+        var noUser = {
+            _id: -1,
+            role: ''
+        };
+        return fetch(this.URL + '/api/profile', {
+            credentials: 'include',
+        }).then(function (response) {
+            if (response.json() === null) {
+                return noUser;
+            }
+            else {
+                return response.json();
+            }
+        });
     };
     UserServiceClient.prototype.login = function (username, password) {
         var credentials = {

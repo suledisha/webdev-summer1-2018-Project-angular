@@ -28,7 +28,7 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
-  deleteUserById(userId){
+  deleteUserById(userId) {
     return fetch(this.URL + '/api/user/' + userId, {
       method: 'delete'
     }).then(response => response.json());
@@ -54,6 +54,24 @@ export class UserServiceClient {
         credentials: 'include', // include, same-origin, *omit
       })
       .then(response => response.json());
+  }
+
+  loggedIn() {
+    const noUser = {
+      _id: -1,
+      role: ''
+    };
+    return fetch(this.URL + '/api/profile',
+      {
+        credentials: 'include', // include, same-origin, *omit
+      }).then(response => {
+        if (response.json() === null) {
+          return noUser;
+
+        } else {
+          return response.json();
+        }
+    });
   }
   login(username, password) {
     const credentials = {

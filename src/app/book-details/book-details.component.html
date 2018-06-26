@@ -1,10 +1,17 @@
 <div class="bg">
   <div class="jumbotron">
+    <a routerLink="/profile" *ngIf="role==='reader'" >Profile</a>
+    <a routerLink="/author-page" *ngIf="role==='author'">My Page</a>
+    <a routerLink="/admin-page" *ngIf="role==='admin'" >Admin-Page</a>
+    &nbsp; &nbsp;
     <a routerLink="/community">Bookmarked Community</a>
     &nbsp; &nbsp;
     <a routerLink="/home">Home</a>
     &nbsp; &nbsp;
     <a routerLink="/search">Search</a>
+    &nbsp; &nbsp;
+
+
     <br>
     <br>
   <h2 align="center">Book Details</h2>
@@ -15,7 +22,7 @@
   <h4  align="center">Reader Rating: {{book.volumeInfo.averageRating}}</h4>
   <img  align="center" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>
     <br>
-    <button class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
+    <button *ngIf="role === ''"class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
     <small class="form-text text-muted">Login/Register to like</small>
   </div>
   <div class="container-fluid">
@@ -35,7 +42,8 @@
            placeholder="Details"
            class="form-control"/>
     <br>
-    <button (click)="this.submitReview(book.id,book.volumeInfo.title)"
+    <button *ngIf="role === ''"
+      (click)="this.submitReview(book.id,book.volumeInfo.title)"
       class="btn btn-success">Submit Review!</button>
   </div>
   </div>

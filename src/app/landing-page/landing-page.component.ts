@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  _id;
+  role;
+
+  constructor( private userService: UserServiceClient) { }
 
   ngOnInit() {
+    this.userService
+      .profile()
+      .then(user => {
+        if (user !== null) {
+          this._id = user._id;
+          this.role = user.role;
+          console.log(user._id);
+        } else {
+          this._id = -1;
+          this.role = '';
+        }
+
+      });
   }
 
 }

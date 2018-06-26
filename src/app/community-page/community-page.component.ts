@@ -14,8 +14,23 @@ export class CommunityPageComponent implements OnInit {
   books;
   authors;
   readers;
+  _id;
+  role;
 
   ngOnInit() {
+    this.userservice
+      .profile()
+      .then(user => {
+        if (user !== null) {
+          this._id = user._id;
+          this.role = user.role;
+          console.log(user._id);
+        } else {
+          this._id = -1;
+          this.role = '';
+        }
+
+      });
     this.bookservice.findAllBooks()
       .then(books => this.books = books);
     this.userservice.findAllAuthors()

@@ -15,6 +15,8 @@ import {FollowServiceClient} from '../services/follow.service.client';
 })
 export class PublicProfileComponent implements OnInit {
 
+  _id;
+  role;
   userId: '';
   user: User;
   books = [];
@@ -57,6 +59,19 @@ export class PublicProfileComponent implements OnInit {
       });
   }
   ngOnInit() {
+    this.service
+      .profile()
+      .then(user => {
+        if (user !== null) {
+          this._id = user._id;
+          this.role = user.role;
+          console.log(user._id);
+        } else {
+          this._id = -1;
+          this.role = '';
+        }
+
+      });
   }
 
 }
