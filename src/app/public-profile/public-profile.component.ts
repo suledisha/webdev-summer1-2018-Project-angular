@@ -23,6 +23,8 @@ export class PublicProfileComponent implements OnInit {
   reviews = [];
   following = [];
   followedby = [];
+  isUserFollowing = 0;
+  followedByCurrentUser = [];
 
   constructor( private route: ActivatedRoute,
                private router: Router,
@@ -67,15 +69,30 @@ export class PublicProfileComponent implements OnInit {
     }
   }
   ngOnInit() {
+
     this.service
       .profile()
       .then(user => {
         if (user !== null) {
           this._id = user._id;
           this.role = user.role;
-          console.log(user._id);
-        }
-      });
-  }
+          if (this._id === this.userId) {
+            this.isUserFollowing = -1;
+          } else {
+          this.followService.findAllFollowing()
+            .then(following => {
+              console.log(following);
+              this.followedByCurrentUser = following;
+          for (const entry of this.followedByCurrentUser) {
+            if (entry.following._id === this.userId) {
+              this.isUserFollowing = 1;
+            }
+          }});
+          }}});
+          // console.log(user._id);
+
+    console.log(this.followedByCurrentUser);
+    console.log(this.isUserFollowing);
+    }
 
 }

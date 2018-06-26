@@ -77,7 +77,9 @@
 
 
   <br>
-  <button (click)="followUser()"
+  <button *ngIf="isUserFollowing===0" (click)="followUser()"
     class="btn btn-primary">Follow</button>
-  </div>
+  <button *ngIf="isUserFollowing===1" disabled
+          class="btn btn-primary">Following</button>
+</div>
 </div>

@@ -21,6 +21,9 @@ export class BookDetailsComponent implements OnInit {
   bookId = '';
   reviewText = '';
   reviewTitle = '';
+  likedByCurrentUser =[];
+  alreadyLikes = 0;
+  book_id = '';
   book = {
     id: '',
     volumeInfo: {
@@ -54,6 +57,15 @@ export class BookDetailsComponent implements OnInit {
           this._id = user._id;
           this.role = user.role;
           console.log(user._id);
+          this.likeService.findLikedBooksForUser()
+            .then(likes => {
+              console.log(likes);
+              this.likedByCurrentUser = likes;
+              for (const entry of this.likedByCurrentUser) {
+                if (entry.book._id === this.book_id) {
+                  this.alreadyLikes = 1;
+                }
+              }});
         }
 
       });
@@ -116,6 +128,7 @@ export class BookDetailsComponent implements OnInit {
       .then(book => this.book = book);
     this.bookService.findBookByCredential(this.bookId)
       .then(book => {
+        this.book_id = book._id
         if (book._id !== '-1') {
           this.reviewService.findReviewsForBook(book._id)
             .then(reviews => this.reviews = reviews);

@@ -38,7 +38,9 @@
   <br>
     <p [innerHTML]="book.volumeInfo.description"></p>
     <br>
-    <button class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
+    <button *ngIf="alreadyLikes===0" class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
+    <button *ngIf="alreadyLikes===1" disabled
+            class="btn btn-success">Liked</button>
     <small class="form-text text-muted">Login/Register to like</small>
     <br>
   </div>
