@@ -29,4 +29,9 @@ export class PublicProfileServiceClient {
   return fetch(this.URL + '/api/user/' + userId + '/userfollowedby')
 .then(response => response.json());
 }
+
+  findShelvedBooksUserById(userId) {
+    return fetch(this.URL + '/api/user/' + userId + '/shelved')
+      .then(response => response.json());
+  }
 }

@@ -41,7 +41,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/admin-page\">Admin page</a>\r\n    <br>\r\n    <br>\r\n<div *ngFor=\"let book of books\">\r\n  <ul class=\"list-group\">\r\n    <li class=\"list-group-item\">\r\n      {{book.title}}\r\n      <button (click)=\"remove(book._id)\"\r\n        class=\"float-right btn btn-danger\">remove</button>\r\n    </li>\r\n  </ul>\r\n</div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/admin-page\">Admin page</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    <br>\r\n    <br>\r\n<div *ngFor=\"let book of books\">\r\n  <ul class=\"list-group\">\r\n    <li class=\"list-group-item\">\r\n      {{book.title}}\r\n      <button (click)=\"remove(book._id)\"\r\n        class=\"float-right btn btn-danger\">remove</button>\r\n    </li>\r\n  </ul>\r\n</div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -118,7 +118,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Admin Page</h1>\n\n  <input [(ngModel)]=\"username\"\n         readonly\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/bookList\">Book List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/reviewList\">Review List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/userList\">User List</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n  <h1>Admin Page</h1>\r\n\r\n  <input [(ngModel)]=\"username\"\r\n         readonly\r\n         placeholder=\"username\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"firstName\"\r\n         placeholder=\"first name\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"lastName\"\r\n         placeholder=\"lastName\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"email\"\r\n         placeholder=\"email\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <button (click)=\"update()\"\r\n          class=\"btn btn-primary btn-block\">\r\n    Update\r\n  </button>\r\n  <br>\r\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/home\">Home</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/bookList\">Book List</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/reviewList\">Review List</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/userList\">User List</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/community\">Bookmarked Community</a>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -218,7 +218,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/admin-page\">Admin page</a>\n    <br>\n    <br>\n<div *ngFor=\"let review of reviews\">\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">\n      {{review.title}}\n      <br>\n      {{review.text}}\n      <button (click)=\"remove(review._id)\"\n        class=\"float-right btn btn-danger\">Remove</button>\n    </li>\n  </ul>\n</div>\n  </div>\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/admin-page\">Admin page</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    <br>\r\n    <br>\r\n<div *ngFor=\"let review of reviews\">\r\n  <ul class=\"list-group\">\r\n    <li class=\"list-group-item\">\r\n      {{review.title}}\r\n      <br>\r\n      {{review.text}}\r\n      <button (click)=\"remove(review._id)\"\r\n        class=\"float-right btn btn-danger\">Remove</button>\r\n    </li>\r\n  </ul>\r\n</div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -295,7 +295,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/admin-page\">Admin page</a>\n    <br>\n    <br>\n    <table class=\"table\">\n      <thead>\n      <tr>\n        <th>Username</th>\n        <th>Password</th>\n        <th>First Name</th>\n        <th>Last Name</th>\n        <th>Role</th>\n        <th>&nbsp;</th>\n      </tr>\n      <tr>\n        <td><input [(ngModel)]=\"username\"\n                         placeholder=\"username\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"password\"\n                          type=\"password\"\n                         placeholder=\"password\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"firstName\"\n                         placeholder=\"First Name\"\n                         class=\"form-control\"/></td>\n        <td><input [(ngModel)]=\"lastName\"\n                         placeholder=\"Last Name\"\n                         class=\"form-control\"/></td>\n        <td><select  [(ngModel)]=\"role\" class=\"form-control\">\n          <option value=\"reader\" selected>reader</option>\n          <option value=\"author\">author</option>\n        </select></td>\n        <td><button (click)=\"add()\" class=\"btn btn-success\">Add</button> &nbsp;  &nbsp;\n          <button (click)=\"update()\" class=\"btn btn-success\">Update</button></td>\n      </tr>\n\n      </thead>\n      <tbody>\n    <tr *ngFor=\"let user of users\">\n      <td *ngIf=\"user.username!=='admin'\">{{user.username}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{\"**********\"}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.firstName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.lastName}}</td>\n      <td *ngIf=\"user.username!=='admin'\">{{user.role}}</td>\n      <td *ngIf=\"user.username!=='admin'\"><button (click)=\"setuser(user)\" class=\"btn btn-primary\">Edit</button>\n        &nbsp;  &nbsp;\n      <button (click)=\"remove(user._id)\"\n                   class=\"btn btn-danger\">Remove</button></td>\n    </tr>\n    </tbody>\n</table>\n</div>\n  </div>\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/admin-page\">Admin page</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    <br>\r\n    <br>\r\n    <table class=\"table\">\r\n      <thead>\r\n      <tr>\r\n        <th>Username</th>\r\n        <th>Password</th>\r\n        <th>First Name</th>\r\n        <th>Last Name</th>\r\n        <th>Role</th>\r\n        <th>&nbsp;</th>\r\n      </tr>\r\n      <tr>\r\n        <td><input [(ngModel)]=\"username\"\r\n                         placeholder=\"username\"\r\n                         class=\"form-control\"/></td>\r\n        <td><input [(ngModel)]=\"password\"\r\n                          type=\"password\"\r\n                         placeholder=\"password\"\r\n                         class=\"form-control\"/></td>\r\n        <td><input [(ngModel)]=\"firstName\"\r\n                         placeholder=\"First Name\"\r\n                         class=\"form-control\"/></td>\r\n        <td><input [(ngModel)]=\"lastName\"\r\n                         placeholder=\"Last Name\"\r\n                         class=\"form-control\"/></td>\r\n        <td><select  [(ngModel)]=\"role\" class=\"form-control\">\r\n          <option value=\"reader\" selected>reader</option>\r\n          <option value=\"author\">author</option>\r\n        </select></td>\r\n        <td><button (click)=\"add()\" class=\"btn btn-success\">Add</button> &nbsp;  &nbsp;\r\n          <button (click)=\"update()\" class=\"btn btn-success\">Update</button></td>\r\n      </tr>\r\n\r\n      </thead>\r\n      <tbody>\r\n    <tr *ngFor=\"let user of users\">\r\n      <td *ngIf=\"user.username!=='admin'\">{{user.username}}</td>\r\n      <td *ngIf=\"user.username!=='admin'\">{{\"**********\"}}</td>\r\n      <td *ngIf=\"user.username!=='admin'\">{{user.firstName}}</td>\r\n      <td *ngIf=\"user.username!=='admin'\">{{user.lastName}}</td>\r\n      <td *ngIf=\"user.username!=='admin'\">{{user.role}}</td>\r\n      <td *ngIf=\"user.username!=='admin'\"><button (click)=\"setuser(user)\" class=\"btn btn-primary\">Edit</button>\r\n        &nbsp;  &nbsp;\r\n      <button (click)=\"remove(user._id)\"\r\n                   class=\"btn btn-danger\">Remove</button></td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n</div>\r\n  </div>\r\n"
 
 /***/ }),
 
@@ -489,12 +489,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _community_page_community_page_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./community-page/community-page.component */ "./src/app/community-page/community-page.component.ts");
 /* harmony import */ var _landing_page_landing_page_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./landing-page/landing-page.component */ "./src/app/landing-page/landing-page.component.ts");
 /* harmony import */ var _services_admin_userlist_service_client__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./services/admin-userlist.service.client */ "./src/app/services/admin-userlist.service.client.ts");
+/* harmony import */ var _services_shelf_service_client__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./services/shelf.service.client */ "./src/app/services/shelf.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -560,7 +562,8 @@ var AppModule = /** @class */ (function () {
                 _services_public_profile_service_client__WEBPACK_IMPORTED_MODULE_19__["PublicProfileServiceClient"],
                 _services_review_service_client__WEBPACK_IMPORTED_MODULE_20__["ReviewServiceClient"],
                 _services_follow_service_client__WEBPACK_IMPORTED_MODULE_21__["FollowServiceClient"],
-                _services_admin_userlist_service_client__WEBPACK_IMPORTED_MODULE_28__["AdminUserListServiceClient"]],
+                _services_admin_userlist_service_client__WEBPACK_IMPORTED_MODULE_28__["AdminUserListServiceClient"],
+                _services_shelf_service_client__WEBPACK_IMPORTED_MODULE_29__["ShelfServiceClient"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -652,7 +655,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/author-page\">My Page</a>\n    <br>\n    <br>\n  <h1>Authored Books</h1>\n\n  <input [(ngModel)]=\"volumeId\"\n         placeholder=\"VolumeId\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"addToAuthoredBooks()\"\n    class=\"btn btn-primary btn-block\">\n    Add\n  </button>\n\n  <h2>Authored Books :{{authoredBooks.length}}</h2>\n  <div *ngFor=\"let token of authoredBooks\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n        <button (click)=\"removeFromAuthoredBooks(token.book._id)\"\n          class=\"float-right btn btn-danger\">UnAuthor</button>\n      </li>\n    </ul>\n  </div>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/search\">Search</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/author-page\">My Page</a>\r\n    <br>\r\n    <br>\r\n  <h1>Authored Books</h1>\r\n\r\n  <input [(ngModel)]=\"volumeId\"\r\n         placeholder=\"VolumeId\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <button (click)=\"addToAuthoredBooks()\"\r\n    class=\"btn btn-primary btn-block\">\r\n    Add\r\n  </button>\r\n\r\n  <h2>Authored Books :{{authoredBooks.length}}</h2>\r\n  <div *ngFor=\"let token of authoredBooks\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        <button (click)=\"removeFromAuthoredBooks(token.book._id)\"\r\n          class=\"float-right btn btn-danger\">UnAuthor</button>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -756,7 +759,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         readonly\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"bio\"\n         placeholder=\"Bio\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"snippet\"\n         placeholder=\"Featured Snippet\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/author-book-list\">My Books</a>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n  <h1>Profile</h1>\r\n\r\n  <input [(ngModel)]=\"username\"\r\n         readonly\r\n         placeholder=\"username\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"firstName\"\r\n         placeholder=\"first name\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"lastName\"\r\n         placeholder=\"lastName\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"bio\"\r\n         placeholder=\"Bio\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"snippet\"\r\n         placeholder=\"Featured Snippet\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"email\"\r\n         placeholder=\"email\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <button (click)=\"update()\"\r\n          class=\"btn btn-primary btn-block\">\r\n    Update\r\n  </button>\r\n    <br>\r\n    <h2>Following :{{following.length}}</h2>\r\n    <div *ngFor=\"let token of following\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\r\n          <button (click)=\"unfollow(token.following._id)\"\r\n                  class=\"float-right btn btn-danger\">unfollow</button>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <h2>Followed By :{{followedby.length}}</h2>\r\n    <div *ngFor=\"let token of followedby\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{token.follower._id}}\">   {{token.follower.firstName}}  {{token.follower.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  <br>\r\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/home\">Home</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/community\">Bookmarked Community</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/author-book-list\">My Books</a>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -773,6 +776,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_follow_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/follow.service.client */ "./src/app/services/follow.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -785,11 +789,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var AuthorPageComponent = /** @class */ (function () {
-    function AuthorPageComponent(service, router) {
+    function AuthorPageComponent(service, followService, router) {
         this.service = service;
+        this.followService = followService;
         this.router = router;
         this.authoredBooks = [];
+        this.following = [];
+        this.followedby = [];
     }
     AuthorPageComponent.prototype.logout = function () {
         var _this = this;
@@ -797,6 +805,14 @@ var AuthorPageComponent = /** @class */ (function () {
             .logout()
             .then(function () {
             return _this.router.navigate(['login']);
+        });
+    };
+    AuthorPageComponent.prototype.unfollow = function (userId) {
+        var _this = this;
+        this.followService.userUnfollowsUser(userId)
+            .then(function (follow) {
+            _this.followService.findAllFollowing()
+                .then(function (following) { return _this.following = following; });
         });
     };
     AuthorPageComponent.prototype.update = function () {
@@ -823,6 +839,12 @@ var AuthorPageComponent = /** @class */ (function () {
                 _this._id = -1;
             }
         });
+        if (this._id !== -1) {
+            this.followService.findAllFollowing()
+                .then(function (following) { return _this.following = following; });
+            this.followService.findAllFollowedBy()
+                .then(function (followedby) { return _this.followedby = followedby; });
+        }
     };
     AuthorPageComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -831,6 +853,7 @@ var AuthorPageComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./author-page.component.css */ "./src/app/author-page/author-page.component.css")]
         }),
         __metadata("design:paramtypes", [_services_user_service_client__WEBPACK_IMPORTED_MODULE_1__["UserServiceClient"],
+            _services_follow_service_client__WEBPACK_IMPORTED_MODULE_3__["FollowServiceClient"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], AuthorPageComponent);
     return AuthorPageComponent;
@@ -858,7 +881,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/community\">Bookmarked Community</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/home\">Home</a>\n    &nbsp; &nbsp;\n    <a routerLink=\"/search\">Search</a>\n    &nbsp; &nbsp;\n\n\n    <br>\n    <br>\n\n    <div class=\"row\">\n      <div class=\"col-sm-3\">\n        <img  height=\"250px\" width=\"250px\" align=\"left\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\n      </div>\n\n      <div class=\"col-sm-9\">\n      <h3  align=\"left\">{{book.volumeInfo.title}}</h3>\n      <div  align=\"left\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\n      <div  align=\"left\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\n      <h4  align=\"left\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\n      <h4  align=\"left\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\n      <h4  align=\"left\">Likes by BookMarkers: {{likes}}</h4>\n      </div>\n      </div>\n    </div>\n\n\n  <div class=\"container-fluid\">\n  <br><br>\n  <h3>Summary</h3>\n  <br>\n    <p [innerHTML]=\"book.volumeInfo.description\"></p>\n    <br>\n    <button class=\"btn btn-success\" (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\n    <small class=\"form-text text-muted\">Login/Register to like</small>\n    <br>\n  </div>\n\n\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n    <h4>Write a Review</h4>\n    <small class=\"form-text text-muted\">Login/Register to review</small>\n    <br>\n    <input [(ngModel)]=\"reviewTitle\"\n           placeholder=\"Summary\"\n           class=\"form-control\"/>\n    <br>\n    <textarea [(ngModel)]=\"reviewText\"\n           placeholder=\"Details\"\n              class=\"form-control\"></textarea>\n    <br>\n    <button\n      (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\n      class=\"btn btn-success\">Submit Review!</button>\n  </div>\n    <div class=\"col-sm-6\">\n      <h4>Reviews by Bookmarkers</h4>\n      <div *ngFor=\"let token of reviews\">\n        <ul class=\"list-group\">\n          <li class=\"list-group-item\">\n            {{token.title}} - <a routerLink=\"/user/{{token.user._id}}\">{{token.user.firstName}} {{token.user.lastName}}</a>\n            <br>\n            {{token.text}}\n          </li>\n        </ul>\n      </div>\n    </div>\n</div>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\r\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\r\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/search\">Search</a>\r\n    &nbsp; &nbsp;\r\n\r\n\r\n    <br>\r\n    <br>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-3\">\r\n        <img  height=\"250px\" width=\"250px\" align=\"left\" src={{book.volumeInfo.imageLinks.smallThumbnail}}/>\r\n      </div>\r\n\r\n      <div class=\"col-sm-9\">\r\n      <h3  align=\"left\">{{book.volumeInfo.title}}</h3>\r\n      <div  align=\"left\" *ngFor=\"let author of book.volumeInfo.authors\"><h3>{{author}}</h3></div>\r\n      <div  align=\"left\">  <h4>Publisher: {{book.volumeInfo.publisher}}</h4>\r\n      <h4  align=\"left\">Published Date: {{book.volumeInfo.publishedDate}}</h4>\r\n      <h4  align=\"left\">Reader Rating: {{book.volumeInfo.averageRating}}</h4>\r\n      <h4  align=\"left\">Likes by BookMarkers: {{likes}}</h4>\r\n        <br>\r\n        <button *ngIf=\"alreadyShelved===0 && role !== 'author'\" class=\"btn btn-success\"\r\n                (click)=\"this.shelfBook(book.id,book.volumeInfo.title)\">Shelf as Read!</button>\r\n        <button *ngIf=\"alreadyLikes===1\" disabled\r\n                class=\"btn btn-success\">Shelved</button>\r\n        <button *ngIf=\"role==='author'\" disabled\r\n                class=\"btn btn-success\">You are an Author!</button>\r\n        <small class=\"form-text text-muted\">Login/Register to Shelf</small>\r\n      </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  <div class=\"container-fluid\">\r\n  <br><br>\r\n  <h3>Summary</h3>\r\n  <br>\r\n    <p [innerHTML]=\"book.volumeInfo.description\"></p>\r\n    <br>\r\n    <button *ngIf=\"alreadyLikes===0 && role !== 'author'\" class=\"btn btn-success\"\r\n            (click)=\"this.likeBook(book.id,book.volumeInfo.title)\">Like!</button>\r\n    <button *ngIf=\"alreadyLikes===1\" disabled\r\n            class=\"btn btn-success\">Liked</button>\r\n    <button *ngIf=\"role==='author'\" disabled\r\n            class=\"btn btn-success\">You are an Author!</button>\r\n    <small class=\"form-text text-muted\">Login/Register to like</small>\r\n    <br>\r\n  </div>\r\n\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-6\">\r\n    <h4>Write a Review</h4>\r\n    <small class=\"form-text text-muted\">Login/Register to review</small>\r\n    <br>\r\n    <input [(ngModel)]=\"reviewTitle\"\r\n           placeholder=\"Summary\"\r\n           class=\"form-control\"/>\r\n    <br>\r\n    <textarea [(ngModel)]=\"reviewText\"\r\n           placeholder=\"Details\"\r\n              class=\"form-control\"></textarea>\r\n    <br>\r\n    <button  *ngIf=\"role!=='author'\"\r\n      (click)=\"this.submitReview(book.id,book.volumeInfo.title)\"\r\n      class=\"btn btn-success\">Submit Review!</button>\r\n        <button *ngIf=\"role==='author'\" disabled\r\n                class=\"btn btn-success\">You are an Author!</button>\r\n  </div>\r\n    <div class=\"col-sm-6\">\r\n      <h4>Reviews by Bookmarkers</h4>\r\n      <div *ngFor=\"let token of reviews\">\r\n        <ul class=\"list-group\">\r\n          <li class=\"list-group-item\">\r\n            {{token.title}} - <a routerLink=\"/user/{{token.user._id}}\">{{token.user.firstName}} {{token.user.lastName}}</a>\r\n            <br>\r\n            {{token.text}}\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n</div>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -879,6 +902,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/like.service.client */ "./src/app/services/like.service.client.ts");
 /* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/review.service.client */ "./src/app/services/review.service.client.ts");
 /* harmony import */ var _services_user_service_client__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/user.service.client */ "./src/app/services/user.service.client.ts");
+/* harmony import */ var _services_shelf_service_client__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/shelf.service.client */ "./src/app/services/shelf.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -895,8 +919,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var BookDetailsComponent = /** @class */ (function () {
-    function BookDetailsComponent(route, router, userService, service, bookService, likeService, reviewService) {
+    function BookDetailsComponent(route, router, userService, service, bookService, likeService, reviewService, shelfService) {
         var _this = this;
         this.route = route;
         this.router = router;
@@ -905,11 +930,17 @@ var BookDetailsComponent = /** @class */ (function () {
         this.bookService = bookService;
         this.likeService = likeService;
         this.reviewService = reviewService;
+        this.shelfService = shelfService;
         this._id = '-1';
         this.role = ' ';
         this.bookId = '';
         this.reviewText = '';
         this.reviewTitle = '';
+        this.likedByCurrentUser = [];
+        this.shelvedByCurrentUser = [];
+        this.alreadyLikes = 0;
+        this.alreadyShelved = 0;
+        this.book_id = '';
         this.book = {
             id: '',
             volumeInfo: {
@@ -935,6 +966,28 @@ var BookDetailsComponent = /** @class */ (function () {
                 _this._id = user._id;
                 _this.role = user.role;
                 console.log(user._id);
+                _this.likeService.findLikedBooksForUser()
+                    .then(function (likes) {
+                    console.log(likes);
+                    _this.likedByCurrentUser = likes;
+                    for (var _i = 0, _a = _this.likedByCurrentUser; _i < _a.length; _i++) {
+                        var entry = _a[_i];
+                        if (entry.book._id === _this.book_id) {
+                            _this.alreadyLikes = 1;
+                        }
+                    }
+                });
+                _this.shelfService.findShelvedForUser()
+                    .then(function (shelf) {
+                    console.log(shelf);
+                    _this.shelvedByCurrentUser = shelf;
+                    for (var _i = 0, _a = _this.shelvedByCurrentUser; _i < _a.length; _i++) {
+                        var entry = _a[_i];
+                        if (entry.book._id === _this.book_id) {
+                            _this.alreadyShelved = 1;
+                        }
+                    }
+                });
             }
         });
         console.log(this._id, this.role);
@@ -992,6 +1045,33 @@ var BookDetailsComponent = /** @class */ (function () {
             });
         }
     };
+    BookDetailsComponent.prototype.shelfBook = function (id, title) {
+        var _this = this;
+        if (this._id === '-1') {
+            alert('Please Login/Register up to shelve books');
+            this.router.navigate(['login']);
+        }
+        else {
+            this.bookService.findBookByCredential(id)
+                .then(function (book) {
+                if (book._id === '-1') {
+                    _this.bookService.createBook(id, title)
+                        .then(function (newbook) {
+                        _this.shelfService.userShelvesBook(newbook._id, 'Read')
+                            .then(function (shelf) {
+                            _this.router.navigate(['profile']);
+                        });
+                    });
+                }
+                else {
+                    _this.shelfService.userShelvesBook(book._id, 'Read')
+                        .then(function (shelf) {
+                        _this.router.navigate(['profile']);
+                    });
+                }
+            });
+        }
+    };
     BookDetailsComponent.prototype.loadBook = function (bookId) {
         var _this = this;
         this.bookId = bookId;
@@ -999,6 +1079,7 @@ var BookDetailsComponent = /** @class */ (function () {
             .then(function (book) { return _this.book = book; });
         this.bookService.findBookByCredential(this.bookId)
             .then(function (book) {
+            _this.book_id = book._id;
             if (book._id !== '-1') {
                 _this.reviewService.findReviewsForBook(book._id)
                     .then(function (reviews) { return _this.reviews = reviews; });
@@ -1019,7 +1100,8 @@ var BookDetailsComponent = /** @class */ (function () {
             _services_book_details_service_client__WEBPACK_IMPORTED_MODULE_2__["BookDetailsServiceClient"],
             _services_book_service_client__WEBPACK_IMPORTED_MODULE_3__["BookServiceClient"],
             _services_like_service_client__WEBPACK_IMPORTED_MODULE_4__["LikeServiceClient"],
-            _services_review_service_client__WEBPACK_IMPORTED_MODULE_5__["ReviewServiceClient"]])
+            _services_review_service_client__WEBPACK_IMPORTED_MODULE_5__["ReviewServiceClient"],
+            _services_shelf_service_client__WEBPACK_IMPORTED_MODULE_7__["ShelfServiceClient"]])
     ], BookDetailsComponent);
     return BookDetailsComponent;
 }());
@@ -1304,7 +1386,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\n  <div class=\"jumbotron\">\n  <h1>Profile</h1>\n\n  <input [(ngModel)]=\"username\"\n         readonly\n         placeholder=\"username\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"firstName\"\n         placeholder=\"first name\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"lastName\"\n         placeholder=\"lastName\"\n         class=\"form-control\"/>\n  <br>\n  <input [(ngModel)]=\"email\"\n         placeholder=\"email\"\n         class=\"form-control\"/>\n  <br>\n  <button (click)=\"update()\"\n          class=\"btn btn-primary btn-block\">\n    Update\n  </button>\n  <br>\n  <h2>Liked Books :{{likedBooks.length}}</h2>\n  <div *ngFor=\"let token of likedBooks\">\n    <ul class=\"list-group\">\n  <li class=\"list-group-item\">\n    <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n    <button (click)=\"unlike(token.book._id)\"\n      class=\"float-right btn btn-danger\">Unlike</button>\n  </li>\n    </ul>\n</div>\n  <br>\n  <h2>Reviews :{{reviews.length}}</h2>\n  <div *ngFor=\"let token of reviews\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\n        <br>\n        {{token.title}}\n        <br>\n        {{token.text}}\n        <button (click)=\"removeReview(token.book._id)\"\n          class=\"float-right btn btn-danger\">remove</button>\n      </li>\n    </ul>\n  </div>\n<br>\n  <h2>Following :{{following.length}}</h2>\n  <div *ngFor=\"let token of following\">\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\n        <button (click)=\"unfollow(token.following._id)\"\n          class=\"float-right btn btn-danger\">unfollow</button>\n      </li>\n    </ul>\n  </div>\n\n  <br>\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/search\">Search</a>\n</div>\n</div>\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n  <h1>Profile</h1>\r\n\r\n  <input [(ngModel)]=\"username\"\r\n         readonly\r\n         placeholder=\"username\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"firstName\"\r\n         placeholder=\"first name\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"lastName\"\r\n         placeholder=\"lastName\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <input [(ngModel)]=\"email\"\r\n         placeholder=\"email\"\r\n         class=\"form-control\"/>\r\n  <br>\r\n  <button (click)=\"update()\"\r\n          class=\"btn btn-primary btn-block\">\r\n    Update\r\n  </button>\r\n  <br>\r\n  <h2>Liked Books :{{likedBooks.length}}</h2>\r\n  <div *ngFor=\"let token of likedBooks\">\r\n    <ul class=\"list-group\">\r\n  <li class=\"list-group-item\">\r\n    <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n    <button (click)=\"unlike(token.book._id)\"\r\n      class=\"float-right btn btn-danger\">Unlike</button>\r\n  </li>\r\n    </ul>\r\n</div>\r\n\r\n    <br>\r\n    <h2>Shelved as Read:{{shelvedBooks.length}}</h2>\r\n    <div *ngFor=\"let token of shelvedBooks\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n          <button (click)=\"unshelve(token.book._id)\"\r\n                  class=\"float-right btn btn-danger\">UnShelve</button>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n  <br>\r\n  <h2>Reviews :{{reviews.length}}</h2>\r\n  <div *ngFor=\"let token of reviews\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        <br>\r\n        {{token.title}}\r\n        <br>\r\n        {{token.text}}\r\n        <button (click)=\"removeReview(token.book._id)\"\r\n          class=\"float-right btn btn-danger\">remove</button>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n<br>\r\n  <h2>Following :{{following.length}}</h2>\r\n  <div *ngFor=\"let token of following\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\r\n        <button (click)=\"unfollow(token.following._id)\"\r\n          class=\"float-right btn btn-danger\">unfollow</button>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n\r\n    <h2>Followed By :{{followedby.length}}</h2>\r\n    <div *ngFor=\"let token of followedby\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{token.follower._id}}\">   {{token.follower.firstName}}  {{token.follower.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n  <br>\r\n  <button class=\"btn btn-success\" (click)=\"logout()\">Logout</button>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/home\">Home</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/community\">Bookmarked Community</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/search\">Search</a>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1324,6 +1406,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_like_service_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/like.service.client */ "./src/app/services/like.service.client.ts");
 /* harmony import */ var _services_review_service_client__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/review.service.client */ "./src/app/services/review.service.client.ts");
 /* harmony import */ var _services_follow_service_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/follow.service.client */ "./src/app/services/follow.service.client.ts");
+/* harmony import */ var _services_shelf_service_client__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/shelf.service.client */ "./src/app/services/shelf.service.client.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1339,17 +1422,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(service, likeService, reviewService, followService, router) {
+    function ProfileComponent(service, likeService, reviewService, followService, shelfService, router) {
         this.service = service;
         this.likeService = likeService;
         this.reviewService = reviewService;
         this.followService = followService;
+        this.shelfService = shelfService;
         this.router = router;
         this.user = {};
         this.likedBooks = [];
+        this.shelvedBooks = [];
         this.reviews = [];
         this.following = [];
+        this.followedby = [];
     }
     ProfileComponent.prototype.logout = function () {
         var _this = this;
@@ -1390,6 +1477,14 @@ var ProfileComponent = /** @class */ (function () {
                 .then(function (following) { return _this.following = following; });
         });
     };
+    ProfileComponent.prototype.unshelve = function (userId) {
+        var _this = this;
+        this.shelfService.userUnshelvesBook(userId)
+            .then(function (follow) {
+            _this.followService.findAllFollowing()
+                .then(function (following) { return _this.following = following; });
+        });
+    };
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.service
@@ -1415,6 +1510,11 @@ var ProfileComponent = /** @class */ (function () {
                 .then(function (reviews) { return _this.reviews = reviews; });
             this.followService.findAllFollowing()
                 .then(function (following) { return _this.following = following; });
+            this.followService.findAllFollowedBy()
+                .then(function (followedby) { return _this.followedby = followedby; });
+            this.shelfService.findShelvedForUser()
+                .then(function (shelved) { return _this.shelvedBooks = shelved; });
+            // console.log(this.followedby);
         }
     };
     ProfileComponent = __decorate([
@@ -1427,6 +1527,7 @@ var ProfileComponent = /** @class */ (function () {
             _services_like_service_client__WEBPACK_IMPORTED_MODULE_3__["LikeServiceClient"],
             _services_review_service_client__WEBPACK_IMPORTED_MODULE_4__["ReviewServiceClient"],
             _services_follow_service_client__WEBPACK_IMPORTED_MODULE_5__["FollowServiceClient"],
+            _services_shelf_service_client__WEBPACK_IMPORTED_MODULE_6__["ShelfServiceClient"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ProfileComponent);
     return ProfileComponent;
@@ -1454,7 +1555,7 @@ module.exports = ".bg{\r\n  width: 100%;\r\n  background: url('https://images.pe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\r\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\r\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/search\">Search</a>\r\n    &nbsp; &nbsp;\r\n\r\n\r\n    <br>\r\n    <br>\r\n  <h2>User Profile</h2>\r\n  <h4>Username: {{user.username}}</h4>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n  <h4>Email: {{user.email}}</h4>\r\n\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <h2>Reviews :{{reviews.length}}</h2>\r\n    <div *ngFor=\"let token of reviews\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n          <br>\r\n          {{token.title}}\r\n          <br>\r\n          {{token.text}}\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n\r\n  <h2>Following :{{following.length}}</h2>\r\n  <div *ngFor=\"let token of following\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <br>\r\n  <button *ngIf=\"role === ''\"\r\n    (click)=\"followUser()\"\r\n    class=\"btn btn-primary\">Follow</button>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"bg\">\r\n  <div class=\"jumbotron\">\r\n    <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\r\n    <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\r\n    <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/community\">Bookmarked Community</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/home\">Home</a>\r\n    &nbsp; &nbsp;\r\n    <a routerLink=\"/search\">Search</a>\r\n    &nbsp; &nbsp;\r\n\r\n\r\n    <br>\r\n    <br>\r\n  <h2>User Profile</h2>\r\n    <br>\r\n  <h4>Username: {{user.username}}</h4>\r\n    <br>\r\n  <h4>First Name: {{user.firstName}}</h4>\r\n    <br>\r\n  <h4>Last Name: {{user.lastName}}</h4>\r\n    <br>\r\n  <h4>Email: {{user.email}}</h4>\r\n  <br>\r\n  <div *ngIf=\"user.role==='author'\">\r\n  <h4>Bio: {{user.bio}}</h4>\r\n    <br>\r\n  <h4>Snippet: {{user.snippet}}</h4>\r\n    <br>\r\n    <h2>Authored Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <div *ngIf=\"user.role==='reader'\">\r\n    <h2>Liked Books :{{books.length}}</h2>\r\n    <div *ngFor=\"let token of books\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n<br>\r\n    <h2>Shelved as Read:{{shelved.length}}</h2>\r\n    <div *ngFor=\"let token of shelved\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n    <br>\r\n\r\n    <h2>Reviews :{{reviews.length}}</h2>\r\n    <div *ngFor=\"let token of reviews\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          Book Title:  <a routerLink=\"/book/{{token.book.id}}\">  {{token.book.title}}</a>\r\n          <br>\r\n          {{token.title}}\r\n          <br>\r\n          {{token.text}}\r\n        </li>\r\n      </ul>\r\n      <br>\r\n    </div>\r\n  </div>\r\n\r\n  <h2>Following :{{following.length}}</h2>\r\n  <div *ngFor=\"let token of following\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\">\r\n        <a routerLink=\"/user/{{token.following._id}}\">   {{token.following.firstName}}  {{token.following.lastName}}</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <br>\r\n    <h2>Followed By :{{followedby.length}}</h2>\r\n    <div *ngFor=\"let token of followedby\">\r\n      <ul class=\"list-group\">\r\n        <li class=\"list-group-item\">\r\n          <a routerLink=\"/user/{{token.follower._id}}\">   {{token.follower.firstName}}  {{token.follower.lastName}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n\r\n  <br>\r\n  <button *ngIf=\"isUserFollowing===0\" (click)=\"followUser()\"\r\n    class=\"btn btn-primary\">Follow</button>\r\n  <button *ngIf=\"isUserFollowing===1\" disabled\r\n          class=\"btn btn-primary\">Following</button>\r\n</div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1502,7 +1603,11 @@ var PublicProfileComponent = /** @class */ (function () {
         this.role = '';
         this.books = [];
         this.reviews = [];
+        this.shelved = [];
         this.following = [];
+        this.followedby = [];
+        this.isUserFollowing = 0;
+        this.followedByCurrentUser = [];
         this.route.params.subscribe(function (params) { return _this.loadUser(params['userId']); });
     }
     PublicProfileComponent.prototype.loadUser = function (userId) {
@@ -1515,6 +1620,10 @@ var PublicProfileComponent = /** @class */ (function () {
                 _this.publicProfileService
                     .findAuthoredBooksUserById(user._id)
                     .then(function (authoredBooks) { return _this.books = authoredBooks; });
+                _this.publicProfileService.findFollowingUserById(user._id)
+                    .then(function (following) { return _this.following = following; });
+                _this.publicProfileService.findFollowedByUserById(user._id)
+                    .then(function (followedby) { return _this.followedby = followedby; });
             }
             else {
                 _this.publicProfileService.findLikedBooksUserById(user._id)
@@ -1523,6 +1632,10 @@ var PublicProfileComponent = /** @class */ (function () {
                     .then(function (reviews) { return _this.reviews = reviews; });
                 _this.publicProfileService.findFollowingUserById(user._id)
                     .then(function (following) { return _this.following = following; });
+                _this.publicProfileService.findFollowedByUserById(user._id)
+                    .then(function (followedby) { return _this.followedby = followedby; });
+                _this.publicProfileService.findShelvedBooksUserById(user._id)
+                    .then(function (shelved) { return _this.shelved = shelved; });
             }
         });
     };
@@ -1547,9 +1660,27 @@ var PublicProfileComponent = /** @class */ (function () {
             if (user !== null) {
                 _this._id = user._id;
                 _this.role = user.role;
-                console.log(user._id);
+                if (_this._id === _this.userId) {
+                    _this.isUserFollowing = -1;
+                }
+                else {
+                    _this.followService.findAllFollowing()
+                        .then(function (following) {
+                        console.log(following);
+                        _this.followedByCurrentUser = following;
+                        for (var _i = 0, _a = _this.followedByCurrentUser; _i < _a.length; _i++) {
+                            var entry = _a[_i];
+                            if (entry.following._id === _this.userId) {
+                                _this.isUserFollowing = 1;
+                            }
+                        }
+                    });
+                }
             }
         });
+        // console.log(user._id);
+        console.log(this.followedByCurrentUser);
+        console.log(this.isUserFollowing);
     };
     PublicProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1687,7 +1818,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron\">\n  <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\n  <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\n  <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/community\">Bookmarked Community</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/login\">Login</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/register\">Register</a>\n  &nbsp; &nbsp;\n  <a routerLink=\"/home\">Home</a>\n  <br>\n  <br>\n  <div class=\"container-fluid\">\n\n    <div>\n      <input [(ngModel)]=\"title\" class=\"form-control\" placeholder=\"Title\" >\n      <small class=\"form-text text-muted\">Please enter atleast one word of the title of the book</small>\n    </div>\n\n    <div>\n      <input [(ngModel)]=\"author\" class=\"form-control\" placeholder=\"Author\" >\n      <small class=\"form-text text-muted\">Optional: Enter the author name to enhance search</small>\n    </div>\n\n    <button\n      class=\"btn btn-success btn-block\"\n      (click)=\"findBook(title, author)\">\n      Find Book!\n    </button>\n\n  </div>\n  <br/>\n  <br/>\n<ul class=\"list-group\">\n  <li class=\"list-group-item\" *ngFor=\"let book of books\">\n    <div>\n      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/> &nbsp; &nbsp;\n      <a routerLink=\"/book/{{book.id}}\"> {{book.volumeInfo.title}}</a>\n    </div>\n  </li>\n\n</ul>\n</div>\n"
+module.exports = "<div class=\"jumbotron\">\r\n  <a routerLink=\"/profile\" *ngIf=\"role==='reader'\" >Profile</a>\r\n  <a routerLink=\"/author-page\" *ngIf=\"role==='author'\">My Page</a>\r\n  <a routerLink=\"/admin-page\" *ngIf=\"role==='admin'\" >Admin-Page</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/community\">Bookmarked Community</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/login\">Login</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/register\">Register</a>\r\n  &nbsp; &nbsp;\r\n  <a routerLink=\"/home\">Home</a>\r\n  <br>\r\n  <br>\r\n  <div class=\"container-fluid\">\r\n\r\n    <div>\r\n      <input [(ngModel)]=\"title\" class=\"form-control\" placeholder=\"Title\" >\r\n      <small class=\"form-text text-muted\">Please enter atleast one word of the title of the book</small>\r\n    </div>\r\n\r\n    <div>\r\n      <input [(ngModel)]=\"author\" class=\"form-control\" placeholder=\"Author\" >\r\n      <small class=\"form-text text-muted\">Optional: Enter the author name to enhance search</small>\r\n    </div>\r\n\r\n    <button\r\n      class=\"btn btn-success btn-block\"\r\n      (click)=\"findBook(title, author)\">\r\n      Find Book!\r\n    </button>\r\n\r\n  </div>\r\n  <br/>\r\n  <br/>\r\n<ul class=\"list-group\">\r\n  <li class=\"list-group-item\" *ngFor=\"let book of books\">\r\n    <div>\r\n      <img src={{book.volumeInfo.imageLinks.smallThumbnail}}/> &nbsp; &nbsp;\r\n      <a routerLink=\"/book/{{book.id}}\"> {{book.volumeInfo.title}}</a>\r\n    </div>\r\n  </li>\r\n\r\n</ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1973,24 +2104,31 @@ __webpack_require__.r(__webpack_exports__);
 var FollowServiceClient = /** @class */ (function () {
     function FollowServiceClient() {
         this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
-        this.USER_URL = this.URL + '/api/userfollows';
+        this.FOLLOW_URL = this.URL + '/api/userfollows';
+        // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/userfollows';
+        this.FOLLOWEDBY_URL = this.URL + '/api/userfollowedby';
     }
-    // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/userfollows';
     FollowServiceClient.prototype.findAllFollowing = function () {
-        return fetch(this.USER_URL, {
+        return fetch(this.FOLLOW_URL, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    FollowServiceClient.prototype.findAllFollowedBy = function () {
+        return fetch(this.FOLLOWEDBY_URL, {
             credentials: 'include'
         })
             .then(function (response) { return response.json(); });
     };
     FollowServiceClient.prototype.userfollowsUser = function (userId) {
-        var url = this.USER_URL + '/' + userId + '/follows';
+        var url = this.FOLLOW_URL + '/' + userId + '/follows';
         return fetch(url, {
             method: 'post',
             credentials: 'include'
         });
     };
     FollowServiceClient.prototype.userUnfollowsUser = function (userId) {
-        var url = this.USER_URL + '/' + userId + '/unfollows';
+        var url = this.FOLLOW_URL + '/' + userId + '/unfollows';
         return fetch(url, {
             method: 'delete',
             credentials: 'include'
@@ -2088,6 +2226,14 @@ var PublicProfileServiceClient = /** @class */ (function () {
     };
     PublicProfileServiceClient.prototype.findFollowingUserById = function (userId) {
         return fetch(this.URL + '/api/user/' + userId + '/userfollows')
+            .then(function (response) { return response.json(); });
+    };
+    PublicProfileServiceClient.prototype.findFollowedByUserById = function (userId) {
+        return fetch(this.URL + '/api/user/' + userId + '/userfollowedby')
+            .then(function (response) { return response.json(); });
+    };
+    PublicProfileServiceClient.prototype.findShelvedBooksUserById = function (userId) {
+        return fetch(this.URL + '/api/user/' + userId + '/shelved')
             .then(function (response) { return response.json(); });
     };
     return PublicProfileServiceClient;
@@ -2193,6 +2339,83 @@ var SearchPageServiceClient = /** @class */ (function () {
             .then(function (response) { return response.json(); });
     };
     return SearchPageServiceClient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/shelf.service.client.ts":
+/*!**************************************************!*\
+  !*** ./src/app/services/shelf.service.client.ts ***!
+  \**************************************************/
+/*! exports provided: ShelfServiceClient */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShelfServiceClient", function() { return ShelfServiceClient; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
+var ShelfServiceClient = /** @class */ (function () {
+    function ShelfServiceClient() {
+        this.URL = _environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].apiUrl;
+        this.USER_URL = this.URL + '/api/book/shelf';
+        this.BOOK_URL = this.URL + '/api/book';
+        this.ALLSHELVED = this.URL + '/api/allshelved';
+        this.SHELF_URL = this.URL + '/api/shelf';
+    }
+    // USER_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book/reviews';
+    // BOOK_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/book';
+    // ALLREVIEW_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/allreviews';
+    // REVIEW_URL_HEROKU = 'https://suledisha-project-nodejs.herokuapp.com/api/review';
+    ShelfServiceClient.prototype.findAllShelved = function () {
+        return fetch(this.ALLSHELVED, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    ShelfServiceClient.prototype.deleteShelvedById = function (shelfId) {
+        return fetch(this.SHELF_URL + '/' + shelfId + '/delete', {
+            credentials: 'include',
+            method: 'delete',
+        }).then(function (response) { return response.json(); });
+    };
+    ShelfServiceClient.prototype.findShelvedForUser = function () {
+        return fetch(this.SHELF_URL, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    ShelfServiceClient.prototype.findShelvedForBook = function (bookId) {
+        var url = this.BOOK_URL + '/' + bookId + '/shelf';
+        return fetch(url, {
+            credentials: 'include'
+        })
+            .then(function (response) { return response.json(); });
+    };
+    ShelfServiceClient.prototype.userShelvesBook = function (bookId, shelfTitle) {
+        var url = this.BOOK_URL + '/' + bookId + '/shelf';
+        var shelf = {
+            title: shelfTitle,
+        };
+        return fetch(url, {
+            method: 'post',
+            body: JSON.stringify(shelf),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+    };
+    ShelfServiceClient.prototype.userUnshelvesBook = function (bookId) {
+        var url = this.BOOK_URL + '/' + bookId + '/unshelf';
+        return fetch(url, {
+            method: 'delete',
+            credentials: 'include'
+        });
+    };
+    return ShelfServiceClient;
 }());
 
 

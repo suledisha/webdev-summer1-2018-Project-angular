@@ -24,7 +24,7 @@
     Update
   </button>
   <br>
-  <h2>Liked Books :{{likedBooks.length}}</h2>
+  <h2>Liked Books: {{likedBooks.length}}</h2>
   <div *ngFor="let token of likedBooks">
     <ul class="list-group">
   <li class="list-group-item">
@@ -34,8 +34,21 @@
   </li>
     </ul>
 </div>
+
+    <br>
+    <h2>Shelved as Read: {{shelvedBooks.length}}</h2>
+    <div *ngFor="let token of shelvedBooks">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a routerLink="/book/{{token.book.id}}">  {{token.book.title}}</a>
+          <button (click)="unshelve(token.book._id)"
+                  class="float-right btn btn-danger">UnShelve</button>
+        </li>
+      </ul>
+    </div>
+
   <br>
-  <h2>Reviews :{{reviews.length}}</h2>
+  <h2>Reviews: {{reviews.length}}</h2>
   <div *ngFor="let token of reviews">
     <ul class="list-group">
       <li class="list-group-item">
@@ -50,7 +63,7 @@
     </ul>
   </div>
 <br>
-  <h2>Following :{{following.length}}</h2>
+  <h2>Following: {{following.length}}</h2>
   <div *ngFor="let token of following">
     <ul class="list-group">
       <li class="list-group-item">
@@ -61,7 +74,7 @@
     </ul>
   </div>
 
-    <h2>Followed By :{{followedby.length}}</h2>
+    <h2>Followed By: {{followedby.length}}</h2>
     <div *ngFor="let token of followedby">
       <ul class="list-group">
         <li class="list-group-item">

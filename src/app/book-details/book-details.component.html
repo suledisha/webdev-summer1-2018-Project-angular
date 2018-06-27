@@ -27,6 +27,14 @@
       <h4  align="left">Published Date: {{book.volumeInfo.publishedDate}}</h4>
       <h4  align="left">Reader Rating: {{book.volumeInfo.averageRating}}</h4>
       <h4  align="left">Likes by BookMarkers: {{likes}}</h4>
+        <br>
+        <button *ngIf="alreadyShelved===0 && role !== 'author'" class="btn btn-success"
+                (click)="this.shelfBook(book.id,book.volumeInfo.title)">Shelf as Read!</button>
+        <button *ngIf="alreadyShelved===1" disabled
+                class="btn btn-success">Shelved</button>
+        <button *ngIf="role==='author'" disabled
+                class="btn btn-success">You are an Author!</button>
+        <small class="form-text text-muted">Login/Register to Shelf</small>
       </div>
       </div>
     </div>

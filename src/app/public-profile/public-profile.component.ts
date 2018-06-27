@@ -21,6 +21,7 @@ export class PublicProfileComponent implements OnInit {
   user: User;
   books = [];
   reviews = [];
+  shelved =[];
   following = [];
   followedby = [];
   isUserFollowing = 0;
@@ -57,6 +58,8 @@ export class PublicProfileComponent implements OnInit {
             .then(following => this.following = following );
           this.publicProfileService.findFollowedByUserById(user._id)
             .then(followedby => this.followedby = followedby );
+          this.publicProfileService.findShelvedBooksUserById(user._id)
+            .then(shelved => this.shelved = shelved );
         }
       });
 

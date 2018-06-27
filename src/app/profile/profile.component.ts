@@ -6,6 +6,7 @@ import {LikeServiceClient} from '../services/like.service.client';
 import {Book} from '../models/book.model.client';
 import {ReviewServiceClient} from '../services/review.service.client';
 import {FollowServiceClient} from '../services/follow.service.client';
+import {ShelfServiceClient} from '../services/shelf.service.client';
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,7 @@ export class ProfileComponent implements OnInit {
               private likeService: LikeServiceClient,
               private reviewService: ReviewServiceClient,
               private followService: FollowServiceClient,
+              private shelfService: ShelfServiceClient,
               private router: Router) { }
 
   user = {};
@@ -28,6 +30,7 @@ export class ProfileComponent implements OnInit {
   lastName;
   email;
   likedBooks = [];
+  shelvedBooks = [];
   reviews = [];
   following = [];
   followedby = [];
@@ -78,6 +81,15 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  unshelve(userId) {
+    this.shelfService.userUnshelvesBook(userId)
+      .then((follow) => {
+        this.shelfService.findShelvedForUser()
+          .then(shelved => this.shelvedBooks = shelved);
+      });
+
+  }
+
   ngOnInit() {
     this.service
       .profile()
@@ -105,8 +117,9 @@ export class ProfileComponent implements OnInit {
         .then(following => this.following = following);
       this.followService.findAllFollowedBy()
         .then(followedby => this.followedby = followedby);
-
-      console.log(this.followedby);
+      this.shelfService.findShelvedForUser()
+        .then(shelved => this.shelvedBooks = shelved);
+      // console.log(this.followedby);
     }
   }
 
