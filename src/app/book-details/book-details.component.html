@@ -38,9 +38,12 @@
   <br>
     <p [innerHTML]="book.volumeInfo.description"></p>
     <br>
-    <button *ngIf="alreadyLikes===0" class="btn btn-success" (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
+    <button *ngIf="alreadyLikes===0 && role === 'reader'" class="btn btn-success"
+            (click)="this.likeBook(book.id,book.volumeInfo.title)">Like!</button>
     <button *ngIf="alreadyLikes===1" disabled
             class="btn btn-success">Liked</button>
+    <button *ngIf="role==='author'" disabled
+            class="btn btn-success">You are an Author!</button>
     <small class="form-text text-muted">Login/Register to like</small>
     <br>
   </div>
@@ -59,9 +62,11 @@
            placeholder="Details"
               class="form-control"></textarea>
     <br>
-    <button
+    <button  *ngIf="role==='reader'"
       (click)="this.submitReview(book.id,book.volumeInfo.title)"
       class="btn btn-success">Submit Review!</button>
+        <button *ngIf="role==='author'" disabled
+                class="btn btn-success">You are an Author!</button>
   </div>
     <div class="col-sm-6">
       <h4>Reviews by Bookmarkers</h4>

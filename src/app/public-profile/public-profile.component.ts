@@ -44,6 +44,10 @@ export class PublicProfileComponent implements OnInit {
           this.publicProfileService
             .findAuthoredBooksUserById(user._id)
             .then(authoredBooks => this.books = authoredBooks );
+          this.publicProfileService.findFollowingUserById(user._id)
+            .then(following => this.following = following );
+          this.publicProfileService.findFollowedByUserById(user._id)
+            .then(followedby => this.followedby = followedby );
         } else {
           this.publicProfileService.findLikedBooksUserById(user._id)
             .then(likedBooks => this.books = likedBooks );
