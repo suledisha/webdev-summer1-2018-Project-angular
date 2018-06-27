@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {Router} from '@angular/router';
+import {FollowServiceClient} from '../services/follow.service.client';
 
 @Component({
   selector: 'app-author-page',
@@ -10,6 +11,7 @@ import {Router} from '@angular/router';
 export class AuthorPageComponent implements OnInit {
 
   constructor(private service: UserServiceClient,
+              private followService: FollowServiceClient,
               private router: Router) { }
 
   _id;
@@ -21,12 +23,22 @@ export class AuthorPageComponent implements OnInit {
   bio;
   snippet;
   authoredBooks = [];
+  following = [];
+  followedby = [];
 
   logout() {
     this.service
       .logout()
       .then(() =>
         this.router.navigate(['login']));
+
+  }
+  unfollow(userId) {
+    this.followService.userUnfollowsUser(userId)
+      .then((follow) => {
+        this.followService.findAllFollowing()
+          .then(following => this.following = following);
+      });
 
   }
 
@@ -54,6 +66,14 @@ export class AuthorPageComponent implements OnInit {
         }
 
       });
+
+    if (this._id !== -1) {
+      this.followService.findAllFollowing()
+        .then(following => this.following = following);
+      this.followService.findAllFollowedBy()
+        .then(followedby => this.followedby = followedby);
+
+    }
   }
 
 }

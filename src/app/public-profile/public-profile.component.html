@@ -15,14 +15,20 @@
     <br>
     <br>
   <h2>User Profile</h2>
+    <br>
   <h4>Username: {{user.username}}</h4>
+    <br>
   <h4>First Name: {{user.firstName}}</h4>
+    <br>
   <h4>Last Name: {{user.lastName}}</h4>
+    <br>
   <h4>Email: {{user.email}}</h4>
-
+  <br>
   <div *ngIf="user.role==='author'">
   <h4>Bio: {{user.bio}}</h4>
+    <br>
   <h4>Snippet: {{user.snippet}}</h4>
+    <br>
     <h2>Authored Books :{{books.length}}</h2>
     <div *ngFor="let token of books">
       <ul class="list-group">
@@ -32,7 +38,7 @@
       </ul>
     </div>
   </div>
-
+  <br>
   <div *ngIf="user.role==='reader'">
     <h2>Liked Books :{{books.length}}</h2>
     <div *ngFor="let token of books">
@@ -42,7 +48,7 @@
         </li>
       </ul>
     </div>
-
+<br>
     <h2>Reviews :{{reviews.length}}</h2>
     <div *ngFor="let token of reviews">
       <ul class="list-group">
@@ -54,6 +60,7 @@
           {{token.text}}
         </li>
       </ul>
+      <br>
     </div>
   </div>
 
@@ -65,7 +72,7 @@
       </li>
     </ul>
   </div>
-
+  <br>
     <h2>Followed By :{{followedby.length}}</h2>
     <div *ngFor="let token of followedby">
       <ul class="list-group">
