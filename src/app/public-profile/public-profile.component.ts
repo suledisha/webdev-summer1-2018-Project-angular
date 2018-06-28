@@ -71,7 +71,11 @@ export class PublicProfileComponent implements OnInit {
     } else {
       this.followService.userfollowsUser(this.userId)
         .then((follows) => {
-          this.router.navigate(['profile']);
+          if (this.role === 'author') {
+            this.router.navigate(['author-page']);
+          } else {
+            this.router.navigate(['profile']);
+          }
         });
     }
   }
