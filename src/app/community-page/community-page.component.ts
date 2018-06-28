@@ -14,8 +14,8 @@ export class CommunityPageComponent implements OnInit {
   books;
   authors;
   readers;
-  _id;
-  role;
+  _id = '-1';
+  role = ' ';
 
   ngOnInit() {
     this.userservice
@@ -25,9 +25,6 @@ export class CommunityPageComponent implements OnInit {
           this._id = user._id;
           this.role = user.role;
           console.log(user._id);
-        } else {
-          this._id = -1;
-          this.role = '';
         }
 
       });

@@ -19,6 +19,7 @@ export class AdminPageComponent implements OnInit {
   firstName;
   lastName;
   email;
+  role;
 
   logout() {
     this.service
@@ -30,7 +31,7 @@ export class AdminPageComponent implements OnInit {
   update() {
     // console.log(user);
     this.service
-      .update(this._id, this.username, this.firstName, this.lastName, this.email, '', '');
+      .update(this._id, this.username, this.firstName, this.lastName, this.email, '', '', this.role);
 
   }
 
@@ -44,6 +45,7 @@ export class AdminPageComponent implements OnInit {
           this.firstName = user.firstName;
           this.lastName = user.lastName;
           this.email = user.email;
+          this.role = user.role;
           console.log(user._id);
         } else {
           this._id = -1;

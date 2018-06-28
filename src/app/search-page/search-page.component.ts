@@ -12,8 +12,8 @@ export class SearchPageComponent implements OnInit {
   books = [];
   title: String;
   author: String;
-  _id;
-  role;
+  _id = '-1';
+  role = ' ';
   constructor(private service: SearchPageServiceClient,
               private userService: UserServiceClient) {
 
@@ -27,11 +27,7 @@ export class SearchPageComponent implements OnInit {
           this._id = user._id;
           this.role = user.role;
           console.log(user._id);
-        } else {
-          this._id = -1;
-          this.role = '';
         }
-
       });
   }
   findBook(title, author) {

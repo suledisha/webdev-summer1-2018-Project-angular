@@ -16,7 +16,7 @@ import {FollowServiceClient} from '../services/follow.service.client';
 export class PublicProfileComponent implements OnInit {
 
   _id = '-1';
-  role = '';
+  role = ' ';
   userId: '';
   user: User;
   books = [];

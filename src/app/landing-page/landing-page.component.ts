@@ -8,8 +8,8 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class LandingPageComponent implements OnInit {
 
-  _id;
-  role;
+  _id = '-1';
+  role = ' ';
 
   constructor( private userService: UserServiceClient) { }
 
@@ -21,9 +21,6 @@ export class LandingPageComponent implements OnInit {
           this._id = user._id;
           this.role = user.role;
           console.log(user._id);
-        } else {
-          this._id = -1;
-          this.role = '';
         }
 
       });

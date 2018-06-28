@@ -20,6 +20,7 @@ export class AuthorPageComponent implements OnInit {
   firstName;
   lastName;
   email;
+  role;
   bio;
   snippet;
   authoredBooks = [];
@@ -45,7 +46,7 @@ export class AuthorPageComponent implements OnInit {
   update() {
     // console.log(user);
     this.service
-      .update(this._id, this.username, this.firstName, this.lastName, this.email, this.bio, this.snippet);
+      .update(this._id, this.username, this.firstName, this.lastName, this.email, this.bio, this.snippet, this.role);
 
   }
   ngOnInit() {
@@ -60,6 +61,7 @@ export class AuthorPageComponent implements OnInit {
           this.email = user.email;
           this.bio = user.bio;
           this.snippet = user.snippet;
+          this.role = user.role;
           console.log(user._id);
         } else {
           this._id = -1;

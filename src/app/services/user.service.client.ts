@@ -109,9 +109,9 @@ export class UserServiceClient {
       }
     });
   }
-  update(_id, username, firstName, lastName, email, bio, snippet) {
+  update(_id, username, firstName, lastName, email, bio, snippet, role) {
     const url = this.URL + '/api/profile';
-    const user = {_id, username, firstName, lastName, email, bio, snippet};
+    const user = {_id, username, firstName, lastName, email, bio, snippet, role};
     return fetch(url, {
       method: 'put',
       body: JSON.stringify(user),
